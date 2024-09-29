@@ -23,7 +23,7 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="/e-books">Upload E-book</a>
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal">Upload E-book</a>
                   </li>
                 </ul>
               </div>

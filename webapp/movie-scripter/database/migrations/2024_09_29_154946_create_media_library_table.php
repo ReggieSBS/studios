@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('media_library', function (Blueprint $table) {
             $table->id();
-            $table->integer('act_id')->nullable(true)->default('NULL');
-            $table->integer('plot_id')->nullable(true)->default('NULL');
-            $table->integer('archetype_id')->nullable(true)->default('NULL');
-            $table->integer('character_id')->nullable(true)->default('NULL');
-            $table->integer('chapter_id')->nullable(true)->default('NULL');
-            $table->integer('page_id')->nullable(true)->default('NULL');
+            $table->integer('act_id')->nullable(true)->default(0);
+            $table->integer('plot_id')->nullable(true)->default(0);
+            $table->integer('archetype_id')->nullable(true)->default(0);
+            $table->integer('character_id')->nullable(true)->default(0);
+            $table->integer('chapter_id')->nullable(true)->default(0);
+            $table->integer('page_id')->nullable(true)->default(0);
             $table->timestamps();
         });
     }

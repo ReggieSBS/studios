@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ebooks', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable(false);
-            $table->string('file')->nullable(false);
-            $table->string('image')->nullable(true);
-            $table->string('overview_text')->nullable(true);
-            $table->string('author')->nullable(true);
-            $table->string('publisher')->nullable(true);
-            $table->date('publish_date')->nullable(true);
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_subscriptions_id')->constrained('user_subscriptions')->nullable(true)->default('NULL');
+            $table->foreignId('movie_id')->constrained('movies')->nullable(true)->default('NULL');
+            $table->double('amount')->nullable(false);
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ebook');
+        Schema::dropIfExists('payments');
     }
 };
