@@ -85,7 +85,7 @@
                                 <span class="ti-face-smile gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">Simple</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <p class="card-text">Upload an e-book and it's automatically analyzed form you</p>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                 <span class="ti-settings gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
                                     <h4 class="card-title">Customize</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <p class="card-text">Create pages, chapters and characters and convert them into plots, acts and archetypes.</p>
                                 </div>
                             </div>
                         </div>
@@ -110,8 +110,8 @@
                             <div class="media">
                                 <span class="ti-lock gradient-fill ti-3x mr-3"></span>
                                 <div class="media-body">
-                                    <h4 class="card-title">Secure</h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                    <h4 class="card-title">Sell</h4>
+                                    <p class="card-text">Sell your converted e-books moviescripts directly in our marketplace </p>
                                 </div>
                             </div>
                         </div>
@@ -131,9 +131,9 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-6">
                     <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>
-                    <h2>Discover our App</h2>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel exercitationem eveniet vero maxime ratione </p>
-                    <a href="#" class="btn btn-primary">Read more</a>
+                    <h2>Discover Moviescript.io</h2>
+                    <p class="mb-4">Are you a writer or filmproducer?</p>
+                    <a href="/register" class="btn btn-primary">Try it for free</a>
                 </div>
             </div>
             <div class="perspective-phone">
@@ -149,7 +149,7 @@
         <div class="container">
             <div class="section-title">
                 <small>FEATURES</small>
-                <h3>Do more with our app</h3>
+                <h3>Do more with our platform</h3>
             </div>
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -245,9 +245,9 @@
                 <div class="col-md-6 d-flex align-items-center">
                     <div>
                         <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>
-                        <h2>Launch your App</h2>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel exercitationem eveniet vero maxime ratione </p>
-                        <a href="#" class="btn btn-primary">Read more</a></div>
+                        <h2>Launch your film production career</h2>
+                        <p class="mb-4">Are you ready to elevate your writer skills to the next level?</p>
+                        <a href="/register" class="btn btn-primary">Sign up</a></div>
                 </div>
             </div>
 
@@ -273,14 +273,14 @@
                         <li class="media my-4">
                             <div class="circle-icon mr-4">2</div>
                             <div class="media-body">
-                                <h5>Share with friends</h5>
+                                <h5>Upload an e-book</h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
                             </div>
                         </li>
                         <li class="media">
                             <div class="circle-icon mr-4">3</div>
                             <div class="media-body">
-                                <h5>Enjoy your life</h5>
+                                <h5>Manage your movie script</h5>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
                             </div>
                         </li>
@@ -460,8 +460,8 @@
                 <p class="tagline">Available for all major mobile and desktop platforms. Rapidiously visualize optimal ROI rather than enterprise-wide methods of empowerment. </p>
                 <div class="my-4">
 
-                    <a href="#" class="btn btn-light"><img src="{{ asset('/images_landingspage/appleicon.png')}}" alt="icon"> App Store</a>
-                    <a href="#" class="btn btn-light"><img src="{{ asset('/images_landingspage/playicon.png')}}" alt="icon"> Google play</a>
+                    <a href="/register" class="btn btn-light"><img src="{{ asset('/images_landingspage/appleicon.png')}}" alt="icon"> App Store</a>
+                    <a href="/register" class="btn btn-light"><img src="{{ asset('/images_landingspage/playicon.png')}}" alt="icon"> Google play</a>
                 </div>
                 <p class="text-primary"><small><i>*Works on iOS 10.0.5+, Android Kitkat and above. </i></small></p>
             </div>
@@ -502,7 +502,7 @@
     <!-- // end .section -->
     <footer class="my-5 text-center">
         <!-- Copyright removal is not prohibited! -->
-        <p class="mb-2"><small>COPYRIGHT © 2017. ALL RIGHTS RESERVED. MOBAPP TEMPLATE BY <a href="https://colorlib.com">COLORLIB</a></small></p>
+        <p class="mb-2"><small>COPYRIGHT © 2024. ALL RIGHTS RESERVED BY <a href="https://siteboostsystems.com">The Siteboost Systems</a></small></p>
 
         <small>
             <a href="#" class="m-2">PRESS</a>
