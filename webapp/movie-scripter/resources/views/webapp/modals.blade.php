@@ -18,9 +18,9 @@
             <input type="text" name="author" class="form form-control" placeholder="Author" required>
             <input type="text" name="publisher" class="form form-control" placeholder="Publisher" required>
             <h6 class="small-text mt-2">Cover image</h6>
-            <input type="file" name="cover" class="form form-control" required>
+            <input type="file" name="cover" class="form form-control" accept=".jpeg,.jpg,.png,.gif" required>
             <h6 class="small-text mt-2">E-book file</h6>
-            <input type="file" name="ebook" class="form form-control" required>
+            <input type="file" name="ebook" class="form form-control" accept=".pdf,.docx,.doc" required>
         </div>
 
         <!-- Modal footer -->
