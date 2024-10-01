@@ -15,7 +15,7 @@
                 <div class="input-group-prepend bg-transparent">
                   <i class="input-group-text border-0 mdi mdi-robot"></i>
                 </div>
-                <input type="text" class="form-control bg-transparent border-0" placeholder="Ask Mosci">
+                <input type="text" class="form-control bg-transparent border-0"  data-bs-toggle="modal" data-bs-target="#askAI" placeholder="Ask Mosci">
               </div>
             </form>
           </div>

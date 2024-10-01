@@ -42,33 +42,33 @@
               <div class="item">
                 <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
-                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-end"></i>
+                    <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Publisher: n.a. | Author: n.a. <i class="mdi mdi-book mdi-48px float-end"></i>
                     </h4>
-                    <h2 class="mb-5">$ 15,0000</h2>
-                    <h6 class="card-text">Increased by 60%</h6>
+                    <h2 class="mb-5">Titel</h2>
+                    <h6 class="card-text">Chapters: 0 | Pages: 0</h6>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="card bg-gradient-info card-img-holder text-white">
                   <div class="card-body">
-                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Weekly Orders <i class="mdi mdi-bookmark-outline mdi-24px float-end"></i>
+                    <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Publisher: n.a. | Author: n.a. <i class="mdi mdi-book mdi-48px float-end"></i>
                     </h4>
-                    <h2 class="mb-5">45,6334</h2>
-                    <h6 class="card-text">Decreased by 10%</h6>
+                    <h2 class="mb-5">Titel</h2>
+                    <h6 class="card-text">Chapters: 0 | Pages: 0</h6>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="card bg-gradient-success card-img-holder text-white">
                   <div class="card-body">
-                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Visitors Online <i class="mdi mdi-diamond mdi-24px float-end"></i>
+                    <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Publisher: n.a. | Author: n.a. <i class="mdi mdi-book mdi-48px float-end"></i>
                     </h4>
-                    <h2 class="mb-5">95,5741</h2>
-                    <h6 class="card-text">Increased by 5%</h6>
+                    <h2 class="mb-5">Titel</h2>
+                    <h6 class="card-text">Chapters: 0 | Pages: 0</h6>
                   </div>
                 </div>
               </div>
@@ -79,14 +79,14 @@
               <div class="col-md-7 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Project Status</h4>
+                    <h4 class="card-title">Production</h4>
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th> # </th>
-                            <th> Name </th>
-                            <th> Due Date </th>
+                            <th> E-book </th>
+                            <th> Movie </th>
                             <th> Progress </th>
                           </tr>
                         </thead>
@@ -94,7 +94,7 @@
                           <tr>
                             <td> 1 </td>
                             <td> Herman Beck </td>
-                            <td> May 15, 2015 </td>
+                            <td> Herman Beck </td>
                             <td>
                               <div class="progress">
                                 <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -104,7 +104,7 @@
                           <tr>
                             <td> 2 </td>
                             <td> Messsy Adam </td>
-                            <td> Jul 01, 2015 </td>
+                            <td> Herman Beck </td>
                             <td>
                               <div class="progress">
                                 <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
@@ -114,7 +114,7 @@
                           <tr>
                             <td> 3 </td>
                             <td> John Richards </td>
-                            <td> Apr 12, 2015 </td>
+                            <td> Herman Beck </td>
                             <td>
                               <div class="progress">
                                 <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
@@ -124,7 +124,7 @@
                           <tr>
                             <td> 4 </td>
                             <td> Peter Meggik </td>
-                            <td> May 15, 2015 </td>
+                            <td> Herman Beck </td>
                             <td>
                               <div class="progress">
                                 <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>

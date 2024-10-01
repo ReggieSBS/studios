@@ -32,3 +32,35 @@
     </form>
   </div>
 </div>
+
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="askAI">
+  <div class="modal-dialog">
+    <form>
+      @csrf
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><i class="mdi mdi-18px mdi-robot"></i> Mosci AI</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <textarea class="form form-control" style="border:none; background:transparent; height:300px;"></textarea>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <input type="text" name="title" class="form form-control" placeholder="Ask" required>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
