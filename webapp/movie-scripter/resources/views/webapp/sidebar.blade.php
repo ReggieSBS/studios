@@ -26,6 +26,11 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#myModal">Upload E-book</a>
                   </li>
+                  @foreach($ebooks as $ebook)
+                  <li class="nav-item">
+                    <a class="nav-link" href="/ebook/{{ $ebook->id }}">{{ $ebook->name }}</a>
+                  </li>
+                  @endforeach
                 </ul>
               </div>
             </li>

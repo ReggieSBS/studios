@@ -22,7 +22,6 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
-Route::get('/ebooks', [EbookController::class, 'dashboard'])->middleware('auth')->name('ebooks');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginAttempt'])->name('login.attempt');
@@ -32,3 +31,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/ai-request', [AiController::class, 'write'])->middleware('auth')->name('ai-request');
 Route::get('/ai-response', [AiController::class, 'read'])->middleware('auth')->name('ai-response');
+
+Route::get('/ebook/{id}', [EbookController::class, 'read'])->middleware('auth')->name('ebook.read');
+Route::post('/ebook/write', [EbookController::class, 'write'])->middleware('auth')->name('ebook.write');

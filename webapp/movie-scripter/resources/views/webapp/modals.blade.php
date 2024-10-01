@@ -2,7 +2,7 @@
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
-    <form>
+    <form method="post" action="{{ route('ebook.write') }}" enctype="multipart/form-data">
       @csrf
       <div class="modal-content">
 
