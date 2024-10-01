@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('ebooks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->references("id")
+            ->on("ebooks")->onDelete("cascade");
             $table->string('name')->nullable(false);
             $table->string('file')->nullable(false);
             $table->string('image')->nullable(true);
@@ -22,8 +24,6 @@ return new class extends Migration
             $table->string('author')->nullable(true);
             $table->string('publisher')->nullable(true);
             $table->date('publish_date')->nullable(true);
-            $table->foreignId('user_id')->constrained('users')->references("id")
-            ->on("ebooks")->onDelete("cascade");
                 
             $table->timestamps();
         });

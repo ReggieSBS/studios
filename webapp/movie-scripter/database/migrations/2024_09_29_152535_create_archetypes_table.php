@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('archetypes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movie_id')->constrained('movies');
+            $table->foreignId('movie_id')->constrained('movies')->references("id")
+            ->on("acts")->onDelete("cascade");
             $table->integer('number')->nullable(false)->default(0);
             $table->string('answer')->nullable(false);
             $table->integer('closer_to_goal')->nullable(false)->default(1);

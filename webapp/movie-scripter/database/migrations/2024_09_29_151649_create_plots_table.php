@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('plots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('act_id')->constrained('acts');
+            $table->foreignId('movie_id')->constrained('movies')->references("id")
+            ->on("acts")->onDelete("cascade");
             $table->integer('number')->nullable(false)->default(0);
             $table->string('title')->nullable(false);
             $table->string('description')->nullable(false);

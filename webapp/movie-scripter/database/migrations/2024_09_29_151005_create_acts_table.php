@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('acts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movie_id')->constrained('movies');
+            $table->foreignId('movie_id')->constrained('movies')->references("id")
+            ->on("acts")->onDelete("cascade");
             $table->integer('number')->nullable(false)->default(0);
             $table->string('title')->nullable(false);
             $table->string('development')->nullable(false);

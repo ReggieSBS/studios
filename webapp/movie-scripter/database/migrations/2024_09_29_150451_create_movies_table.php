@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ebook_id')->constrained('ebooks');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
+            ->on("chapters")->onDelete("cascade");
+            $table->foreignId('user_id')->constrained('users')->references("id")
+            ->on("movies")->onDelete("cascade");
             $table->string('name')->nullable(false);
             $table->string('genre')->nullable(false);
             $table->string('movie_image')->nullable(true);
