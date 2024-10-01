@@ -18,7 +18,7 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-        @include('webapp.sidebar')
+        @include('webapp.sidebar', ['ebooks',$ebooks])
         
         <!-- partial -->
         <div class="main-panel">

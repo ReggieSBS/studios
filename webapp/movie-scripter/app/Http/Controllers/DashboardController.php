@@ -11,8 +11,9 @@ class DashboardController extends Controller
     // use InitialTrait;
     
     public function dashboard(){
-        $ebooks = User::with('ebooks')->get();
+        // $ebooks = json_decode($ebooks);
         $movies = User::with('movies')->get();
-        return view("webapp.dashboard", ["ebooks"=>$ebooks, "movies"=>$movies]);
+        $ebooks = User::with('ebooks')->get();
+        return view("webapp.dashboard", compact('ebooks'));
     }
 }

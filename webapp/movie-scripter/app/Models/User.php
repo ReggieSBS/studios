@@ -7,18 +7,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\hasMany;
 use App\Models\Ebook;
+
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = "users";
-
-    public function ebooks(){
-        return $this->hasMany(Ebook::class, 'user_id');
+    public function ebooks(): HasMany
+    {
+        return $this->hasMany(Ebook::class);
     }
-    
+
     public function movies(){
         return $this->hasMany(Movie::class, 'user_id');
     }

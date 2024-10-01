@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ebook;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class EbookController extends Controller
@@ -36,10 +37,10 @@ class EbookController extends Controller
 
     public function read(Request $request){
         $ebookid = $request->id;
-
+        $ebooks = User::with('ebooks')->get();
         $ebookdata = Ebook::query();
         $ebookdata = $ebookdata->where('id', $ebookid)->first();
-        return view('webapp.ebook', ['ebookdata' => $ebookdata]);
+        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebooks' => $ebooks]);
     }
 
 }

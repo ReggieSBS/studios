@@ -22,7 +22,9 @@ return new class extends Migration
             $table->string('author')->nullable(true);
             $table->string('publisher')->nullable(true);
             $table->date('publish_date')->nullable(true);
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->references("id")
+            ->on("ebooks")->onDelete("cascade");
+                
             $table->timestamps();
         });
     }
