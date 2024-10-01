@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EbookController;
@@ -28,3 +29,5 @@ Route::post('/login', [AuthController::class, 'loginAttempt'])->name('login.atte
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registerAttempt'])->name('register.attempt');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('/ai-request', [AiController::class, 'write'])->middleware('auth')->name('ai-request');

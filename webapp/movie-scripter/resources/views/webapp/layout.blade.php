@@ -1,4 +1,5 @@
 @vite([
+        'resources/css/app.css',
         'resources/vendors/mdi/css/materialdesignicons.min.css', 
         'resources/vendors/ti-icons/css/themify-icons.css', 
         'resources/vendors/css/vendor.bundle.base.css', 
