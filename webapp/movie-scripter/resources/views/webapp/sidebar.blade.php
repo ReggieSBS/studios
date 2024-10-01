@@ -1,4 +1,5 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <div class="leftmenu"></div>
           <ul class="nav">
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">

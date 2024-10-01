@@ -9,4 +9,6 @@ class Ebook extends Model
 {
     use HasFactory;
     protected $table = "ebooks";
+
+ 
 }

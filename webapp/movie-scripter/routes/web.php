@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EbookController;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ Route::get('/', function () {
     return view('index');
 });
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+Route::get('/ebooks', [EbookController::class, 'dashboard'])->middleware('auth')->name('ebooks');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginAttempt'])->name('login.attempt');
