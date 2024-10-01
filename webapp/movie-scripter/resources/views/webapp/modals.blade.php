@@ -56,8 +56,7 @@
         </div>
 
         <!-- Modal footer -->
-        <div class="modal-footer">
-          <input type="text" name="title" class="form form-control" placeholder="Ask" required>
+        <div class="modal-footer" id="ai-request">
         </div>
 
       </div>
