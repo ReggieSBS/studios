@@ -39,11 +39,12 @@
             </div>
             <div class="row">
               <div class="owl-carousel mb-5 col-12">
-                
               @foreach($ebooks->first()->ebooks as $ebook)
               <div class="item">
+                <a href="/ebook/{{$ebook->id}}" style="text-decoration:none;">
                 <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
+                    <img src="{{ asset('$ebook->image') }}" style="position:absolute; height:100%; right:0px; top:0px;">
                     <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Publisher: {{$ebook->publisher}} | Author: {{$ebook->author}} <i class="mdi mdi-book mdi-48px float-end"></i>
                     </h4>
@@ -51,6 +52,7 @@
                     <h6 class="card-text">Chapters: 0 | Pages: 0</h6>
                   </div>
                 </div>
+                </a>
               </div>
               @endforeach
               

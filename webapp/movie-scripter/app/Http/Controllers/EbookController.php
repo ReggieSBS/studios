@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ebook;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class EbookController extends Controller
@@ -20,8 +21,14 @@ class EbookController extends Controller
         ]);
 
         
-        $cover = $request->file('cover')->store('public_covers');
-        $file = $request->file('ebook')->store('local_ebooks');
+        $cover = $request->file('cover')->store('/app/public/images/covers');
+        $file = $request->file('ebook')->store('/app/public/covers');
+
+        //save format
+        // Storage::disk('public_covers')->put($cover, $cover);
+        $path_cover = env('APP_URL').'/app/public/images/covers';
+        // Storage::disk('public_ebooks')->put($file, $file);
+        $path_ebooks = env('APP_URL').'/app/public/ebooks';
 
         $ebook = New Ebook();
         $ebook->name = $request->title;

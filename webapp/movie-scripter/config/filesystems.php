@@ -47,7 +47,7 @@ return [
 
         'public_ebooks' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/ebooks'),
+            'root' => storage_path(env('APP_URL').'/app/public/ebooks'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
@@ -55,7 +55,7 @@ return [
 
         'public_covers' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/images/covers'),
+            'root' => storage_path(env('APP_URL').'/app/public/images/covers'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
@@ -89,6 +89,8 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('public_ebooks') => storage_path('app/public/ebooks'),
+        public_path('public_covers') => storage_path('app/public/images/covers'),
     ],
 
 ];
