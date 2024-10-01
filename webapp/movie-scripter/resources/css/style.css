@@ -13966,6 +13966,7 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
 }
 
 .modal-header {
+  background:#FFF;
   display: flex;
   flex-shrink: 0;
   align-items: center;
