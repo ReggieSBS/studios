@@ -31,3 +31,4 @@ Route::post('/register', [AuthController::class, 'registerAttempt'])->name('regi
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::post('/ai-request', [AiController::class, 'write'])->middleware('auth')->name('ai-request');
+Route::get('/ai-response', [AiController::class, 'read'])->middleware('auth')->name('ai-response');

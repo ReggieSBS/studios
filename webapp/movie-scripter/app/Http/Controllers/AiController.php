@@ -18,4 +18,15 @@ class AiController extends Controller
         $ai_request->user_id = Auth::user()->id;
         $ai_request->save();
     }
+
+
+    public function read()
+    {
+        $responses = Ai::query();
+        $responses = $responses->latest()->get();
+
+        return response()->json([
+            'responses' => $responses
+        ],200);
+    }
 }

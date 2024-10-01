@@ -50,14 +50,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
-        <!-- Modal body -->
-        <div class="modal-body">
-          <textarea class="form form-control" style="border:none; background:transparent; height:300px;"></textarea>
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer" id="ai-request">
-        </div>
+        <div id="ai-request"></div>
 
       </div>
     </form>

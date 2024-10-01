@@ -15,5 +15,8 @@
         "vue": "^3.5.10",
         "vue-loader": "^17.4.2",
         "vue-router": "^4.4.5"
+    },
+    "dependencies": {
+        "v-reset-input": "^1.1.2"
     }
 }
