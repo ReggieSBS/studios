@@ -23,7 +23,7 @@ class AiController extends Controller
     public function read()
     {
         $responses = Ai::query();
-        $responses = $responses->latest()->get();
+        $responses = $responses->where('user_id', Auth::user()->id)->latest()->get();
 
         return response()->json([
             'responses' => $responses
