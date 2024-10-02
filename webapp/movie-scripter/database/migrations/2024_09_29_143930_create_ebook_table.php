@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('author')->nullable(true);
             $table->string('publisher')->nullable(true);
             $table->date('publish_date')->nullable(true);
-                
+            $table->integer('active')->nullable(false)->default(0);
+            $table->integer('converted')->nullable(false)->default(0);
+            $table->integer('completion')->nullable(false)->default(0);
             $table->timestamps();
         });
     }

@@ -13,4 +13,5 @@ class Page extends Model
     public function ebooks(){
         return $this->belongsToOne(Ebook::class,'id','ebook_id');
     }
+    
 }
