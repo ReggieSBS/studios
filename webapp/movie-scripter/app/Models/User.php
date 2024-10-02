@@ -21,12 +21,12 @@ class User extends Authenticatable
         return $this->hasMany(Ebook::class);
     }
 
-    public function movies(){
-        return $this->hasMany(Movie::class, 'user_id');
+    public function movies(): HasMany{
+        return $this->hasMany(Movie::class);
     }
     
-    public function subscription(){
-        return $this->hasOne(Subscription::class, 'user_id');
+    public function subscription(): HasOne{
+        return $this->hasOne(Subscription::class);
     }
     /**
      * The attributes that are mass assignable.

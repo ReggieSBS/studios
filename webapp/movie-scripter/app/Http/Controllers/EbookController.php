@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ebook;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Store;
 use Illuminate\Support\Facades\Auth;
 
 class EbookController extends Controller
@@ -15,20 +16,19 @@ class EbookController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'author' => ['required', 'string'],
-            'publisher' => ['required', 'string'],
-            'cover' => ['image'],
-            'ebook' => ['file']
+            'publisher' => ['required', 'string']
         ]);
 
-        
-        $cover = $request->file('cover')->store('/app/public/images/covers');
-        $file = $request->file('ebook')->store('/app/public/covers');
 
-        //save format
-        // Storage::disk('public_covers')->put($cover, $cover);
-        $path_cover = env('APP_URL').'/app/public/images/covers';
-        // Storage::disk('public_ebooks')->put($file, $file);
-        $path_ebooks = env('APP_URL').'/app/public/ebooks';
+        $file = $request->file('cover');
+        $namecover  = $file->getClientOriginalName();
+        $file->storeAs('/app/public/images/covers/', $namecover, 'public');
+        $cover = $file;
+
+        $fileebook = $request->file('ebook');
+        $namefile  = $fileebook->getClientOriginalName();
+        $fileebook->storeAs('/app/public/ebooks/', $namefile, 'public');
+        $file = $fileebook;
 
         $ebook = New Ebook();
         $ebook->name = $request->title;

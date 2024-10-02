@@ -9,4 +9,8 @@ class Act extends Model
 {
     use HasFactory;
     protected $table = "acts";
+
+    public function movies(){
+        return $this->belongsToOne(Movie::class,'id','movie_id');
+    }
 }

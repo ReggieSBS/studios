@@ -9,4 +9,8 @@ class Character extends Model
 {
     use HasFactory;
     protected $table = "characters";
+
+    public function ebooks(){
+        return $this->belongsToOne(Ebook::class,'id','ebook_id');
+    }
 }
