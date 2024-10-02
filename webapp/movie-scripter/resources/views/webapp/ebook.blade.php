@@ -32,16 +32,16 @@
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Page</button>
+                    <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#pageModal"><i class="mdi mdi-plus"></i> Pages</button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Chapter</button>
+                    <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#chapterModal"><i class="mdi mdi-plus"></i> Chapters</button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Character</button>
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus" data-bs-toggle="modal" data-bs-target="#characterModal"></i> Characters</button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white " type="button"><i class="mdi mdi-download"></i> Download</button>
+                    <button class="btn btn-secondary text-white " type="button" data-bs-toggle="modal" data-bs-target="#downloadEbookModal"><i class="mdi mdi-download"></i> Download</button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from word or pdf">
                     <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-airplane"></i></button>

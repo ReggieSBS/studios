@@ -12,9 +12,6 @@ trait EbookTrait
         if(session()->has('ebookid'))
         {
             $ebookid = session()->get('ebookid');
-            
-
-
             $ebookpages = Page::query();
             $ebookpages = $ebookpages->where('ebook_id', $ebookid)->get();
             $ebookchapters = Chapter::query();

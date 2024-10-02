@@ -32,16 +32,16 @@
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Create Page</button>
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-left"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Create Chapter</button>
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-right"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white " type="button"><i class="mdi mdi-download"></i> Download</button>
+                    <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-airplane"></i> Conver</button>
+                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
                   </li>
                 </ul>
               </nav>
@@ -52,7 +52,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Ebook</h4>
+                      <h4 class="card-title float-start">Page </h4>
                     </div>
                   </div>
                 </div>
@@ -60,39 +60,8 @@
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Meta Data</h4>
-                    <div class="table responsive">
-                      <table class="table table-striped">
-                          <tbody>
-                            <tr>
-                              <td>Author</td>
-                              <td></td>
-                            </tr>
-                            <tr>
-                              <td>Publisher</td>
-                              <td></td>
-                            </tr>
-                            <tr>
-                              <td>Publish date</td>
-                              <td></td>
-                            </tr>
-                            <tr>
-                              <td>Pages</td>
-                              <td></td>
-                              <td><button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button></td>
-                            </tr>
-                            <tr>
-                              <td>Chapters</td>
-                              <td></td>
-                              <td><button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button></td>
-                            </tr>
-                          </tbody>
-                      </table>
-                    </div>
-                    <h5 class="mt-5">Production Progress</h5>
-                    <div class="progress" bis_skin_checked="1">
-                      <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" bis_skin_checked="1"></div>
-                    </div>
+                    <h4 class="card-title">Ebook</h4>
+                    
                   </div>
                 </div>
               </div>

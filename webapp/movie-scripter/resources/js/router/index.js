@@ -2,10 +2,11 @@ import {createRouter, createWebHistory} from "vue-router";
 import aiRequest from '../components/dynamics/ai_request.vue';
 const routes = [
     {
-        path:'/dashboard',
+        path:'/:pathMatch(.*)',
         name:'dynamics.ai_request',
-        component: aiRequest,
+        component: aiRequest
     }
+    
 ]
 
 const router = createRouter({

@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
-            ->on("chapters")->onDelete("cascade");
-            $table->foreignId('chapter_id')->constrained('chapters');
+            ->on("pages")->onDelete("cascade");
+            $table->integer('chapter_id')->nullable(true)->default(0);
             $table->integer('page_number')->nullable(false);
-            $table->string('content')->nullable(false);
+            $table->string('content')->nullable(true);
             $table->timestamps();
         });
     }

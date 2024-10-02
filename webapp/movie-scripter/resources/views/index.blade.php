@@ -54,8 +54,8 @@
 
     <header class="bg-gradient" id="home">
         <div class="container mt-5">
-            <h1>CONVERT YOUR E-BOOK INTO A MOVIE</h1>
-            <p class="tagline">AI models that automate the conversion of your e-book into a movie script</p>
+            <h1>IO AI FROM E-BOOK TO MOVIE</h1>
+            <p class="tagline">With moviescript.io AI everyone can be the next Steven Spiegelberg</p>
         </div>
         <div class="img-holder mt-3"><img src="{{ asset('/images_landingspage/iphonex.png') }}" alt="phone" class="img-fluid"></div>
     </header>
@@ -67,15 +67,11 @@
     </div>
 
     <div class="section light-bg" id="features">
-
-
         <div class="container">
-
             <div class="section-title">
                 <small>HIGHLIGHTS</small>
                 <h3>Features you love</h3>
             </div>
-
 
             <div class="row">
                 <div class="col-12 col-lg-4">
@@ -118,11 +114,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
     </div>
     <!-- // end .section -->
     <div class="section">
@@ -133,6 +125,8 @@
                     <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>
                     <h2>Discover Moviescript.io</h2>
                     <p class="mb-4">Are you a writer or filmproducer?</p>
+                    <p>Elevate your creative mind with the help of Artificial Intelligence</p>
+                    <p>WIth moviescript.io you can convert e-books to movie production scripts and AI will help you define which character in the movie says what when, inspire you with produces images of personalities and enviroment and create trailers of chapters.</p>
                     <a href="/register" class="btn btn-primary">Try it for free</a>
                 </div>
             </div>

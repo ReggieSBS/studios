@@ -35,8 +35,6 @@
 
 
 
-
-
 <!-- The Modal -->
 <div class="modal" id="askAI">
   <div class="modal-dialog">
@@ -51,6 +49,35 @@
         </div>
 
         <div id="ai-request"></div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal" id="pageModal">
+  <div class="modal-dialog">
+    <form method="post" action="{{ route('page.write') }}" enctype="multipart/form-data">
+      @csrf
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Create Pages</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <h6 class="small-text mt-2">Total amount of pages?</h6>
+            <input type="number" name="amount" class="form form-control" value="1" required>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Create pages</button>
+        </div>
 
       </div>
     </form>
