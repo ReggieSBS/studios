@@ -102,7 +102,7 @@
         </div>
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Create hapters</button>
+          <button type="submit" class="btn btn-success">Create chapters</button>
         </div>
 
       </div>
