@@ -57,7 +57,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Page </h4>
+                      <h4 class="card-title float-start">Chapter </h4>
                     </div>
                   </div>
                 </div>
