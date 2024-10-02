@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\RegisterEmailJob;
 use App\Mail\WelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,8 @@ class AuthController extends Controller
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
 
-        Mail::to($request->email)->send(new WelcomeEmail($request->name));
+        // Mail::to($request->email)->send(new WelcomeEmail($request->name));
+        RegisterEmailJob::dispatch($request->email, $request->name);
 
         if(!$user)
         {
