@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Moviescript.io </title>
     <!-- plugins:css -->
         @include('webapp.layout')
 
@@ -32,16 +32,22 @@
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Create Page</button>
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Page</button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Create Chapter</button>
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Chapter</button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page">
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Character</button>
                   </li>
                   <li class="actionbar_item" aria-current="page">
                     <button class="btn btn-secondary text-white " type="button"><i class="mdi mdi-download"></i> Download</button>
                   </li>
-                  <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-airplane"></i> Conver</button>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from word or pdf">
+                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-airplane"></i></button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
+                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
                   </li>
                 </ul>
               </nav>
@@ -66,32 +72,27 @@
                           <tbody>
                             <tr>
                               <td>Author</td>
-                              <td></td>
+                              <td>{{ $ebookdata->author }}</td>
                             </tr>
                             <tr>
                               <td>Publisher</td>
-                              <td></td>
+                              <td>{{ $ebookdata->publisher }}</td>
                             </tr>
                             <tr>
                               <td>Publish date</td>
                               <td></td>
                             </tr>
                             <tr>
-                              <td>Pages</td>
-                              <td></td>
-                              <td><button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button></td>
+                              <td>Pages <span class="badge badge-primary">0</span></td>
+                              <td>Chapters <span class="badge badge-danger">0</span></td>
                             </tr>
-                            <tr>
-                              <td>Chapters</td>
-                              <td></td>
-                              <td><button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button></td>
-                            </tr>
+                            
                           </tbody>
                       </table>
                     </div>
                     <h5 class="mt-5">Production Progress</h5>
                     <div class="progress" bis_skin_checked="1">
-                      <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" bis_skin_checked="1"></div>
+                      <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $ebookdata->complete }}%" aria-valuenow="{{ $ebookdata->complete }}" aria-valuemin="0" aria-valuemax="100" bis_skin_checked="1"></div>
                     </div>
                   </div>
                 </div>
