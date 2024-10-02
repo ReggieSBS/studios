@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EbookController;
+use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\PageController;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +37,14 @@ Route::get('/ai-response', [AiController::class, 'read'])->middleware('auth')->n
 
 Route::get('/ebook/{id}', [EbookController::class, 'read'])->middleware('auth')->name('ebook.read');
 Route::post('/ebook/write', [EbookController::class, 'write'])->middleware('auth')->name('ebook.write');
+
+Route::get('/page/{id}', [PageController::class, 'read'])->middleware('auth')->name('page.read');
+Route::post('/page/write', [PageController::class, 'write'])->middleware('auth')->name('page.write');
+
+
+Route::get('/chapter/{id}', [ChapterController::class, 'read'])->middleware('auth')->name('chapter.read');
+Route::post('/chapter/write', [ChapterController::class, 'write'])->middleware('auth')->name('chapter.write');
+
+
+Route::get('/character/{id}', [CharacterController::class, 'read'])->middleware('auth')->name('character.read');
+Route::post('/character/write', [CharacterController::class, 'write'])->middleware('auth')->name('character.write');
