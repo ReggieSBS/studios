@@ -104,48 +104,22 @@
                     </div>
                     <div class="list-wrapper">
                       <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
-                        <li>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Meeting with Alisa </label>
-                          </div>
-                          <i class="remove mdi mdi-close-circle-outline"></i>
-                        </li>
                         <li class="completed">
                           <div class="form-check">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox" checked> Call John </label>
+                              <input class="checkbox" type="checkbox" checked> Register an account </label>
                           </div>
                           <i class="remove mdi mdi-close-circle-outline"></i>
                         </li>
+                        
                         <li>
                           <div class="form-check">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Create invoice </label>
+                              <input class="checkbox" type="checkbox"> Upload an e-book </label>
                           </div>
                           <i class="remove mdi mdi-close-circle-outline"></i>
                         </li>
-                        <li>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Print Statements </label>
-                          </div>
-                          <i class="remove mdi mdi-close-circle-outline"></i>
-                        </li>
-                        <li class="completed">
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="checkbox" type="checkbox" checked> Prepare for presentation </label>
-                          </div>
-                          <i class="remove mdi mdi-close-circle-outline"></i>
-                        </li>
-                        <li>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Pick up kids from school </label>
-                          </div>
-                          <i class="remove mdi mdi-close-circle-outline"></i>
-                        </li>
+                        
                       </ul>
                     </div>
                   </div>
