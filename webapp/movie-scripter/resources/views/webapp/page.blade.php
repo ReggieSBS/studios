@@ -24,23 +24,28 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">
+              <a href="/ebook/{{ $ebookdata->id }}" >
+              <h3 class="page-title" data-bs-toggle="tooltip" title="Back to e-book">
+                
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-book"></i>
+                  <i class="mdi mdi-arrow-left"></i>
                 </span> {{ $ebookdata->name }}
-              </h3>
+              </h3></a>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                  <li class="actionbar_item" aria-current="page">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Previous page">
                     <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-left"></i></button>
                   </li>
-                  <li class="actionbar_item" aria-current="page">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Next page">
                     <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-right"></i></button>
                   </li>
-                  <li class="actionbar_item" aria-current="page">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete page">
                     <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
                   </li>
-                  <li class="actionbar_item" aria-current="page">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
+                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-book"></i></button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
                   </li>
                 </ul>
@@ -57,13 +62,23 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-4 grid-margin stretch-card">
+              <div class="col-md-4 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Ebook</h4>
-                    
+                    <div class="clearfix">
+                      <h4 class="card-title float-start">Characters </h4>
+                    </div>
                   </div>
                 </div>
+
+                <div class="card mt-3">
+                  <div class="card-body">
+                    <div class="clearfix">
+                      <h4 class="card-title float-start">Characters </h4>
+                    </div>
+                  </div>
+                </div>
+                
               </div>
             </div>
             

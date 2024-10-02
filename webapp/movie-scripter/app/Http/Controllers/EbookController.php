@@ -56,11 +56,14 @@ class EbookController extends Controller
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
+        $totalebookpages = 0;
+        $totalebookchapters = 0;
         
         session()->put('ebookid', $ebookid);
         $ebooks = User::with('ebooks')->get();
         $ebookdata = Ebook::query();
         $ebookdata = $ebookdata->where('id', $ebookid)->first();
+
 
         $ebooksdata = Ebook::ebooksData();
         if(session()->exists('ebookid'))
@@ -68,9 +71,11 @@ class EbookController extends Controller
             $ebookpages = $ebooksdata[0];
             $ebookchapters = $ebooksdata[1];
             $ebookcharacters = $ebooksdata[2];
+            $totalebookpages = $ebookpages->count();
+            $totalebookchapters = $ebookchapters->count();
         }
 
-        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks]);
+        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters]);
     }
 
 }

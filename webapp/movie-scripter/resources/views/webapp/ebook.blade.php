@@ -31,20 +31,34 @@
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
+                  @if($totalebookpages > 0)
+                  <li class="actionbar_item" aria-current="page">
+                    <a class="btn btn-primary text-white" href="/page/1"><i class="mdi mdi-book-edit"></i> Pages</a>
+                  </li>
+                  @else
                   <li class="actionbar_item" aria-current="page">
                     <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#pageModal"><i class="mdi mdi-plus"></i> Pages</button>
                   </li>
+                  @endif
+
+                  @if($totalebookchapters>0)
+                  <li class="actionbar_item" aria-current="page">
+                    <a class="btn btn-primary text-white" href="/chapter/1"><i class="mdi mdi-book-edit"></i> Chapter</a>
+                  </li>
+                  @else
                   <li class="actionbar_item" aria-current="page">
                     <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#chapterModal"><i class="mdi mdi-plus"></i> Chapters</button>
                   </li>
+                  @endif
+                  
                   <li class="actionbar_item" aria-current="page">
                     <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus" data-bs-toggle="modal" data-bs-target="#characterModal"></i> Characters</button>
                   </li>
-                  <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white " type="button" data-bs-toggle="modal" data-bs-target="#downloadEbookModal"><i class="mdi mdi-download"></i> Download</button>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Download">
+                    <button class="btn btn-secondary text-white " type="button" data-bs-toggle="modal" data-bs-target="#downloadEbookModal"><i class="mdi mdi-download"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from word or pdf">
-                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-airplane"></i></button>
+                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-book"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
@@ -66,7 +80,12 @@
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Meta Data</h4>
+                    <h4 class="card-title"><table class="table">
+                            <tr>
+                              <td>Pages <span class="badge badge-primary">{{$totalebookpages}}</span></td>
+                              <td>Chapters <span class="badge badge-danger">{{$totalebookchapters}}</span></td>
+                            </tr>
+                          </table></h4>
                     <div class="table responsive">
                       <table class="table table-striped">
                           <tbody>
@@ -81,10 +100,6 @@
                             <tr>
                               <td>Publish date</td>
                               <td></td>
-                            </tr>
-                            <tr>
-                              <td>Pages <span class="badge badge-primary">0</span></td>
-                              <td>Chapters <span class="badge badge-danger">0</span></td>
                             </tr>
                             
                           </tbody>

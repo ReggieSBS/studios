@@ -1,19 +1,20 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <div class="leftmenu"></div>
           <ul class="nav">
+          @if($ebookdata)
             <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="nav-profile-image">@if($ebookdata)
-                  <img src=" {{asset($ebookdata->image)}} " alt="profile" />
-                  <span class="login-status online"></span>@endif
+              <a href="/ebook/{{ $ebookdata->id }}" class="nav-link">
+                <div class="nav-profile-image">
+                  <span class="mdi mdi-36px mdi-book text-success"></span>
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">@if($ebookdata) {{ $ebookdata->name }} @endif</span>
+                  <span class="font-weight-bold mb-2">{{ $ebookdata->name }} </span>
                   <span class="text-secondary text-small">Loaded e-book</span>
                 </div>
               </a>
-            </li>
+            </li> 
+            @endif
 
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

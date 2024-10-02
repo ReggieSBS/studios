@@ -51,7 +51,6 @@
                       <h2 class="mb-5">{{$ebook->name}}</h2>
                       <h6 class="card-text">Chapters: 0 | Pages: 0</h6>
                     </div>
-                    <img src="{{ asset($ebook->image) }}" style="position:absolute; height:100%; right:0px; top:0px; width:auto !important; z-index:0; opacity:0.5;">
                   </div>
                 </div>
                 </a>

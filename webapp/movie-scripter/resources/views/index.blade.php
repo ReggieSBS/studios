@@ -125,8 +125,8 @@
                     <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>
                     <h2>Discover Moviescript.io</h2>
                     <p class="mb-4">Are you a writer or filmproducer?</p>
-                    <p>Elevate your creative mind with the help of Artificial Intelligence</p>
-                    <p>WIth moviescript.io you can convert e-books to movie production scripts and AI will help you define which character in the movie says what when, inspire you with produces images of personalities and enviroment and create trailers of chapters.</p>
+                    <p>Elevate your creative mind with the help of Artificial Intelligence.</p>
+                    <p>With moviescript.io you can convert e-books into movie production scripts. Our AI will help you define which character in the movie says what at what moment, inspire you with produced images of personalities and environmental conditions and will be able to create trailers of chapters and e-book pages.</p>
                     <a href="/register" class="btn btn-primary">Try it for free</a>
                 </div>
             </div>
@@ -148,16 +148,16 @@
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#communication">Communication</a>
+                    <a class="nav-link active" data-toggle="tab" href="#communication">E-book Conversion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#schedule">Scheduling</a>
+                    <a class="nav-link" data-toggle="tab" href="#schedule">Movie Production</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#messages">Messages</a>
+                    <a class="nav-link" data-toggle="tab" href="#messages">Trailer Production</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#livechat">Live Chat</a>
+                    <a class="nav-link" data-toggle="tab" href="#livechat">AI Production Assitant</a>
                 </li>
             </ul>
             <div class="tab-content">

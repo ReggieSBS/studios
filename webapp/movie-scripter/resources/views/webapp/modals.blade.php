@@ -83,3 +83,30 @@
     </form>
   </div>
 </div>
+
+
+<div class="modal" id="chapterModal">
+  <div class="modal-dialog">
+    <form method="post" action="{{ route('chapter.write') }}" enctype="multipart/form-data">
+      @csrf
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Create Chapters</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+            <h6 class="small-text mt-2">Total amount of chapters?</h6>
+            <input type="number" name="amount" class="form form-control" value="1" required>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Create hapters</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
