@@ -34,14 +34,14 @@
                 </ul>
               </div>
             </li>
-
+          
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-chapters" aria-expanded="false" aria-controls="ui-chapters">
+              <a class="nav-link" data-bs-toggle="collapse" href="#chapters3" aria-expanded="false" aria-controls="chapters3">
                 <span class="menu-title">Chapters</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-book menu-icon"></i>
               </a>
-              <div class="collapse" id="ui-chapters">
+              <div class="collapse" id="chapters3">
                 <ul class="nav flex-column sub-menu">
                 @foreach($ebookchapters as $chapter)
                   <li class="nav-item">
