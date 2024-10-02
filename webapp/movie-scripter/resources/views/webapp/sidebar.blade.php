@@ -3,13 +3,13 @@
           <ul class="nav">
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
-                <div class="nav-profile-image">
-                  <img src="{{ asset('images_webapp/faces/face1.jpg')}}" alt="profile" />
-                  <span class="login-status online"></span>
+                <div class="nav-profile-image">@if($ebookdata)
+                  <img src=" {{asset($ebookdata->image)}} " alt="profile" />
+                  <span class="login-status online"></span>@endif
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Not loaded</span>
+                  <span class="font-weight-bold mb-2">@if($ebookdata) {{ $ebookdata->name }} @endif</span>
                   <span class="text-secondary text-small">Loaded e-book</span>
                 </div>
               </a>
@@ -35,6 +35,22 @@
               </div>
             </li>
 
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-chapters" aria-expanded="false" aria-controls="ui-chapters">
+                <span class="menu-title">Chapters</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-book menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-chapters">
+                <ul class="nav flex-column sub-menu">
+                @foreach($ebookchapters as $chapter)
+                  <li class="nav-item">
+                  <a class="nav-link" href="/chapter/{{ $chapter->id }}">chapter nr. {{ $chapter->chapter_number }} - {{ $chapter->title }}</a>
+                  </li>
+                @endforeach
+                </ul>
+              </div>
+            </li>
 
             
             <li class="nav-item">
@@ -54,22 +70,6 @@
               </div>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-chapters" aria-expanded="false" aria-controls="ui-chapters">
-                <span class="menu-title">Chapters</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-book menu-icon"></i>
-              </a>
-              <div class="collapse" id="ui-chapters">
-                <ul class="nav flex-column sub-menu">
-                @foreach($ebookchapters as $chapter)
-                  <li class="nav-item">
-                  <a class="nav-link" href="/chapter/{{ $chapter->id }}">chapter nr. {{ $chapter->chapter_number }} - {{ $chapter->title }}</a>
-                  </li>
-                @endforeach
-                </ul>
-              </div>
-            </li>
 
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-characters" aria-expanded="false" aria-controls="ui-characters">

@@ -44,12 +44,14 @@
                 <a href="/ebook/{{$ebook->id}}" style="text-decoration:none;">
                 <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
-                    <img src="{{ $ebook->image }}" style="position:absolute; height:100%; right:0px; top:0px;">
                     <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Publisher: {{$ebook->publisher}} | Author: {{$ebook->author}} <i class="mdi mdi-book mdi-48px float-end"></i>
-                    </h4>
-                    <h2 class="mb-5">{{$ebook->name}}</h2>
-                    <h6 class="card-text">Chapters: 0 | Pages: 0</h6>
+                    <div style="position:relative; z-index:9">
+                      <h4 class="font-weight-normal mb-3">Publisher: {{$ebook->publisher}} | Author: {{$ebook->author}} <i class="mdi mdi-book mdi-48px float-end"></i>
+                      </h4>
+                      <h2 class="mb-5">{{$ebook->name}}</h2>
+                      <h6 class="card-text">Chapters: 0 | Pages: 0</h6>
+                    </div>
+                    <img src="{{ asset($ebook->image) }}" style="position:absolute; height:100%; right:0px; top:0px; width:auto !important; z-index:0; opacity:0.5;">
                   </div>
                 </div>
                 </a>
@@ -65,7 +67,7 @@
                   <div class="card-body">
                     <h4 class="card-title">Production</h4>
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table table-hover">
                         <thead>
                           <tr>
                             <th> # </th>
@@ -75,66 +77,18 @@
                           </tr>
                         </thead>
                         <tbody>
+                        @foreach($ebooks->first()->ebooks as $ebook)
                           <tr>
-                            <td> 1 </td>
-                            <td> Herman Beck </td>
-                            <td> Herman Beck </td>
+                            <td> {{$ebook->id}} </td>
+                            <td> {{$ebook->name}} </td>
+                            <td>  </td>
                             <td>
                               <div class="progress">
-                                <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $ebook->complete }}%" aria-valuenow="{{$ebook->complete}}" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                             </td>
                           </tr>
-                          <tr>
-                            <td> 2 </td>
-                            <td> Messsy Adam </td>
-                            <td> Herman Beck </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 3 </td>
-                            <td> John Richards </td>
-                            <td> Herman Beck </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 4 </td>
-                            <td> Peter Meggik </td>
-                            <td> Herman Beck </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 5 </td>
-                            <td> Edward </td>
-                            <td> May 03, 2015 </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td> 5 </td>
-                            <td> Ronald </td>
-                            <td> Jun 05, 2015 </td>
-                            <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
-                            </td>
-                          </tr>
+                        @endforeach
                         </tbody>
                       </table>
                     </div>

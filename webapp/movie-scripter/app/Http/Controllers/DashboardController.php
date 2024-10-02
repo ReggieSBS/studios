@@ -13,30 +13,27 @@ class DashboardController extends Controller
     
     public function dashboard(){
         // $ebooks = json_decode($ebooks);
+        $movies = User::with('movies')->get();
+        $ebooks = User::with('ebooks')->get();
+  
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
-        $movies = User::with('movies')->get();
-        $ebooks = User::with('ebooks')->get();
-
         
         $ebookid = session()->get('ebookid');
         $ebookdata = Ebook::query();
         $ebookdata = $ebookdata->where('id', $ebookid)->first();
 
+        $ebooksdata = Ebook::ebooksData();
+        
+        if(session()->exists('ebookid'))
+        {
+            $ebooksdata = Ebook::ebooksData();
+            $ebookpages = $ebooksdata[0];
+            $ebookchapters = $ebooksdata[1];
+            $ebookcharacters = $ebooksdata[2];
+        }
 
-        // $ebooksdata = Ebook::ebooksData();
-
-        // if(!empty($ebooksdata)){
-        //     $ebookpages = $ebooksdata[0];
-        // }
-        // if(!empty($ebooksdata)){
-        //     $ebookchapters = $ebooksdata[1];
-        // }
-        // if(!empty($ebooksdata)){
-        //     $ebookcharacters = $ebooksdata[2];
-        // }
-
-        return view('webapp.dashboard', ['ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks]);
+        return view('webapp.dashboard', ['ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata]);
     }
 }

@@ -51,23 +51,22 @@ class EbookController extends Controller
     }
 
     public function read(Request $request){
-        $ebookpages='';
-        $ebookchapters='';
-        $ebookcharacters='';
         $ebookid = $request->id;
+
+        $ebookpages=[];
+        $ebookchapters=[];
+        $ebookcharacters=[];
+        
         session()->put('ebookid', $ebookid);
         $ebooks = User::with('ebooks')->get();
         $ebookdata = Ebook::query();
         $ebookdata = $ebookdata->where('id', $ebookid)->first();
 
         $ebooksdata = Ebook::ebooksData();
-        if(!empty($ebooksdata[0])){
+        if(session()->exists('ebookid'))
+        {
             $ebookpages = $ebooksdata[0];
-        }
-        if(!empty($ebooksdata[1])){
             $ebookchapters = $ebooksdata[1];
-        }
-        if(!empty($ebooksdata[2])){
             $ebookcharacters = $ebooksdata[2];
         }
 
