@@ -31,17 +31,11 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+                <a class="dropdown-item" href="#"><i class="mdi mdi-account me-2 text-success"></i> Profile settings </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+                <a class="dropdown-item" href="#"><i class="mdi mdi-piggy-bank me-2 text-success"></i> Billing & Subscription </a>
+                <a class="dropdown-item" href="#"><i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
               </div>
-            </li>
-            <li class="nav-item d-none d-lg-block full-screen-link">
-              <a class="nav-link">
-                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-              </a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -130,6 +124,11 @@
                 <div class="dropdown-divider"></div>
                 <h6 class="p-3 mb-0 text-center">See all notifications</h6>
               </div>
+            </li>
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link" style="cursor:pointer;">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">
               <a class="nav-link" href="{{ route('logout') }}">
