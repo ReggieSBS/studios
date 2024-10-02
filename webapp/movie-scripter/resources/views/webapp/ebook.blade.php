@@ -31,8 +31,17 @@
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <button class="btn bg-gradient-primary text-white" type="button"><i class="mdi mdi-menu"></i> Action</button>
+                  <li class="actionbar_item" aria-current="page">
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Create Page</button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page">
+                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus"></i> Create Chapter</button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page">
+                    <button class="btn btn-secondary text-white " type="button"><i class="mdi mdi-download"></i> Download</button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page">
+                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-airplane"></i> Conver</button>
                   </li>
                 </ul>
               </nav>
@@ -102,5 +111,6 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+    @include('webapp.modals')
   </body>
 </html>

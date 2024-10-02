@@ -57,7 +57,6 @@ class EbookController extends Controller
         $ebookid = $request->id;
         session()->put('ebookid', $ebookid);
         $ebooks = User::with('ebooks')->get();
-
         $ebookdata = Ebook::query();
         $ebookdata = $ebookdata->where('id', $ebookid)->first();
 

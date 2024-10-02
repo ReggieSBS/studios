@@ -45,9 +45,11 @@
               </a>
               <div class="collapse" id="ui-pages">
                 <ul class="nav flex-column sub-menu">
+                @foreach($ebookpages as $page)
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Page 1</a>
+                    <a class="nav-link" href="/page/{{ $page->id }}">page nr. {{ $page->page_number }}</a>
                   </li>
+                @endforeach
                 </ul>
               </div>
             </li>
@@ -60,9 +62,11 @@
               </a>
               <div class="collapse" id="ui-chapters">
                 <ul class="nav flex-column sub-menu">
+                @foreach($ebookchapters as $chapter)
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Chapter 1</a>
+                  <a class="nav-link" href="/chapter/{{ $chapter->id }}">chapter nr. {{ $chapter->chapter_number }} - {{ $chapter->title }}</a>
                   </li>
+                @endforeach
                 </ul>
               </div>
             </li>
@@ -75,9 +79,11 @@
               </a>
               <div class="collapse" id="ui-characters">
                 <ul class="nav flex-column sub-menu">
+                  @foreach($ebookcharacters as $character)
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Character 1</a>
+                  <a class="nav-link" href="/character/{{ $character->id }}">{{ $character->name }}</a>
                   </li>
+                  @endforeach
                 </ul>
               </div>
             </li>

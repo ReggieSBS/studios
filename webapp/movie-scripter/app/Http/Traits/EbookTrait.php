@@ -12,14 +12,17 @@ trait EbookTrait
         if(session()->has('ebookid'))
         {
             $ebookid = session()->get('ebookid');
+            
+
+
             $ebookpages = Page::query();
             $ebookpages = $ebookpages->where('ebook_id', $ebookid)->get();
             $ebookchapters = Chapter::query();
             $ebookchapters = $ebookchapters->where('ebook_id', $ebookid)->get();
             $ebookcharacters = Character::query();
             $ebookcharacters = $ebookcharacters->where('ebook_id', $ebookid)->get();
-
-            return array([$ebookpages, $ebookchapters, $ebookcharacters]);
+            $ebooksdata = array($ebookpages, $ebookchapters, $ebookcharacters);
+            return $ebooksdata;
         }
     }
 }
