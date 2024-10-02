@@ -25654,6 +25654,9 @@ dl li {
 }
 .sidebar .nav .nav-item {
   padding: 0 2.25rem;
+  border-style:solid;
+  border-width:2px;
+  border-color:#f2edf3;
   -webkit-transition-duration: 0.25s;
   -moz-transition-duration: 0.25s;
   -o-transition-duration: 0.25s;
