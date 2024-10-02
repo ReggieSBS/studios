@@ -36,10 +36,10 @@
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Previous page">
                     <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-left"></i></button>
                   </li>
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Next page">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Next chapter">
                     <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-right"></i></button>
                   </li>
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete page">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete chapter">
                     <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
@@ -57,7 +57,16 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Chapter </h4>
+                      <h4 class="card-title float-start">
+                         
+                        <table>
+                          <Tr>
+                            <Td class="pr-5" style="vertical-align: middle;">Chapter</Td>
+                            <Td class="pr-5"><input type="number" class="form form-control" style="width:80px;" value="1"></Td>
+                            <Td class="pr-5"><input type="text" class="form form-control" placeholder="Title ...."></Td>
+                          </Tr>
+                        </table>
+                      </h4>
                     </div>
                   </div>
                 </div>
