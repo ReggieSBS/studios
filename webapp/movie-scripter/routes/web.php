@@ -41,10 +41,8 @@ Route::post('/ebook/write', [EbookController::class, 'write'])->middleware('auth
 Route::get('/page/{id}', [PageController::class, 'read'])->middleware('auth')->name('page.read');
 Route::post('/page/write', [PageController::class, 'write'])->middleware('auth')->name('page.write');
 
-
 Route::get('/chapter/{id}', [ChapterController::class, 'read'])->middleware('auth')->name('chapter.read');
 Route::post('/chapter/write', [ChapterController::class, 'write'])->middleware('auth')->name('chapter.write');
-
 
 Route::get('/character/{id}', [CharacterController::class, 'read'])->middleware('auth')->name('character.read');
 Route::post('/character/write', [CharacterController::class, 'write'])->middleware('auth')->name('character.write');

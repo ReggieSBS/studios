@@ -54,8 +54,8 @@
 
     <header class="bg-gradient" id="home">
         <div class="container mt-5">
-            <h1>IO AI FROM E-BOOK TO MOVIE</h1>
-            <p class="tagline">With moviescript.io AI everyone can be the next Steven Spiegelberg</p>
+            <h1>CONVERT E-BOOKS TO MOVIES</h1>
+            <p class="tagline">With moviescript.io everyone can be the next Steven Spiegelberg</p>
         </div>
         <div class="img-holder mt-3"><img src="{{ asset('/images_landingspage/iphonex.png') }}" alt="phone" class="img-fluid"></div>
     </header>
