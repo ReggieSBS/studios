@@ -53,7 +53,7 @@
 
 
     <header class="bg-gradient" id="home">
-        <div class="container mt-5">
+        <div class="container mt-5" style="position:absolute;">
             <h1>CONVERT E-BOOKS TO MOVIES</h1>
             <p class="tagline">With moviescript.io everyone can be the next Steven Spiegelberg</p>
         </div>
