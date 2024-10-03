@@ -1,5 +1,9 @@
+
+
+
 <script>
-    import {reactive, ref, onMounted} from "vue"
+    import {reactive, ref, onMounted, defineProps } from "vue"
+
     import { Editor, EditorContent } from '@tiptap/vue-3'
     import StarterKit from '@tiptap/starter-kit'
     import Text from '@tiptap/extension-text'
@@ -15,17 +19,39 @@
     import Heading from '@tiptap/extension-heading'
 
     export default {
+
+      props: ['responses'],
+
       components: {
         EditorContent,
       },
 
       data() {
         return {
-          editor: null,
+          content: null,
         }
       },
 
       methods: {
+        
+        async loadAsyncFunctions() {
+          await this.delay(1000); // Delay for 1 second
+          await this.loadContent();
+          await this.delay(2000); // Delay for 2 seconds
+        },
+
+        async delay(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        },
+
+        synchronousFunction() {
+          console.log('This function is called synchronously');
+        },
+
+        async asyncFunction() {
+          console.log('This function is called asynchronously');
+        },
+
         addImage() {
           const url = window.prompt('URL')
 
@@ -33,11 +59,17 @@
             this.editor.chain().focus().setImage({ src: url }).run()
           }
         },
+        async loadContent() {
+          this.editor.chain().focus().setContent(this.responses).run()
+        },
+      },
+
+      created(){
       },
 
       mounted() {
         this.editor = new Editor({
-          content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+          content:"",
           extensions: [StarterKit,
           Document,
           Paragraph,
@@ -52,40 +84,47 @@
             levels: [1, 2, 3, 4],
           })
           ],
-        })
+        });
+        
+        this.synchronousFunction();
+        this.loadAsyncFunctions();
       },
       beforeUnmount() {
         this.editor.destroy()
       },
+      
     }
 
 </script>
+
+
 <template>
-    <div class="editor-buttons">
-        <table>
-            <tr>
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleBold().run()"  style="font-weight: bold;">B</button></td>
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleItalic().run()"><em>I</em></button></td>
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleUnderline().run()" style="text-decoration: underline;">Underline</button></td>
-     
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 1 }).run()">h1</button></td>
-     
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()">h2</button></td>
-     
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 3 }).run()">h3</button></td>
+  <div class="editor-buttons">
+      <table>
+          <tr>
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleBold().run()"  style="font-weight: bold;">B</button></td>
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleItalic().run()"><em>I</em></button></td>
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleUnderline().run()" style="text-decoration: underline;">Underline</button></td>
    
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 4 }).run()">h4</button></td>
-            
-            <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleBulletList().run()"><span class="fa fa-list-ul"></span></button></td>
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 1 }).run()">h1</button></td>
+   
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()">h2</button></td>
+   
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 3 }).run()">h3</button></td>
+ 
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleHeading({ level: 4 }).run()">h4</button></td>
+          
+          <td><button class="editor-btn bg-default text-white" @click="editor.chain().focus().toggleBulletList().run()"><span class="fa fa-list-ul"></span></button></td>
 
-            <td><button class="editor-btn bg-default text-white" @click="addImage"><span class="mdi mdi-image"></span></button></td>
+          <td><button class="editor-btn bg-default text-white" @click="addImage"><span class="mdi mdi-image"></span></button></td>
 
-            </tr>
-            
-        </table>
-    </div>
-    <div class="editor-body">
-        <editor-content :editor="editor" />
-    </div>
+          <td><button class="editor-btn bg-primary text-white" @click="loadContent">load content</button></td>
+
+          </tr>
+          
+      </table>
+  </div>
+  <div class="editor-body">
+      <editor-content :editor="editor"/>
+  </div>
 </template>
-

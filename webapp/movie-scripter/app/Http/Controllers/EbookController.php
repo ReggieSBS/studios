@@ -78,4 +78,19 @@ class EbookController extends Controller
         return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters]);
     }
 
+
+    public function content(Request $request){
+        
+        $ebookid = session()->get('ebookid');
+        $responses = Ebook::query();
+        $responses = $responses->where('id', 1)->first();
+        $value = $responses->overview_text;
+
+        return response()->json([
+            'responses' => $value
+        ],200);
+
+        dd($responses->overview_text);
+    }
+
 }

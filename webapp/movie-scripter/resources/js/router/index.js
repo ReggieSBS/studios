@@ -10,7 +10,8 @@ const routes = [
     {
         path:'/ebook/:pathMatch(.*)',
         name:'dynamics.ebook_init',
-        component: ebookInit
+        component: ebookInit,
+        props: true
     }
     
 ]

@@ -37,6 +37,7 @@ Route::get('/ai-response', [AiController::class, 'read'])->middleware('auth')->n
 
 Route::get('/ebook/{id}', [EbookController::class, 'read'])->middleware('auth')->name('ebook.read');
 Route::post('/ebook/write', [EbookController::class, 'write'])->middleware('auth')->name('ebook.write');
+Route::get('/ebook-content', [EbookController::class, 'content'])->middleware('auth')->name('ebook-content');
 
 Route::get('/page/{id}', [PageController::class, 'read'])->middleware('auth')->name('page.read');
 Route::post('/page/write', [PageController::class, 'write'])->middleware('auth')->name('page.write');
