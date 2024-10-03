@@ -18,6 +18,11 @@
     import Paragraph from '@tiptap/extension-paragraph'
     import Heading from '@tiptap/extension-heading'
 
+    const input = reactive({
+        request: ""
+    })
+
+
     export default {
 
       props: ['responses'],
@@ -35,7 +40,7 @@
       methods: {
         
         async loadAsyncFunctions() {
-          await this.delay(1000); // Delay for 1 second
+          await this.delay(2000); // Delay for 1 second
           await this.loadContent();
           await this.delay(2000); // Delay for 2 seconds
         },
@@ -61,7 +66,7 @@
         },
         async loadContent() {
           this.editor.chain().focus().setContent(this.responses).run()
-        },
+        }
       },
 
       created(){
@@ -69,22 +74,35 @@
 
       mounted() {
         this.editor = new Editor({
+          onUpdate({ editor }) {
+            var value = editor.getHTML();
+            const data = { value: value };
+            axios.post('/ebook-content/update', data)
+            .then(
+                response => console.log(response.data)
+            ).catch(
+                error => console.log(error)
+            )
+          },
           content:"",
-          extensions: [StarterKit,
-          Document,
-          Paragraph,
-          Text,
-          Image,
-          Dropcursor,
-          TextStyle,
-          Bold,
-          Underline,
-          Italic,
-          Heading.configure({
-            levels: [1, 2, 3, 4],
-          })
+          extensions: 
+          [
+            StarterKit,
+            Document,
+            Paragraph,
+            Text,
+            Image,
+            Dropcursor,
+            TextStyle,
+            Bold,
+            Underline,
+            Italic,
+            Heading.configure({
+              levels: [1, 2, 3, 4],
+            })
           ],
-        });
+        },
+      );
         
         this.synchronousFunction();
         this.loadAsyncFunctions();
@@ -118,7 +136,7 @@
 
           <td><button class="editor-btn bg-default text-white" @click="addImage"><span class="mdi mdi-image"></span></button></td>
 
-          <td><button class="editor-btn bg-primary text-white" @click="loadContent">load content</button></td>
+          <td><button class="editor-btn bg-primary text-white" @click="loadContent" data-bs-toggle="tooltip" title="Load content"><span class="mdi mdi-refresh"></span></button></td>
 
           </tr>
           

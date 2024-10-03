@@ -75,21 +75,24 @@
             </div>
             
             <div class="row">
-              <div class="col-md-8 grid-margin stretch-card">
+              <div class="col-lg-8 col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
+                  <em style="font-size:11px; float:right; right:15px; position:absolute; top:15px;">* automatically saved</em>
                   <div class="card-body" id="ebook-init">
                   </div>
                 </div>
               </div>
-              <div class="col-md-4 grid-margin stretch-card">
+              <div class="col-lg-4 col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title"><table class="table">
-                            <tr>
-                              <td>Pages <span class="badge badge-primary">{{$totalebookpages}}</span></td>
-                              <td>Chapters <span class="badge badge-danger">{{$totalebookchapters}}</span></td>
-                            </tr>
-                          </table></h4>
+                    <h4 class="card-title">
+                      <table class="table">
+                        <tr>
+                          <td>Pages <span class="badge badge-primary">{{$totalebookpages}}</span></td>
+                          <td>Chapters <span class="badge badge-danger">{{$totalebookchapters}}</span></td>
+                        </tr>
+                      </table>
+                    </h4>
                     <div class="table responsive">
                       <table class="table table-striped">
                           <tbody>
@@ -105,7 +108,6 @@
                               <td>Publish date</td>
                               <td></td>
                             </tr>
-                            
                           </tbody>
                       </table>
                     </div>

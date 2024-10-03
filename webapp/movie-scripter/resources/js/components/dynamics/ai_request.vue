@@ -11,7 +11,6 @@
         // to keep less line code structure initiated jQuery to clear input on id
         $("#request").val("");
         getAiResponses();
-        
     }
         
     let responses = ref([])

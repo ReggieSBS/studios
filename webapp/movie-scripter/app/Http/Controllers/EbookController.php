@@ -19,7 +19,6 @@ class EbookController extends Controller
 
         Ebook::where('user_id', Auth::user()->id)->update(['active'=>0]);
 
-
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'author' => ['required', 'string'],
@@ -50,47 +49,54 @@ class EbookController extends Controller
         return redirect('/ebook/'.$ebookid);
     }
 
-    public function read(Request $request){
+    public function read(Request $request)
+    {
         $ebookid = $request->id;
-
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
         $totalebookpages = 0;
         $totalebookchapters = 0;
-        
         session()->put('ebookid', $ebookid);
+
         $ebooks = User::with('ebooks')->get();
         $ebookdata = Ebook::query();
         $ebookdata = $ebookdata->where('id', $ebookid)->first();
-
-
         $ebooksdata = Ebook::ebooksData();
-        if(session()->exists('ebookid'))
-        {
+
+        if(session()->exists('ebookid')){
             $ebookpages = $ebooksdata[0];
             $ebookchapters = $ebooksdata[1];
             $ebookcharacters = $ebooksdata[2];
             $totalebookpages = $ebookpages->count();
             $totalebookchapters = $ebookchapters->count();
         }
-
         return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters]);
     }
 
-
     public function content(Request $request){
-        
         $ebookid = session()->get('ebookid');
         $responses = Ebook::query();
-        $responses = $responses->where('id', 1)->first();
+        $responses = $responses->where('id', $ebookid)->first();
         $value = $responses->overview_text;
-
         return response()->json([
             'responses' => $value
         ],200);
-
-        dd($responses->overview_text);
     }
+
+    public function contentupdate(Request $request){
+        $ebookid = session()->get('ebookid');
+        $ebook = Ebook::find($ebookid);
+        $ebook->overview_text = $request->value;
+        if($ebook->save())
+        {
+            return("saved");
+        }
+        else
+        {
+            return("failed");
+        }
+    }
+    
 
 }

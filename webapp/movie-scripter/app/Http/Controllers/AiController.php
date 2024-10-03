@@ -21,7 +21,7 @@ class AiController extends Controller
     public function write(Request $request)
     {
         $data = json_decode($request->getContent());
-        $message = $data ->request;
+        $message = $data->request;
         $ai_request = New Ai();
         $ai_request->message = $message;
         $ai_request->request = 1;
