@@ -77,11 +77,7 @@
             <div class="row">
               <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <h4 class="card-title float-start">Ebook</h4>
-                    </div>
-                          <div id="ebook-init"></div>
+                  <div class="card-body" id="ebook-init">
                   </div>
                 </div>
               </div>

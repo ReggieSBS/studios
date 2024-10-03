@@ -1,3 +1,6 @@
+<script setup>
+    import AiForm from './dynamics/ai_request.vue'
+</script>
 <template>  
-    <router-view/>
+    <AiForm />
 </template>

@@ -30,8 +30,6 @@
 </script>
 <template>
 
-
-
 <!-- Modal body -->
 <div class="modal-body">
     <div class="container" v-for="response in responses" :key="response.id">
