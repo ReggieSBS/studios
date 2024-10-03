@@ -81,6 +81,7 @@
                     <div class="clearfix">
                       <h4 class="card-title float-start">Ebook</h4>
                     </div>
+                          <div id="ebook-init"></div>
                   </div>
                 </div>
               </div>

@@ -17,6 +17,10 @@
         "vue-router": "^4.4.5"
     },
     "dependencies": {
+        "@tiptap/core": "^2.8.0",
+        "@tiptap/pm": "^2.8.0",
+        "@tiptap/starter-kit": "^2.8.0",
+        "@tiptap/vue-3": "^2.8.0",
         "v-reset-input": "^1.1.2"
     }
 }

@@ -18,7 +18,8 @@
         'resources/js/bootstrap.js',
         'resources/js/dashboard.js',
         'resources/vendors/owl-carousel-2/owl.carousel.min.js', 
-        'resources/js/app.js', 
+        'resources/js/app.js',  
+        'resources/js/ebook.js',
         'resources/js/left-menu.js', 
         'resources/js/ai.js']) 
 
