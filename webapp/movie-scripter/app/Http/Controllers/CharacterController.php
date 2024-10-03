@@ -14,6 +14,9 @@ class CharacterController extends Controller
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
+
+        $characterid = $request->characterid;
+
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
 
@@ -28,7 +31,11 @@ class CharacterController extends Controller
             $ebookcharacters = $ebooksdata[2];
         }
 
-        return view('webapp.character', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata]);
+        
+        $characterdata = Character::query();
+        $characterdata = $characterdata->where('id', $characterid)->first();
+
+        return view('webapp.character', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'characterdata'=>$characterdata]);
     }
     
     public function write(Request $request){
@@ -36,12 +43,32 @@ class CharacterController extends Controller
         $amount = $request->amount;
 
         $ebookid = session()->get('ebookid');
- 
+        
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'gender' => ['required', 'string'],
+            'main_character' => ['required', 'integer']
+        ]);
+
+        if($request->file('profileimage'))
+        {
+            $file = $request->file('profileimage');
+            $profileimage  = $file->getClientOriginalName();
+            $file->storeAs('/app/public/images/covers/', $profileimage, 'public');
+            $profileimage = $file;
+        }
+
         $character = New Character();
-        // $character->chapter_number = $i;
-        $character->ebook_id = $ebookid;
+        $character->ebook_id  = $ebookid;
+        $character->main_character = $request->main_character;
+        $character->name = $request->name;
+        $character->gender = $request->gender;
+        $character->age = $request->age;
+        $character->profile_image = $profileimage;
         $character->save();
 
-        return redirect('/character/1');
+        $characterid = $character->id;
+
+        return redirect('/character/'.$characterid);
     }
 }

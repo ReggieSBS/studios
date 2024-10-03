@@ -110,3 +110,62 @@
   </div>
 </div>
 
+
+
+
+
+
+
+<div class="modal" id="characterModal">
+  <div class="modal-dialog">
+    <form method="post" action="{{ route('character.write') }}" enctype="multipart/form-data">
+      @csrf
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Create Character</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <h6 class="small-text mt-2">Name of character</h6>
+              <input type="text" name="name" class="form form-control" placeholder="John" required>
+            </div>
+            <div class="col-12 text-center">
+            <h6 class="small-text mt-2">Is this the leading actor in the movie?</h6>
+            <select name="main_character" class="form form-control" required>
+                <option disabled selected>Make a choice</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            </div>
+            <div class="col-12">
+              <h6 class="small-text mt-2" style="width:100%;">Profile image <em style="font-size:11px; float:right;"> *optional</em> </h6>
+              <input type="file" name="profileimage" class="form form-control">
+            </div>
+            <div class="col-12">
+              <h6 class="small-text mt-2">Gender</h6>
+              <select name="gender" class="form form-control" required>
+                  <option disabled selected>Make a choice</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Transgender</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <h6 class="small-text mt-2" style="width:100%;">Approximate age <em style="font-size:11px; float:right;"> *optional</em> </h6>
+              <input type="number" name="age" class="form form-control" placeholder="12">
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Create character</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

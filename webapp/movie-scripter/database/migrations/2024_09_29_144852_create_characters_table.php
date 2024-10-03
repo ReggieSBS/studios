@@ -18,13 +18,15 @@ return new class extends Migration
             $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
             ->on("chapters")->onDelete("cascade");
             $table->string('name')->nullable(false);
-            $table->string('profile_image')->nullable(false);
+            $table->string('gender')->nullable(false);
+            $table->integer('age')->nullable(true);
+            $table->string('profile_image')->nullable(true);
             $table->integer('main_character')->nullable(false)->default(0);
-            $table->string('appearance_desc')->nullable(false);
-            $table->string('personality_desc')->nullable(false);
-            $table->string('accomplishment_desc')->nullable(false);
-            $table->string('who_stops_desc')->nullable(false);
-            $table->string('what_if_fails_desc')->nullable(false);
+            $table->string('appearance_desc')->nullable(true);
+            $table->string('personality_desc')->nullable(true);
+            $table->string('accomplishment_desc')->nullable(true);
+            $table->string('who_stops_desc')->nullable(true);
+            $table->string('what_if_fails_desc')->nullable(true);
             $table->timestamps();
         });
     }
