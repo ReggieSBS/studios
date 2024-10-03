@@ -51,9 +51,16 @@
                   </li>
                   @endif
                   
+                  @if($totalebookchapters>0)
+                  <li class="actionbar_item" aria-current="page">
+                    <a class="btn btn-primary text-white" href="/characters"><i class="mdi mdi-book-edit"></i> Characters</a>
+                  </li>
+                  @else
                   <li class="actionbar_item" aria-current="page">
                     <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus" data-bs-toggle="modal" data-bs-target="#characterModal"></i> Characters</button>
                   </li>
+                  @endif
+
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Download">
                     <button class="btn btn-secondary text-white " type="button" data-bs-toggle="modal" data-bs-target="#downloadEbookModal"><i class="mdi mdi-download"></i></button>
                   </li>

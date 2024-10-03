@@ -9,6 +9,28 @@ use Illuminate\Http\Request;
 
 class CharacterController extends Controller
 {
+
+    public function overview(){
+        $ebookpages=[];
+        $ebookchapters=[];
+        $ebookcharacters=[];
+
+        $ebookid = session()->get('ebookid');
+        $ebooks = User::with('ebooks')->get();
+
+        $ebookdata = Ebook::query();
+        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+
+        $ebooksdata = Ebook::ebooksData();
+        if(session()->exists('ebookid'))
+        {
+            $ebookpages = $ebooksdata[0];
+            $ebookchapters = $ebooksdata[1];
+            $ebookcharacters = $ebooksdata[2];
+        }
+
+        return view('webapp.characters', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata]);
+    }
    
     public function read(Request $request){
         $ebookpages=[];
@@ -31,7 +53,6 @@ class CharacterController extends Controller
             $ebookcharacters = $ebooksdata[2];
         }
 
-        
         $characterdata = Character::query();
         $characterdata = $characterdata->where('id', $characterid)->first();
 
