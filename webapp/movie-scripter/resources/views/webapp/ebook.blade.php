@@ -43,7 +43,7 @@
 
                   @if($totalebookchapters>0)
                   <li class="actionbar_item" aria-current="page">
-                    <a class="btn btn-primary text-white" href="/chapter/1"><i class="mdi mdi-book-edit"></i> Chapter</a>
+                    <a class="btn btn-primary text-white" href="/chapter/1"><i class="mdi mdi-book-edit"></i> Chapters</a>
                   </li>
                   @else
                   <li class="actionbar_item" aria-current="page">
@@ -62,10 +62,10 @@
                   @endif
 
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Download">
-                    <button class="btn btn-secondary text-white " type="button" data-bs-toggle="modal" data-bs-target="#downloadEbookModal"><i class="mdi mdi-download"></i></button>
+                    <a class="btn btn-secondary text-white " href="{{ asset($ebookdata->file) }}" download><i class="mdi mdi-download"></i></a>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from word or pdf">
-                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-book"></i></button>
+                    <a class="btn btn-primary text-white" href="/ebook-content/extract"><i class="mdi mdi-book"></i></a>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>

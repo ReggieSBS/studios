@@ -4,12 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ebook;
 use App\Models\User;
-use App\Models\Chapter;
-use App\Models\Character;
-use App\Models\Page;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
-use Illuminate\Support\Facades\Store;
 use Illuminate\Support\Facades\Auth;
 
 class EbookController extends Controller
@@ -98,5 +93,8 @@ class EbookController extends Controller
         }
     }
     
+    public function extract(){
+       
+    }
 
 }
