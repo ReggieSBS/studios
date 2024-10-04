@@ -6,7 +6,10 @@ use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EbookController;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ArchetypeController;
+use App\Http\Controllers\ActController;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
@@ -71,12 +74,16 @@ Route::post('/character/update-details', [CharacterController::class, 'updatedet
 // MOVIE
 
 // QUESTIONS
-
-// ARCHETYPES
+Route::get('/questions', [MovieController::class, 'overview'])->middleware('auth')->name('movie.questions');
 
 // FORMULA
+Route::get('/formula', [MovieController::class, 'formula'])->middleware('auth')->name('movie.formula');
+
+// ARCHETYPES
+Route::get('/archetypes', [ArchetypeController::class, 'overview'])->middleware('auth')->name('movie.archetypes');
 
 // ACTS
+Route::get('/acts', [ActController::class, 'overview'])->middleware('auth')->name('movie.acts');
 
 // PLOTS
 
