@@ -27,9 +27,25 @@ class CharacterController extends Controller
             $ebookpages = $ebooksdata[0];
             $ebookchapters = $ebooksdata[1];
             $ebookcharacters = $ebooksdata[2];
+
+            $characterdata = Character::characterData();
+
+            $maincharacterdata = $characterdata[0];
+            $secondarycharacterdata = $characterdata[1];
+
+            if(empty($characterdata[1]))
+            {
+                $seccharacteravailable = 0;
+            }   
+            else
+            {
+                $seccharacteravailable = 1;
+            }
+
+
         }
 
-        return view('webapp.characters', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata]);
+        return view('webapp.characters', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'maincharacterdata'=>$maincharacterdata, 'secondarycharacterdata'=>$secondarycharacterdata, 'seccharacteravailable'=>$seccharacteravailable]);
     }
    
     public function read(Request $request){

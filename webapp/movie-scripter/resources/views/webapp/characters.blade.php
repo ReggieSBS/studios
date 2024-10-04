@@ -49,10 +49,12 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-4">
-                          <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;">
+                          <a href="/character/{{ $maincharacterdata->id }}"><img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;"></a>
                       </div>
                       <div class="col-lg-8">
-                        <h1>Reggie Duisterhof</h1>
+                        <h1>{{ $maincharacterdata->name }}</h1>
+                        <em>{{ $maincharacterdata->personality_desc }}</em><br/><br/>
+                        <p>{{ $maincharacterdata->accomplishment_desc }}</p>
                       </div>
                     </div>
                   </div>
@@ -61,15 +63,26 @@
 
 
               <div class="col-lg-5">
-                <h2>Antagonist</h2><br/>
+                <h2 style="text-align: center;">Antagonist</h2>
                 <hr>
                 <div class="row">
-                  <div class="col-lg-3">
-
+                  @if($seccharacteravailable == 1)
+                  <div class="col-lg-4">
+                      <a href="/character/{{ $maincharacterdata->id }}"><img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;"></a>
                   </div>
-                  <div class="col-lg-9">
-                    
+                  <div class="col-lg-8">
+                    <h2>{{ $secondarycharacterdata->name }}</h2>
+                    <em>{{ $secondarycharacterdata->personality_desc }}</em><br/><br/>
+                    <p>{{ $secondarycharacterdata->accomplishment_desc }}</p>
                   </div>
+                  @else 
+                  <div class="col-lg-4">
+                      
+                  </div>
+                  <div class="col-lg-8">
+                    <h4>Yet unknown</h4>
+                  </div>
+                  @endif
                 </div>
               </div>
 
@@ -78,6 +91,7 @@
                 <hr>
               <div class="owl-carousel" id="owl-carousel2">
               @foreach($ebookcharacters as $character)
+              @if($character->main_character != 1 && $character->main_character != 2)
               <div class="item">
                 <a href="/character/{{$character->id}}" style="text-decoration:none;">
                 <div class="card bg-gradient-danger card-img-holder text-white">
@@ -91,6 +105,7 @@
                 </div>
                 </a>
               </div>
+              @endif
               @endforeach
               </div>
 
