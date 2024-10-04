@@ -98,13 +98,13 @@
               <div class="collapse" id="ui-movie">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Questions</a>
+                    <a class="nav-link" href="/questions">Questions</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Archytypes</a>
+                    <a class="nav-link" href="/archetypes">Archytypes</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Formula</a>
+                    <a class="nav-link" href="/formula">Formula</a>
                   </li>
                   
                 </ul>
@@ -120,7 +120,7 @@
             <div class="collapse" id="ui-act">
                 <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/ui-features/buttons.html">Act 1</a>
+                    <a class="nav-link" href="#">Act 1</a>
                 </li>
                 </ul>
             </div>
