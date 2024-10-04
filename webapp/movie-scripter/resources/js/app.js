@@ -38,3 +38,7 @@ $(".btncloseuimodal").click(function(){
     $('#extractmodal').fadeOut("slow");
     return false;
 });
+$( function() {
+    $( ".draggable" ).draggable();
+    $(".resizable").resizable();
+});

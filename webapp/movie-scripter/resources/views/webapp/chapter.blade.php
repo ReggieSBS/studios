@@ -43,7 +43,7 @@
                     <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
-                    <button class="btn btn-primary text-white" type="button"><i class="mdi mdi-book"></i></button>
+                    <button class="btn btn-primary text-white btnopenextract" type="button"><i class="mdi mdi-book"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>

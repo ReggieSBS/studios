@@ -10,6 +10,7 @@
         'resources/vendors/js/vendor.bundle.base.js',
         'resources/vendors/bootstrap-datepicker/bootstrap-datepicker.js',
         'resources/vendors/chart.js/chart.umd.js',
+        'resources/vendors/jquery-ui/jquery-ui.js', 
         'resources/js/off-canvas.js',
         'resources/js/misc.js',
         'resources/js/settings.js',

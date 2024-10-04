@@ -170,18 +170,20 @@
 </div>
 
 @if($ebookdata)
-<div class="ui-modal" id="extractmodal">
-  <div class="ui-modal-header">
-    E-book File Preview
-    <a style="float:right;" href="#" class="btncloseuimodal mr-5"><i class="mdi mdi-close"></i></a>
-  </div>
-  <iframe src="{{ asset($ebookdata->file) }}" width="100%" height="400">
-        This browser does not support PDFs. Please download the PDF to view it: 
-        <a href="{{ asset($ebookdata->file) }}">Download PDF</a>
-  </iframe>
-  <div class="ui-modal-header">
-  <i class="mdi mdi-information"></i>
-  Copy everything and paste inside e-book content text area.
+<div class="ui-modal draggable" id="extractmodal">
+  <div class="resizable">
+    <div class="ui-modal-header">
+      E-book File Preview
+      <a style="float:right;" href="#" class="btncloseuimodal mr-5"><i class="mdi mdi-close"></i></a>
+    </div>
+    <iframe src="{{ asset($ebookdata->file) }}" width="100%" height="400">
+          This browser does not support PDFs. Please download the PDF to view it: 
+          <a href="{{ asset($ebookdata->file) }}">Download PDF</a>
+    </iframe>
+    <div class="ui-modal-footer">
+    <i class="mdi mdi-information"></i>
+    Copy everything and paste inside the content textarea.
+    </div>
   </div>
 </div>
 @endif
