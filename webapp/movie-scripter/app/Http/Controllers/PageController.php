@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\Chapter;
 use App\Models\Ebook;
 use App\Models\User;
 
@@ -31,8 +32,25 @@ class PageController extends Controller
         session()->put('pageid', $pageid);
         $pagedata = Page::query();
         $pagedata = $pagedata->where('id', $pageid)->first();
+        $previouspage = $pagedata->page_number - 1;
+        $nextpage = $pagedata->page_number + 1;
 
-        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata]);
+
+        $nxtpg = 0;
+        $pagechk = Page::query();
+        $pagechk = $pagechk->where('ebook_id', $ebookid)->latest('id')->first();
+        $lastpage = $pagechk->page_number;
+        $newpage = $lastpage + 1;
+        if($lastpage<$nextpage)
+        {
+            $nxtpg = 1;
+        }
+
+        $chapter_id = $pagedata->chapter_id;
+        $chapter = Chapter::query();
+        $chapterdata = $chapter->where('id', $chapter_id)->first();
+
+        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata, 'previouspage'=>$previouspage, 'nextpage'=>$nextpage, 'nxtpg'=>$nxtpg, 'newpage'=>$newpage, 'chapterdata'=>$chapterdata]);
     }
     
     public function write(Request $request){
@@ -52,7 +70,27 @@ class PageController extends Controller
         return redirect('/page/1');
     }
 
+    public function writesummery(Request $request){
+        $pageid = session()->get('pageid');
+        $page = Page::find($pageid);
+        $page->summery = $request->summery;
+        $page->save();
+        return redirect('/page/'.$pageid);
+    }
 
+    public function new(Request $request){
+
+        $ebookid = session()->get('ebookid');
+
+        $page = New Page();
+        $page->page_number = $request->page_number;
+        $page->chapter_id = $request->chapter_number;
+        $page->ebook_id = $ebookid;
+        $page->save();
+        $pageid = $page->id;
+
+        return redirect('/page/'.$pageid);
+    }
     
     public function content(Request $request){
         $pageid = session()->get('pageid');

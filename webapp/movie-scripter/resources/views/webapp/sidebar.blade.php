@@ -5,7 +5,7 @@
             <li class="nav-item nav-profile">
               <a href="/ebook/{{ $ebookdata->id }}" class="nav-link">
                 <div class="nav-profile-image">
-                  <span class="mdi mdi-36px mdi-book text-success"></span>
+                  <span class="mdi mdi-36px mdi-book text-danger"></span>
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
@@ -46,7 +46,7 @@
                 <ul class="nav flex-column sub-menu">
                 @foreach($ebookchapters as $chapter)
                   <li class="nav-item">
-                  <a class="nav-link" href="/chapter/{{ $chapter->id }}">chapter nr. {{ $chapter->chapter_number }} - {{ $chapter->title }}</a>
+                  <a class="nav-link" href="/chapter/{{ $chapter->id }}">nr. {{ $chapter->chapter_number }} - {{ $chapter->title }}</a>
                   </li>
                 @endforeach
                 </ul>

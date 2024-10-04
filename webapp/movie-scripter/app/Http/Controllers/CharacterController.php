@@ -37,7 +37,8 @@ class CharacterController extends Controller
         $ebookchapters=[];
         $ebookcharacters=[];
 
-        $characterid = $request->characterid;
+        $characterid = $request->id;
+        session()->put('characterid', $characterid);
 
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
@@ -55,6 +56,8 @@ class CharacterController extends Controller
 
         $characterdata = Character::query();
         $characterdata = $characterdata->where('id', $characterid)->first();
+
+
 
         return view('webapp.character', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'characterdata'=>$characterdata]);
     }
@@ -92,4 +95,15 @@ class CharacterController extends Controller
 
         return redirect('/character/'.$characterid);
     }
+
+    
+    public function updatedetails(Request $request){
+        $characterid = session()->get('characterid');
+        $character = Character::find($characterid);
+        $character->age = $request->age;
+        $character->gender = $request->gender;
+        $character->save();
+        return redirect('/character/'.$characterid);
+    }
+    
 }

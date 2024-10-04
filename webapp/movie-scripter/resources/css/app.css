@@ -1,5 +1,33 @@
 .btn{
     width: 100% !important;
+    box-shadow: 2px 2px 4px #777777 !important;
+    border-style: solid;
+    border-style: solid !important;
+    border-color: #e4e4e4 !important;
+    border-width: 2px !important;
+    border-radius: 10px !important;
+    transition:all 0.2s ease-in;
+}
+.btn:hover{
+    width: 100% !important;
+    box-shadow: 2px 2px 0px #777777 !important;
+    border-style: solid;
+    border-style: solid !important;
+    border-color: #e4e4e4 !important;
+    border-width: 2px !important;
+    border-radius: 10px !important;
+    transition:all 0.2s ease-out;
+}
+textarea{
+    box-shadow: 2px 0px 6px #eaeaea !important;
+}
+.mdi{
+    text-shadow: 1px 1px 3px #000;
+    transition:all 0.1s ease-in;
+}
+.mdi:hover{
+    text-shadow: 0px 0px 20px #000;
+    transition:all 0.1s ease-out;
 }
 .request-balloon{
     position:relative;
@@ -54,7 +82,7 @@ a{
     border:none;
     width:auto;
     margin: 5px 5px !important;
-    background-color: #aa34cb;
+    background-color: #ff7591;
     border-radius:1px;
     box-shadow: 0px 0px 2px #b7b7b7;
     font-size:12px;
@@ -65,7 +93,7 @@ a{
     border:none;
     width:auto;
     margin: 5px 5px !important;
-    background-color: #aa34cb !important;
+    background-color: #ff7591 !important;
     border-radius:1px;
     box-shadow: 0px 0px -2px #b7b7b7;
     font-size:12px;
@@ -75,7 +103,7 @@ a{
     border:none;
     width:auto;
     margin: 5px 5px !important;
-    background-color: #aa34cb !important;
+    background-color: #ff7591 !important;
     border-radius:1px;
     box-shadow: 0px 0px -2px #b7b7b7;
     font-size:12px;
@@ -138,4 +166,28 @@ a{
     background-color: #F4F4F4;
     font-size:11px;
     font-weight: normal;
+}
+
+.logo-img{
+    height: auto !important;
+    width: 260px !important;
+    position: absolute;
+    top: 0px;
+    left: -15px;
+    transform: rotate(5deg);
+    opacity:0.1;
+    transition:all 0.2s ease-in;
+}
+.logo-img:hover{
+    height: auto !important;
+    width: 340px !important;
+    position: absolute;
+    top: 0px;
+    left: -15px;
+    transform: rotate(0deg);
+    opacity:1;
+    transition:all 0.2s ease-in;
+}
+@media screen and (max-width: 500px) {
+
 }

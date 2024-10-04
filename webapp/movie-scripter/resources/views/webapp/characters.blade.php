@@ -40,11 +40,47 @@
               </nav>
             </div>
             <div class="row">
-              <div class="owl-carousel mb-5 col-12">
+
+              <div class="col-lg-7">
+                <div class="card">
+                  <div class="card-header">
+                    <h2 style="font-size: 20px; margin-top:5px;">Lead Role (Protagonist)</h2>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-4">
+                          <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;">
+                      </div>
+                      <div class="col-lg-8">
+                        <h1>Reggie Duisterhof</h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-5">
+                <h2>Antagonist</h2><br/>
+                <hr>
+                <div class="row">
+                  <div class="col-lg-3">
+
+                  </div>
+                  <div class="col-lg-9">
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class=" mb-5 col-lg-12 col-sm-12 col-md-12 mt-5">
+                <h3>Other Roles</h3><br/>
+                <hr>
+              <div class="owl-carousel" id="owl-carousel2">
               @foreach($ebookcharacters as $character)
               <div class="item">
                 <a href="/character/{{$character->id}}" style="text-decoration:none;">
-                <div class="card bg-gradient-primary card-img-holder text-white">
+                <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
                     <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
                     <div style="position:relative; z-index:9">
@@ -56,6 +92,8 @@
                 </a>
               </div>
               @endforeach
+              </div>
+
               
               </div>
             </div>

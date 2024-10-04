@@ -224,7 +224,7 @@ h6 {
 /* Pws-tabs */
 
 .pws_tabs_container ul.pws_tabs_controll {
-	border-bottom: 1px solid #b66dff;
+	border-bottom: 1px solid #ff7591;
 }
 
 .pws_tabs_container ul.pws_tabs_controll li:first-child a {
@@ -232,23 +232,23 @@ h6 {
 }
 
 .pws_tabs_container ul.pws_tabs_controll li:last-child a {
-	border-right: 1px solid #b66dff;
+	border-right: 1px solid #ff7591;
 	border-radius: 0px 5px 0px 0px;
 }
 
 .pws_tabs_container ul.pws_tabs_controll li a {
-	border: 1px solid #b66dff;
+	border: 1px solid #ff7591;
 	border-bottom: none;
 	border-right: none;
 	background: #fff;
-	color: #b66dff;
+	color: #ff7591;
 	padding: 0.6em 1.3em;
 	margin-right: 0;
 }
 
 .pws_tabs_container ul.pws_tabs_controll li a:hover {
 	background: #fff;
-	color: #b66dff;
+	color: #ff7591;
 }
 
 .pws_tabs_container ul.pws_tabs_controll li a.pws_tab_active {
@@ -258,7 +258,7 @@ h6 {
 }
 
 .pws_tabs_container .demo-tabs {
-	border: 1px solid #b66dff;
+	border: 1px solid #ff7591;
 	border-radius: 0px 5px 5px 5px;
 	overflow: hidden;
 	margin-bottom: 45px;
@@ -279,14 +279,14 @@ h6 {
 }
 
 .pws_tabs_container.pws_tabs_vertical .pws_tabs_controll li:last-child a {
-	border-bottom: 1px solid #b66dff;
+	border-bottom: 1px solid #ff7591;
 	border-radius: 0px 0px 0px 5px;
 	border-right: 0px;
 }
 
 .pws_tabs_container.pws_tabs_vertical .pws_tabs_controll li a {
 	border-radius: 0px;
-	border: 1px solid #b66dff;
+	border: 1px solid #ff7591;
 	border-right: none;
 	border-bottom: none;
 	margin-bottom: 0;
@@ -297,7 +297,7 @@ h6 {
 }
 
 .pws_tabs_container.pws_tabs_horizontal_bottom .pws_tabs_controll {
-	border-top: 1px solid #b66dff;
+	border-top: 1px solid #ff7591;
 	border-right: none;
 	border-bottom: none;
 }
@@ -308,12 +308,12 @@ h6 {
 
 .pws_tabs_container.pws_tabs_horizontal_bottom .pws_tabs_controll li:last-child a {
 	border-radius: 0px 0px 5px 0px;
-	border-right: 1px solid #b66dff;
+	border-right: 1px solid #ff7591;
 }
 
 .pws_tabs_container.pws_tabs_horizontal_bottom .pws_tabs_controll li a {
 	border-radius: 0px;
-	border: 1px solid #b66dff;
+	border: 1px solid #ff7591;
 	border-top: none;
 	border-right: none;
 	margin-right: 0;
@@ -322,7 +322,7 @@ h6 {
 
 .pws_tabs_container.pws_tabs_rtl .pws_tabs_controll li:first-child a {
 	border-radius: 0px 5px 0px 0px;
-	border-right: 1px solid #b66dff;
+	border-right: 1px solid #ff7591;
 }
 
 .pws_tabs_container.pws_tabs_rtl .pws_tabs_controll li:last-child a {
@@ -331,7 +331,7 @@ h6 {
 }
 
 .pws_tabs_container.pws_tabs_rtl .pws_tabs_controll li a {
-	border: 1px solid #b66dff;
+	border: 1px solid #ff7591;
 	border-bottom: none;
 	border-right: none;
 	margin-right: 0;

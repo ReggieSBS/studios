@@ -33,12 +33,19 @@
               </h3></a>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="New Page">
+                    <a class="btn btn-secondary text-white" href="#" data-bs-toggle="modal" data-bs-target="#newPageModal"><i class="mdi mdi-plus"></i></a>
+                  </li>
+                  @if($pagedata->page_number > 1)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Previous page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-left"></i></button>
+                    <a class="btn btn-secondary text-white" href="/page/{{$previouspage}}"><i class="mdi mdi-arrow-left"></i></a>
                   </li>
+                  @endif
+                  @if($nxtpg != 1)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Next page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-right"></i></button>
+                    <a class="btn btn-secondary text-white" type="button" href="/page/{{$nextpage}}"><i class="mdi mdi-arrow-right"></i></a>
                   </li>
+                  @endif
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete page">
                     <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
                   </li>
@@ -65,18 +72,24 @@
               </div>
               <div class="col-md-4 grid-margin">
                 <div class="card">
+                <form class="pt-3" method="post" action="{{ route('page.summery') }}">
+                @csrf
                   <div class="card-body">
                     <div class="clearfix">
                       <h4 class="card-title float-start">Summary </h4>
-                      <textarea class="form form-control">{{ $pagedata->summery }}</textarea>
+                      <textarea class="form form-control" name="summery" style="height:200px;" required>{{ $pagedata->summery }}</textarea>
+                      <button type="submit" class="btn btn-sm btn-secondary float-right">save</button>
                     </div>
                   </div>
+                </form>
                 </div>
 
                 <div class="card mt-3">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Characters </h4>
+                      <h4 class="card-title float-start">Related Chapter</h4><br/>
+                      <hr><br/>
+                      <h1><a href="/chapter/{{ $chapterdata->id }}" class="text-black">{{ $chapterdata->title }}</a></h1>
                     </div>
                   </div>
                 </div>
@@ -99,5 +112,44 @@
     </div>
     <!-- container-scroller -->
     @include('webapp.modals')
+
+    
+    <div class="modal" id="newPageModal">
+      <div class="modal-dialog">
+        <form method="post" action="{{ route('page.new') }}" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Create Page</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <h6 class="small-text mt-2">Page Number</h6>
+                  <input type="number" name="page_number" class="form form-control" placeholder="1" value="{{ $newpage }}" required>
+                </div>
+                <div class="col-12">
+                  <h6 class="small-text mt-2">Choose Chapter</h6>
+                  <select name="chapter_number" class="form form-control" required>
+                    <option value="" selected disabled>Make a choice</option>
+                    @foreach($ebookchapters as $ebookchapter)
+                      <option value="{{ $ebookchapter->id }}">Chapter {{ $ebookchapter->chapter_number }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Create page</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </body>
 </html>

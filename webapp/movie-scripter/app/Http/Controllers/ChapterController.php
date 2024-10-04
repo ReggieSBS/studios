@@ -42,7 +42,7 @@ class ChapterController extends Controller
         $chaptercheck = $chapterdatachk->where('ebook_id', $ebookid)->latest('id')->first();
         $lastchapter = $chaptercheck->chapter_number;
         $newchapter = $lastchapter + 1;
-        if($lastchapter<$nextchapter)
+        if($nextchapter<=$lastchapter)
         {
             $nxtchp = 1;
         }

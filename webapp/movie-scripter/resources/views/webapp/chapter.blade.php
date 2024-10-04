@@ -41,7 +41,7 @@
                     <a class="btn btn-secondary text-white" href="/chapter/{{$previouschapter}}"><i class="mdi mdi-arrow-left"></i></a>
                   </li>
                   @endif
-                  @if($nxtchp != 1)
+                  @if($nxtchp == 1)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Next chapter">
                     <a class="btn btn-secondary text-white" type="button" href="/chapter/{{$nextchapter}}"><i class="mdi mdi-arrow-right"></i></a>
                   </li>
@@ -92,6 +92,9 @@
                       @foreach($chapterpages as $chapterpage)
                         <tr>
                           <td style="vertical-align:middle; text-align:left;">Page {{ $chapterpage->page_number }}</td>
+                          <td>
+                            <a class="float-right btn btn-primary btn-sm" href="/page/{{ $chapterpage->id }}"><i class="mdi mdi-read"></i></a>
+                          </td>
                         </tr>
                       @endforeach
                       </tbody>

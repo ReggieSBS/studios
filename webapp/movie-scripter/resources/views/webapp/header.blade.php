@@ -1,13 +1,13 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
           <a class="navbar-brand brand-logo" href="/dashboard">
-          <img src="{{ asset('/images/logo.png')}}" style="height:auto !important; width:100% !important;"></a>
+          <img src="{{ asset('/images/logo.png')}}" class="logo-img"></a>
           <a class="navbar-brand brand-logo-mini" href="/dashboard">
           <img src="{{ asset('/images/logo_icon.png')}}" style="height:auto !important; width:100% !important;"></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-menu"></span>
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize" style="z-index:999;">
+            <span class="mdi mdi-menu" style="text-shadow:0px 0px 0px #000 !important; color:#000;"></span>
           </button>
           <div class="search-field d-none d-md-block">
             <form class="d-flex align-items-center h-100" action="#">
@@ -39,7 +39,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="mdi mdi-email-outline"></i>
+                <i class="mdi mdi-email-outline" style="text-shadow:0px 0px 0px #000;"></i>
                 <span class="count-symbol bg-warning"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="messageDropdown">
@@ -80,7 +80,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                <i class="mdi mdi-bell-outline"></i>
+                <i class="mdi mdi-bell-outline" style="text-shadow:0px 0px 0px #000;"></i>
                 <span class="count-symbol bg-danger"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
@@ -127,12 +127,12 @@
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link" style="cursor:pointer;">
-                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                <i class="mdi mdi-fullscreen" id="fullscreen-button" style="text-shadow:0px 0px 0px #000;"></i>
               </a>
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">
               <a class="nav-link" href="{{ route('logout') }}">
-                <i class="mdi mdi-power"></i>
+                <i class="mdi mdi-power" style="text-shadow:0px 0px 0px #000;"></i>
               </a>
             </li>
           </ul>
