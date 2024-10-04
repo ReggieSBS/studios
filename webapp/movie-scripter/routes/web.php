@@ -48,6 +48,9 @@ Route::post('/page-content/update', [PageController::class, 'contentupdate'])->m
 
 Route::get('/chapter/{id}', [ChapterController::class, 'read'])->middleware('auth')->name('chapter.read');
 Route::post('/chapter/write', [ChapterController::class, 'write'])->middleware('auth')->name('chapter.write');
+Route::post('/chapter/new', [ChapterController::class, 'new'])->middleware('auth')->name('chapter.new');
+Route::post('/chapter/pages', [ChapterController::class, 'pages'])->middleware('auth')->name('chapter.pages');
+Route::post('/chapter/write/summery', [ChapterController::class, 'writesummery'])->middleware('auth')->name('chapter.summery');
 Route::get('/chapter-content', [ChapterController::class, 'content'])->middleware('auth')->name('chapter-content');
 Route::get('/chapter-data', [ChapterController::class, 'metadata'])->middleware('auth')->name('chapter-data');
 Route::post('/chapter-content/update', [ChapterController::class, 'contentupdate'])->middleware('auth')->name('chapter-content.update');

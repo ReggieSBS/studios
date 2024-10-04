@@ -72,12 +72,36 @@
 <template>  
     <div class="clearfix">
       <h4 class="card-title float-start">
-        <table>
+        <table style="width:60%; float:left;">
           <Tr>
             <Td class="pr-5" style="vertical-align: middle;">Chapter</Td>
             <Td class="pr-5"><input type="number" class="form form-control" style="width:80px;" :value="metadatachapternumber" @change="updateChapternumber" @input="updateChapternumber"></Td>
             <Td class="pr-5"><input type="text" class="form form-control" placeholder="Type here the chapter title.." :value="metadatatitle" @change="updateChapterTitle" @input="updateChapterTitle"></Td>
+
+
           </Tr>
+        </table>
+        <table style="width:30%; float:right;">
+            <tr>
+                <td>
+                    <div class="nav-profile-img" bis_skin_checked="1">
+                    <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                    <span class="availability-status online"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="nav-profile-img" bis_skin_checked="1">
+                    <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                    <span class="availability-status online"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="nav-profile-img" bis_skin_checked="1">
+                    <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                    <span class="availability-status online"></span>
+                    </div>
+                </td>
+            </tr>
         </table>
       </h4>
     </div>

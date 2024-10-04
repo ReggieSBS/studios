@@ -33,12 +33,15 @@
               </h3></a>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="New chapter">
+                    <a class="btn btn-secondary text-white" href="#" data-bs-toggle="modal" data-bs-target="#newChapterModal"><i class="mdi mdi-plus"></i></a>
+                  </li>
                   @if($chapterdata->chapter_number > 1)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Previous chapter">
                     <a class="btn btn-secondary text-white" href="/chapter/{{$previouschapter}}"><i class="mdi mdi-arrow-left"></i></a>
                   </li>
                   @endif
-                  @if($disnxtchp != 1)
+                  @if($nxtchp != 1)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Next chapter">
                     <a class="btn btn-secondary text-white" type="button" href="/chapter/{{$nextchapter}}"><i class="mdi mdi-arrow-right"></i></a>
                   </li>
@@ -67,20 +70,32 @@
               </div>
               <div class="col-md-4 grid-margin">
                 <div class="card">
+                <form class="pt-3" method="post" action="{{ route('chapter.summery') }}">
+                @csrf
                   <div class="card-body">
                     <div class="clearfix">
                       <h4 class="card-title float-start">Summary </h4>
                     </div>
-                    <textarea class="form form-control" style="height:200px">{{ $chapterdata->summery }}</textarea>
-                    <button class="btn btn-sm btn-secondary float-right">save</button>
+                    <textarea class="form form-control" name="summery" style="height:200px" required>{{ $chapterdata->summery }}</textarea>
+                    <button type="submit" class="btn btn-sm btn-secondary float-right">save</button>
                   </div>
+                </form>
                 </div>
 
                 <div class="card mt-3">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Characters </h4>
+                      <h4 class="card-title float-start"><a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#chapterPagesModal"><span class="fa fa-plus-circle"></span></a> Related Pages </h4>
                     </div>
+                    <table class="table table-striped">
+                      <tbody>
+                      @foreach($chapterpages as $chapterpage)
+                        <tr>
+                          <td style="vertical-align:middle; text-align:left;">Page {{ $chapterpage->page_number }}</td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                    </table>
                   </div>
                 </div>
                 
@@ -101,5 +116,73 @@
     </div>
     <!-- container-scroller -->
     @include('webapp.modals')
+    
+    <div class="modal" id="newChapterModal">
+      <div class="modal-dialog">
+        <form method="post" action="{{ route('chapter.new') }}" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Create Chapter</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-12">
+                  <h6 class="small-text mt-2">Chapter Number</h6>
+                  <input type="number" name="chapter_number" class="form form-control" placeholder="1" value="{{ $newchapter }}" required>
+                </div>
+                <div class="col-12">
+                  <h6 class="small-text mt-2">Title</h6>
+                  <input type="text" name="title" class="form form-control" placeholder="Chapter new.." required>
+                </div>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Create chapter</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+    <div class="modal" id="chapterPagesModal">
+      <div class="modal-dialog">
+        <form method="post" action="{{ route('chapter.pages') }}" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Relate Pages</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                <table class="table table-striped">
+                  <tbody>
+                  @foreach($ebookpages as $page)
+                    <tr>
+                      <td style="text-align:center;"><input type="checkbox" name="page[]" value="{{ $page->id }}" style="zoom:1.5"></td>
+                      <td style="vertical-align:middle; text-align:left;">Page {{ $page->page_number }}</td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Connect pages</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

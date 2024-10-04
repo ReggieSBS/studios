@@ -115,7 +115,6 @@
 
 
 
-
 <div class="modal" id="characterModal">
   <div class="modal-dialog">
     <form method="post" action="{{ route('character.write') }}" enctype="multipart/form-data">
