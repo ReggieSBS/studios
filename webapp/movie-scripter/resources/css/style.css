@@ -12366,7 +12366,7 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  box-shadow: 1px 1px 4px #dbdbdb;
+      box-shadow: 1px 1px 4px #dbdbdb;
   justify-content: space-between;
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
@@ -25701,7 +25701,7 @@ dl li {
   font-size: 1.125rem;
   line-height: 1;
   margin-left: auto;
-  color: rgba(187, 168, 191, 0.9607843137);
+  color: #FFF;
 }
 .rtl .sidebar .nav .nav-item .nav-link i.menu-icon {
   margin-left: 0;
@@ -25897,7 +25897,7 @@ dl li {
   color: #b3b3b3;
 }
 .sidebar-dark .sidebar .nav .nav-item.active > .nav-link i {
-  color: #ff7591;
+  color: #34b7a3;
 }
 .sidebar-dark .sidebar .nav .nav-item:hover {
   background: #302a3c;

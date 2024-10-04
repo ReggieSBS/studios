@@ -175,7 +175,7 @@ a{
     top: 0px;
     left: -15px;
     transform: rotate(5deg);
-    opacity:0.1;
+    opacity:1;
     transition:all 0.2s ease-in;
 }
 .logo-img:hover{
