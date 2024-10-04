@@ -65,8 +65,9 @@ class EbookController extends Controller
             $ebookcharacters = $ebooksdata[2];
             $totalebookpages = $ebookpages->count();
             $totalebookchapters = $ebookchapters->count();
+            $totalebookcharacters = $ebookcharacters->count();
         }
-        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters]);
+        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
     }
 
     public function content(Request $request){

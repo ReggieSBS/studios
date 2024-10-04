@@ -51,13 +51,13 @@
                   </li>
                   @endif
                   
-                  @if($totalebookchapters>0)
+                  @if($totalebookcharacters>0)
                   <li class="actionbar_item" aria-current="page">
                     <a class="btn btn-primary text-white" href="/characters"><i class="mdi mdi-book-edit"></i> Characters</a>
                   </li>
                   @else
                   <li class="actionbar_item" aria-current="page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-plus" data-bs-toggle="modal" data-bs-target="#characterModal"></i> Characters</button>
+                    <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#characterModal"><i class="mdi mdi-plus"></i> Characters</button>
                   </li>
                   @endif
 
