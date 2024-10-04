@@ -62,13 +62,10 @@
                   @endif
 
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Download">
-                    <a class="btn btn-secondary text-white " href="{{ asset($ebookdata->file) }}" download><i class="mdi mdi-download"></i></a>
+                    <a class="btn btn-primary text-white " href="{{ asset($ebookdata->file) }}" download><i class="mdi mdi-download"></i></a>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from word or pdf">
-                    <a class="btn btn-primary text-white" href="/ebook-content/extract"><i class="mdi mdi-book"></i></a>
-                  </li>
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
-                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
+                    <a class="btn btn-success text-white btnopenextract" ><i class="mdi mdi-book"></i></a>
                   </li>
                 </ul>
               </nav>
