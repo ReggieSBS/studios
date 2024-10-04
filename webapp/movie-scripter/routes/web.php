@@ -43,9 +43,16 @@ Route::get('/ebook-content/extract', [EbookController::class, 'extract'])->middl
 
 Route::get('/page/{id}', [PageController::class, 'read'])->middleware('auth')->name('page.read');
 Route::post('/page/write', [PageController::class, 'write'])->middleware('auth')->name('page.write');
+Route::get('/page-content', [PageController::class, 'content'])->middleware('auth')->name('page-content');
+Route::post('/page-content/update', [PageController::class, 'contentupdate'])->middleware('auth')->name('page-content.update');
 
 Route::get('/chapter/{id}', [ChapterController::class, 'read'])->middleware('auth')->name('chapter.read');
 Route::post('/chapter/write', [ChapterController::class, 'write'])->middleware('auth')->name('chapter.write');
+Route::get('/chapter-content', [ChapterController::class, 'content'])->middleware('auth')->name('chapter-content');
+Route::post('/chapter-content/update', [ChapterController::class, 'contentupdate'])->middleware('auth')->name('chapter-content.update');
+
+
+
 
 Route::get('/characters', [CharacterController::class, 'overview'])->middleware('auth')->name('character.overview');
 Route::get('/character/{id}', [CharacterController::class, 'read'])->middleware('auth')->name('character.read');

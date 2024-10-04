@@ -59,6 +59,7 @@
                     <div class="clearfix">
                       <h4 class="card-title float-start">Page </h4>
                     </div>
+                    <div id="page-init"></div>
                   </div>
                 </div>
               </div>
@@ -66,7 +67,8 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Characters </h4>
+                      <h4 class="card-title float-start">Summary </h4>
+                      <textarea class="form form-control"></textarea>
                     </div>
                   </div>
                 </div>
@@ -78,6 +80,7 @@
                     </div>
                   </div>
                 </div>
+
                 
               </div>
             </div>

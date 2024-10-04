@@ -55,10 +55,10 @@
             <div class="row">
               <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
+                <em style="font-size:11px; float:right; right:15px; position:absolute; top:15px;">* automatically saved</em>
                   <div class="card-body">
                     <div class="clearfix">
                       <h4 class="card-title float-start">
-                         
                         <table>
                           <Tr>
                             <Td class="pr-5" style="vertical-align: middle;">Chapter</Td>
@@ -68,6 +68,7 @@
                         </table>
                       </h4>
                     </div>
+                    <div id="chapter-init"></div>
                   </div>
                 </div>
               </div>

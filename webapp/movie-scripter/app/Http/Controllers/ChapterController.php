@@ -47,4 +47,28 @@ class ChapterController extends Controller
 
         return redirect('/chapter/1');
     }
+
+    public function content(Request $request){
+        $chapterid = $request->id;
+        $responses = Chapter::query();
+        $responses = $responses->where('id', $chapterid)->first();
+        $value = $responses->overview_text;
+        return response()->json([
+            'responses' => $value
+        ],200);
+    }
+
+    public function contentupdate(Request $request){
+        $chapterid = $request->id;
+        $chapter = Chapter::find($chapterid);
+        $chapter->content = $request->value;
+        if($chapter->save())
+        {
+            return("saved");
+        }
+        else
+        {
+            return("failed");
+        }
+    }
 }

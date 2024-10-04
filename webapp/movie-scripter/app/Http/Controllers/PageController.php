@@ -46,4 +46,31 @@ class PageController extends Controller
 
         return redirect('/page/1');
     }
+
+
+    
+    public function content(Request $request){
+        $pageid = $request->id;
+        $responses = Page::query();
+        $responses = $responses->where('id', $pageid)->first();
+        $value = $responses->overview_text;
+        return response()->json([
+            'responses' => $value
+        ],200);
+    }
+
+    public function contentupdate(Request $request){
+        $pageid = $request->id;
+        $page = Page::find($pageid);
+        $page->content = $request->value;
+        if($page->save())
+        {
+            return("saved");
+        }
+        else
+        {
+            return("failed");
+        }
+    }
+
 }
