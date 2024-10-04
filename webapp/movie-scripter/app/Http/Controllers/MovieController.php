@@ -3,13 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Ebook;
 
 class MovieController extends Controller
 {
     public function overview(){
-        return view('webapp.questions', ['test'=>'test']);
+        $ebookid = session()->get('ebookid');
+        $ebookpages=[];
+        $ebookchapters=[];
+        $ebookcharacters=[];
+        $totalebookpages = 0;
+        $totalebookchapters = 0;
+
+        $ebooks = User::with('ebooks')->get();
+        $ebookdata = Ebook::query();
+        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebooksdata = Ebook::ebooksData();
+
+        if(session()->exists('ebookid')){
+            $ebookpages = $ebooksdata[0];
+            $ebookchapters = $ebooksdata[1];
+            $ebookcharacters = $ebooksdata[2];
+            $totalebookpages = $ebookpages->count();
+            $totalebookchapters = $ebookchapters->count();
+            $totalebookcharacters = $ebookcharacters->count();
+        }
+        return view('webapp.questions', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
     }
     public function formula(){
-        return view('webapp.formula', ['test'=>'test']);
+        $ebookid = session()->get('ebookid');
+        $ebookpages=[];
+        $ebookchapters=[];
+        $ebookcharacters=[];
+        $totalebookpages = 0;
+        $totalebookchapters = 0;
+
+        $ebooks = User::with('ebooks')->get();
+        $ebookdata = Ebook::query();
+        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebooksdata = Ebook::ebooksData();
+
+        if(session()->exists('ebookid')){
+            $ebookpages = $ebooksdata[0];
+            $ebookchapters = $ebooksdata[1];
+            $ebookcharacters = $ebooksdata[2];
+            $totalebookpages = $ebookpages->count();
+            $totalebookchapters = $ebookchapters->count();
+            $totalebookcharacters = $ebookcharacters->count();
+        }
+        return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
     }
 }
