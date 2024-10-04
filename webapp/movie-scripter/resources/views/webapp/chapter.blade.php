@@ -33,19 +33,23 @@
               </h3></a>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Previous page">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-left"></i></button>
+                  @if($chapterdata->chapter_number > 1)
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Previous chapter">
+                    <a class="btn btn-secondary text-white" href="/chapter/{{$previouschapter}}"><i class="mdi mdi-arrow-left"></i></a>
                   </li>
+                  @endif
+                  @if($disnxtchp != 1)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Next chapter">
-                    <button class="btn btn-secondary text-white" type="button"><i class="mdi mdi-arrow-right"></i></button>
+                    <a class="btn btn-secondary text-white" type="button" href="/chapter/{{$nextchapter}}"><i class="mdi mdi-arrow-right"></i></a>
                   </li>
+                  @endif
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete chapter">
                     <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
                     <button class="btn btn-primary text-white btnopenextract" type="button"><i class="mdi mdi-book"></i></button>
                   </li>
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze chapter">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
                   </li>
                 </ul>
@@ -57,17 +61,6 @@
                 <div class="card">
                 <em style="font-size:11px; float:right; right:15px; position:absolute; top:15px;">* automatically saved</em>
                   <div class="card-body">
-                    <div class="clearfix">
-                      <h4 class="card-title float-start">
-                        <table>
-                          <Tr>
-                            <Td class="pr-5" style="vertical-align: middle;">Chapter</Td>
-                            <Td class="pr-5"><input type="number" class="form form-control" style="width:80px;" value="{{ $chapterdata->chapter_number }}"></Td>
-                            <Td class="pr-5"><input type="text" class="form form-control" placeholder="Type here the chapter title.." value="{{ $chapterdata->title }}"></Td>
-                          </Tr>
-                        </table>
-                      </h4>
-                    </div>
                     <div id="chapter-init"></div>
                   </div>
                 </div>
@@ -78,7 +71,8 @@
                     <div class="clearfix">
                       <h4 class="card-title float-start">Summary </h4>
                     </div>
-                    <textarea class="form form-control">{{ $chapterdata->summery }}</textarea>
+                    <textarea class="form form-control" style="height:200px">{{ $chapterdata->summery }}</textarea>
+                    <button class="btn btn-sm btn-secondary float-right">save</button>
                   </div>
                 </div>
 

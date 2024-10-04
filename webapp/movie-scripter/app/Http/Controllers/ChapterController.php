@@ -32,8 +32,20 @@ class ChapterController extends Controller
         session()->put('chapterid', $chapterid);
         $chapterdata = Chapter::query();
         $chapterdata = $chapterdata->where('id', $chapterid)->first();
+        $previouschapter = $chapterdata->chapter_number - 1;
+        $nextchapter = $chapterdata->chapter_number + 1;
 
-        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata]);
+
+        $disnxtchp = 0;
+        $chapterdatachk = Chapter::query();
+        $chaptercheck = $chapterdatachk->where('ebook_id', $ebookid)->latest('id')->first();;
+        $lastchapter = $chaptercheck->chapter_number;
+        if($lastchapter<$nextchapter)
+        {
+            $disnxtchp = 1;
+        }
+
+        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'disnxtchp'=>$disnxtchp]);
     }
     
     public function write(Request $request){
@@ -63,6 +75,18 @@ class ChapterController extends Controller
         ],200);
     }
 
+    public function metadata(Request $request){
+        $chapterid = session()->get('chapterid');
+        $responses = Chapter::query();
+        $responses = $responses->where('id', $chapterid)->first();
+        $title = $responses->title;
+        $chapter_number = $responses->chapter_number;
+        return response()->json([
+            'title' => $title,
+            'chapter_number' => $chapter_number
+        ],200);
+    }
+
     public function contentupdate(Request $request){
         $chapterid = session()->get('chapterid');
         $chapter = Chapter::find($chapterid);
@@ -76,4 +100,34 @@ class ChapterController extends Controller
             return("failed");
         }
     }
+
+    public function chapternr(Request $request){
+        $chapterid = session()->get('chapterid');
+        $chapter = Chapter::find($chapterid);
+        $chapter->chapter_number = $request->value;
+        if($chapter->save())
+        {
+            return("saved");
+        }
+        else
+        {
+            return("failed");
+        }
+    }
+
+    public function chaptertitle(Request $request){
+        $chapterid = session()->get('chapterid');
+        $chapter = Chapter::find($chapterid);
+        $chapter->title = $request->value;
+        if($chapter->save())
+        {
+            return("saved");
+        }
+        else
+        {
+            return("failed");
+        }
+    }
+
+
 }
