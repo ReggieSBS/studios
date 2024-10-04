@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name')->nullable(false);
             $table->string('file')->nullable(false);
             $table->string('image')->nullable(true);
-            $table->string('overview_text')->nullable(true);
+            $table->longText('overview_text')->nullable(true);
             $table->string('author')->nullable(true);
             $table->string('publisher')->nullable(true);
             $table->date('publish_date')->nullable(true);

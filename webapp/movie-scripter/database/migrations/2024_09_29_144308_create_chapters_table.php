@@ -19,7 +19,8 @@ return new class extends Migration
             ->on("chapters")->onDelete("cascade");
             $table->integer('chapter_number')->nullable(false);
             $table->string('title')->nullable(true);
-            $table->string('short_desc')->nullable(true);
+            $table->string('summery')->nullable(true);
+            $table->longText('content')->nullable(true);
             $table->timestamps();
         });
     }
