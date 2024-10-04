@@ -28,7 +28,12 @@ class ChapterController extends Controller
             $ebookcharacters = $ebooksdata[2];
         }
 
-        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata]);
+        $chapterid = $request->id;        
+        session()->put('chapterid', $chapterid);
+        $chapterdata = Chapter::query();
+        $chapterdata = $chapterdata->where('id', $chapterid)->first();
+
+        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata]);
     }
     
     public function write(Request $request){
@@ -49,17 +54,17 @@ class ChapterController extends Controller
     }
 
     public function content(Request $request){
-        $chapterid = $request->id;
+        $chapterid = session()->get('chapterid');
         $responses = Chapter::query();
         $responses = $responses->where('id', $chapterid)->first();
-        $value = $responses->overview_text;
+        $value = $responses->content;
         return response()->json([
             'responses' => $value
         ],200);
     }
 
     public function contentupdate(Request $request){
-        $chapterid = $request->id;
+        $chapterid = session()->get('chapterid');
         $chapter = Chapter::find($chapterid);
         $chapter->content = $request->value;
         if($chapter->save())

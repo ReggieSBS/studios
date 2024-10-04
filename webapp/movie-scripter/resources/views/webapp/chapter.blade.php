@@ -62,8 +62,8 @@
                         <table>
                           <Tr>
                             <Td class="pr-5" style="vertical-align: middle;">Chapter</Td>
-                            <Td class="pr-5"><input type="number" class="form form-control" style="width:80px;" value="1"></Td>
-                            <Td class="pr-5"><input type="text" class="form form-control" placeholder="Title ...."></Td>
+                            <Td class="pr-5"><input type="number" class="form form-control" style="width:80px;" value="{{ $chapterdata->chapter_number }}"></Td>
+                            <Td class="pr-5"><input type="text" class="form form-control" placeholder="Type here the chapter title.." value="{{ $chapterdata->title }}"></Td>
                           </Tr>
                         </table>
                       </h4>
@@ -76,8 +76,9 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Characters </h4>
+                      <h4 class="card-title float-start">Summary </h4>
                     </div>
+                    <textarea class="form form-control">{{ $chapterdata->summery }}</textarea>
                   </div>
                 </div>
 

@@ -1,6 +1,6 @@
 import {createApp} from 'vue'
 
-import app from './components/pageModal.vue'
+import app from './components/chapterModal.vue'
 
 import router from './router'
 

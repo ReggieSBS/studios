@@ -57,7 +57,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Page </h4>
+                      <h4 class="card-title float-start">Page {{ $pagedata->page_number }}</h4>
                     </div>
                     <div id="page-init"></div>
                   </div>
@@ -68,7 +68,7 @@
                   <div class="card-body">
                     <div class="clearfix">
                       <h4 class="card-title float-start">Summary </h4>
-                      <textarea class="form form-control"></textarea>
+                      <textarea class="form form-control">{{ $pagedata->summery }}</textarea>
                     </div>
                   </div>
                 </div>

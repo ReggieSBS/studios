@@ -52,8 +52,6 @@ Route::get('/chapter-content', [ChapterController::class, 'content'])->middlewar
 Route::post('/chapter-content/update', [ChapterController::class, 'contentupdate'])->middleware('auth')->name('chapter-content.update');
 
 
-
-
 Route::get('/characters', [CharacterController::class, 'overview'])->middleware('auth')->name('character.overview');
 Route::get('/character/{id}', [CharacterController::class, 'read'])->middleware('auth')->name('character.read');
 Route::post('/character/write', [CharacterController::class, 'write'])->middleware('auth')->name('character.write');

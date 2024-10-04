@@ -27,7 +27,12 @@ class PageController extends Controller
             $ebookcharacters = $ebooksdata[2];
         }
 
-        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata]);
+        $pageid = $request->id;        
+        session()->put('pageid', $pageid);
+        $pagedata = Page::query();
+        $pagedata = $pagedata->where('id', $pageid)->first();
+
+        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata]);
     }
     
     public function write(Request $request){
@@ -50,17 +55,17 @@ class PageController extends Controller
 
     
     public function content(Request $request){
-        $pageid = $request->id;
+        $pageid = session()->get('pageid');
         $responses = Page::query();
         $responses = $responses->where('id', $pageid)->first();
-        $value = $responses->overview_text;
+        $value = $responses->content;
         return response()->json([
             'responses' => $value
         ],200);
     }
 
     public function contentupdate(Request $request){
-        $pageid = $request->id;
+        $pageid = session()->get('pageid');
         $page = Page::find($pageid);
         $page->content = $request->value;
         if($page->save())
