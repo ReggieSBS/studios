@@ -444,3 +444,19 @@ select{
     -moz-border-radius-bottomleft: 25px;
     border-bottom-left-radius: 25px;
 }
+
+.round-set{
+    width:100px;
+    height:100px;
+    position:absolute;
+    top:70%;
+    right:15%;
+    border-radius:50%;
+    border-style: solid;
+    border-color:#FFF;
+    border-width:3px;
+    background-color: #FFF;
+}
+.archetype-title{
+    position:absolute; top:60%; background:#FFF; padding-left:10px; padding-right:10px;
+}

@@ -104,8 +104,19 @@
                 @else
                   <div class="owl-carousel" id="owl-carousel3">
                       @foreach($archetypesdata as $archtype)  
-                      <div class="item">
-                          <img src="{{ asset('/images/archetypes/'.$archtype->archetype_name.'.png') }}" height="300" style="width:auto;">
+                      <div class="item text-center" style="position:relative;">
+                          <img src="{{ asset('/images/archetypes/'.$archtype->archetype_name.'.png') }}" height="300" style="width:auto;"><br/>
+                          <h2 class="archetype-title">{{ $archtype->name }}</h2>
+                          <div class="round-set">
+                            <table style="width:100%; height:100%;">
+                              <tr>
+                                <td style="text-align:center; vertical-align:middle; width:100%; height:100%;">
+                                  <h3>{{ $archtype->archetype_name }}</h3>
+                                  <h4>Act {{ $archtype->act_number }}</h4>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
                       </div>
                       @endforeach
                   </div>

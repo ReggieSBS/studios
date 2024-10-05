@@ -123,7 +123,6 @@
             </div>
             </li>
 
-            @if(session()->exists('movieid'))
             <li class="nav-item nav-profile bg-gradient-danger btn-c2a">
               <a href="/formula" class="nav-link" style="padding: 0.35rem 0">
                 <div class="nav-profile-image">
@@ -131,11 +130,10 @@
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2 text-white">Ready.. set action!</span>
+                  <span class="font-weight-bold mb-2 text-white">Ready? set.. action!</span>
                 </div>
               </a>
             </li> 
-            @endif
 
           </ul>
         </nav>
