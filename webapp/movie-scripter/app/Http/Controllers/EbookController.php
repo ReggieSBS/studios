@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ebook;
 use App\Models\User;
+use App\Models\Act;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,7 +68,18 @@ class EbookController extends Controller
             $totalebookchapters = $ebookchapters->count();
             $totalebookcharacters = $ebookcharacters->count();
         }
-        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
+
+        
+        $actscount = 0;
+        $acts = null;
+        if(session()->exists('movieid')){
+            $movieid = session()->get('movieid');
+            $acts = Act::query();
+            $acts = $acts->where('movie_id', $movieid)->get();
+            $actscount = $acts->count();
+        }
+
+        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts]);
     }
 
     public function content(Request $request){

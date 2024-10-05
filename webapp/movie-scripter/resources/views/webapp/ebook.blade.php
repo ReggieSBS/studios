@@ -75,7 +75,9 @@
             <div class="row">
               <div class="col-lg-8 col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
+                  <h2 data-bs-toggle="tooltip" title="Mostly located on the back cover of the book" style=" margin:15px; width:auto !important;"><i class="mdi mdi-24 mdi-info" style="text-shadow: 0px 0px 0px !important;"></i> Overview</h2>
                   <em style="font-size:11px; float:right; right:15px; position:absolute; top:15px;">* automatically saved</em>
+                  
                   <div class="card-body" id="ebook-init">
                   </div>
                 </div>

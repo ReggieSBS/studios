@@ -209,13 +209,10 @@ a{
     --color5: #953fbb;
     --color6: #ba3a17;
     --color7: #00a0b4;
-    margin-left:100px;
     padding: 200px 0;
     font-family: 'Montserrat';
     display: inline-flex;
     transform:rotate(90deg);
-    margin-left: -90%;
-    margin-top: 80%;
 }
 .timeline-item {
     position: relative;

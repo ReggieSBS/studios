@@ -101,16 +101,54 @@
               </div>
             @else
               <div class="col-md-12 col-lg-7 col-sm-12 grid-margin stretch-card">
+                <form method="post" action="{{ route('movie.update') }}" enctype="multipart/form-data">
+                @csrf
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start" style="width:100%;">Formula
-                      <button type="submit" class="btn btn-secondary" style="float:right; box-shadow: 0px 0px 0px #000 !important; border:none !important; margin-top:-5px; width:150px !important;"><i class="mdi mdi-check"></i>Save</button>
+                      <h4 class="card-title float-start" style="width:100%;">
+                      <table style="width:100%;">
+                        <tr>
+                          <td>
+                            <input type="text" class="form form-control" name="title" value="{{ $moviedata->name }}" placeholder="Jurassic Park 10" required>
+                          </td>
+                          <td>
+                            <select class="form form-control" name="genre" required>
+                              <option value="" disabled selected>Make a choice</option>
+                              <option @if($moviedata->genre == 'Action') selected @endif>Action</option>
+                              <option @if($moviedata->genre == 'Biography') selected @endif>Biography</option>
+                              <option @if($moviedata->genre == 'Crime') selected @endif>Crime</option>
+                              <option @if($moviedata->genre == 'Family') selected @endif>Family</option>
+                              <option @if($moviedata->genre == 'Horror') selected @endif>Horror</option>
+                              <option @if($moviedata->genre == 'Romance') selected @endif>Romance</option>
+                              <option @if($moviedata->genre == 'Sports') selected @endif>Sports</option>
+                              <option @if($moviedata->genre == 'War') selected @endif>War</option>
+                              <option @if($moviedata->genre == 'Adventure') selected @endif>Adventure</option>
+                              <option @if($moviedata->genre == 'Comedy') selected @endif>Comedy</option>
+                              <option @if($moviedata->genre == 'Documentary') selected @endif>Documentary</option>
+                              <option @if($moviedata->genre == 'Fantasy') selected @endif>Fantasy</option>
+                              <option @if($moviedata->genre == 'Thriller') selected @endif>Thriller</option>
+                              <option @if($moviedata->genre == 'Animation') selected @endif>Animation</option>
+                              <option @if($moviedata->genre == 'Costume') selected @endif>Costume</option>
+                              <option @if($moviedata->genre == 'Drama') selected @endif>Drama</option>
+                              <option @if($moviedata->genre == 'History') selected @endif>History</option>
+                              <option @if($moviedata->genre == 'Musical') selected @endif>Musical</option>
+                              <option @if($moviedata->genre == 'selected') selected @endif>Psychological</option>
+                            </select>
+                          </td>
+                          <td>
+                            <button type="submit" class="btn btn-secondary" style="float:right; box-shadow: 0px 0px 0px #000 !important; border:none !important; margin-top:-5px; width:150px !important;"><i class="mdi mdi-check"></i>Save</button>
+                          </td>
+                        </tr>
+                      </table>
                       </h4>
+
+                      <h5>Formula</h5>
                       <textarea class="form form-control" style="height:350px;" name="formula"></textarea>
                     </div>
                   </div>
                 </div>
+                </form>
               </div>
               <div class="col-md-12 col-lg-5 col-sm-12 grid-margin stretch-card">
                 <div class="card" style="background-color: transparent; box-shadow:0px 0px 0px;">

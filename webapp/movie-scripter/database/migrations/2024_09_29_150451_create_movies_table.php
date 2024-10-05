@@ -21,6 +21,7 @@ return new class extends Migration
             ->on("movies")->onDelete("cascade");
             $table->string('name')->nullable(false);
             $table->string('genre')->nullable(false);
+            $table->string('formula')->nullable(true);
             $table->string('movie_image')->nullable(true);
             $table->string('movie_trailer')->nullable(true);
             $table->double('price')->nullable(false)->default(0);

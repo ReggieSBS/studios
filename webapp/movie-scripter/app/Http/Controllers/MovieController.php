@@ -32,6 +32,16 @@ class MovieController extends Controller
             $totalebookchapters = $ebookchapters->count();
             $totalebookcharacters = $ebookcharacters->count();
         }
+
+        $actscount = 0;
+        $acts = null;
+        if(session()->exists('movieid')){
+            $movieid = session()->get('movieid');
+            $acts = Act::query();
+            $acts = $acts->where('movie_id', $movieid)->get();
+            $actscount = $acts->count();
+        }
+
         return view('webapp.questions', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
     }
 
@@ -62,18 +72,25 @@ class MovieController extends Controller
 
             $actscount = 0;
             $actdata = null;
+            $actscount = 0;
+            $acts = null;
             if($countmovies > 0)
             {
                 $movieloop = Movie::query();
                 $moviedata = $movieloop->where('ebook_id', $ebookid)->first();
                 session()->put('movieid', $moviedata->id);
 
-                $movieacts = Act::query();
-                $actdata = $movieacts->where('movie_id', $moviedata->id)->get();
+                $acts = Act::query();
+                $acts = $acts->where('movie_id', $moviedata->id)->get();
+                $actscount = $acts->count();
+
+                $actdata = Act::select('acts.id', 'acts.movie_id', 'acts.act_number', 'acts.title', 'acts.description', 'archetypes.act_id', 'archetypes.archetype_name', 'archetypes.id as archetypeid')->where('acts.movie_id', $moviedata->id)->leftJoin('archetypes', 'archetypes.act_id', '=', 'acts.id')->get();
+
                 $actscount = $actdata->count();
             }
 
-            return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'actscount'=>$actscount, 'actdata'=>$actdata]);
+
+            return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'actscount'=>$actscount, 'actdata'=>$actdata, 'moviedata'=>$moviedata, 'actscount'=>$actscount, 'acts'=>$acts]);
         }
         else
         {
@@ -93,6 +110,27 @@ class MovieController extends Controller
         $movie->genre = $request->genre;
         $movie->ebook_id = $ebookid;
         $movie->user_id = Auth::user()->id;
+        $movie->save();
+        $movieid = $request->id;        
+        session()->put('movieid', $movieid);
+        return redirect(route('movie.formula'))->with("success","Movie has been created");
+    }
+
+
+    
+    public function update(Request $request){
+        $movieid = session()->get('movieid');
+        $ebookid = session()->get('ebookid');
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'genre' => ['required', 'string']
+        ]);
+        
+        $movie = Movie::find($movieid);
+        $movie->name = $request->title;
+        $movie->genre = $request->genre;
+        $movie->formula = $request->formula;
         $movie->save();
         $movieid = $request->id;        
         session()->put('movieid', $movieid);

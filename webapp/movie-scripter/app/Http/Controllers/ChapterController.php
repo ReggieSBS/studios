@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chapter;
 use App\Models\Ebook;
+use App\Models\Act;
 use App\Models\Page;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -47,10 +48,20 @@ class ChapterController extends Controller
             $nxtchp = 1;
         }
 
+        
+        $actscount = 0;
+        $acts = null;
+        if(session()->exists('movieid')){
+            $movieid = session()->get('movieid');
+            $acts = Act::query();
+            $acts = $acts->where('movie_id', $movieid)->get();
+            $actscount = $acts->count();
+        }
+
         $chapterpages = Page::query();
         $chapterpages = $chapterpages->where('chapter_id', $chapterid)->get();
 
-        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'nxtchp'=>$nxtchp, 'newchapter'=>$newchapter, 'chapterpages'=>$chapterpages]);
+        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'nxtchp'=>$nxtchp, 'newchapter'=>$newchapter, 'chapterpages'=>$chapterpages, 'actscount'=>$actscount, 'acts'=>$acts]);
     }
     
     public function write(Request $request){

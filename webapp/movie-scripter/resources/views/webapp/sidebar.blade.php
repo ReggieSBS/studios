@@ -116,9 +116,13 @@
             </a>
             <div class="collapse" id="ui-act">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Act 1</a>
-                </li>
+                @if($actscount > 0)
+                  @foreach($acts as $act)
+                  <li class="nav-item">
+                      <a class="nav-link" href="/act/{{$act->act_number}}">Act {{$act->act_number}}</a>
+                  </li>
+                  @endforeach
+                @endif
                 </ul>
             </div>
             </li>

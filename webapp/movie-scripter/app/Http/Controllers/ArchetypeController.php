@@ -51,7 +51,16 @@ class ArchetypeController extends Controller
 
             $countarchetypes = $archetypesdata->count();
 
-            return view('webapp.archetypes', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'countarchetypes'=>$countarchetypes, 'archetypesdata'=>$archetypesdata]);
+            $actscount = 0;
+            $acts = null;
+            if(session()->exists('movieid')){
+                $movieid = session()->get('movieid');
+                $acts = Act::query();
+                $acts = $acts->where('movie_id', $movieid)->get();
+                $actscount = $acts->count();
+            }
+
+            return view('webapp.archetypes', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'countarchetypes'=>$countarchetypes, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts]);
         }
         else
         {
@@ -95,11 +104,18 @@ class ArchetypeController extends Controller
                 session()->put('movieid', $moviedata->id);
             }
 
-            $archetypesdata = Archetype::select('archetypes.id', 'archetypes.archetype_name', 'archetypes.act_id', 'archetypes.movie_id', 'archetypes.character_id', 'acts.act_number', 'characters.name', 'characters.profile_image')->where('archetypes.id', $archetypeid)->orderBy('act_id', 'asc')->leftJoin('acts', 'acts.id', '=', 'archetypes.act_id')->leftJoin('characters', 'characters.id', '=', 'archetypes.character_id')->get();
+            $archetypesdata = Archetype::select('archetypes.id', 'archetypes.archetype_name', 'archetypes.act_id', 'archetypes.movie_id', 'archetypes.character_id', 'acts.act_number', 'archetypes.closer_to_goal', 'archetypes.answer', 'acts.title', 'characters.name', 'characters.profile_image')->where('archetypes.id', $archetypeid)->orderBy('act_id', 'asc')->leftJoin('acts', 'acts.id', '=', 'archetypes.act_id')->leftJoin('characters', 'characters.id', '=', 'archetypes.character_id')->first();
 
-            $countarchetypes = $archetypesdata->count();
 
-            return view('webapp.archetype', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'countarchetypes'=>$countarchetypes, 'archetypesdata'=>$archetypesdata]);
+            $actscount = 0;
+            $acts = null;
+            if(session()->exists('movieid')){
+                $movieid = session()->get('movieid');
+                $acts = Act::query();
+                $acts = $acts->where('movie_id', $movieid)->get();
+                $actscount = $acts->count();
+            }
+            return view('webapp.archetype', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts]);
         }
         else
         {

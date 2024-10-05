@@ -37,6 +37,9 @@
                   </li>
                   @endif
                   @if($countmovies > 0)
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Movie script formula">
+                    <a class="btn btn-secondary text-white" href="/formula"><i class="mdi mdi-movie-open"></i></a>
+                  </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="New Act">
                     <a class="btn btn-success text-white" href="#" data-bs-toggle="modal" data-bs-target="#actModal"><i class="mdi mdi-plus"></i> New Act</a>
                   </li>
