@@ -52,6 +52,7 @@ class MovieController extends Controller
         $ebookcharacters=[];
         $totalebookpages = 0;
         $totalebookchapters = 0;
+        $moviedata = null;
 
         $ebooks = User::with('ebooks')->get();
         $ebookdata = Ebook::query();
