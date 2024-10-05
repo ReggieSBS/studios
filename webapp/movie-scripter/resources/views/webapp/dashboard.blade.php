@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="assets/images/favicon.png" />
   </head>
   <body>
+    @include('webapp.preloader')
     <div class="container-scroller">
       <!-- partial:partials/_navbar.html -->
       @include('webapp.header')

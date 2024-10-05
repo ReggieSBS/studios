@@ -66,3 +66,12 @@ $( function() {
     $( ".draggable" ).draggable();
     $(".resizable").resizable();
 });
+
+$('.preloader').delay(1000).slideUp(600);
+$( ".preloader2" ).delay(800).animate({
+    right: "0",
+    width:"0"
+  }, 700, function() {
+    $('.preloader2').delay(1000).fadeOut(300);
+});
+$('.preloader3').delay(1000).fadeOut(600);
