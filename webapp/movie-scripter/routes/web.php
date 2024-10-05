@@ -73,9 +73,6 @@ Route::post('/character/update-details', [CharacterController::class, 'updatedet
 
 // MOVIE
 
-// QUESTIONS
-Route::get('/questions', [MovieController::class, 'overview'])->middleware('auth')->name('movie.questions');
-
 // FORMULA
 Route::get('/formula', [MovieController::class, 'formula'])->middleware('auth')->name('movie.formula');
 

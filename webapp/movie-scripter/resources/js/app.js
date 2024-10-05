@@ -67,6 +67,8 @@ $( function() {
     $(".resizable").resizable();
 });
 
+
+// PRELOADER
 $('.preloader').delay(1000).slideUp(600);
 $( ".preloader2" ).delay(800).animate({
     right: "0",

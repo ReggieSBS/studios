@@ -168,6 +168,75 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+<div class="modal" id="actModal">
+  <div class="modal-dialog">
+    <form method="post" action="{{ route('character.write') }}" enctype="multipart/form-data">
+      @csrf
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Create New Act</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12">
+              <h6 class="small-text mt-2">Title</h6>
+              <input type="text" name="name" class="form form-control" placeholder="John" required>
+            </div>
+            <div class="col-12 text-center">
+            <h6 class="small-text mt-2">Current archetype of the leading actor</h6>
+              <table class="table">
+                  <tr>
+                    <Td><img src="{{asset('/images/archetypes/hero.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/outlaw.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/sage.png')}}"></Td>
+                  </tr>
+                  <tr>
+                    <Td><img src="{{asset('/images/archetypes/caregiver.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/creator.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/explorer.png')}}"></Td>
+                  </tr>
+                  <tr>
+                    <Td><img src="{{asset('/images/archetypes/innocent.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/jetser.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/lover.png')}}"></Td>
+                  </tr>
+                  <tr>
+                    <Td><img src="{{asset('/images/archetypes/magician.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/ruler.png')}}"></Td>
+                    <Td><img src="{{asset('/images/archetypes/regular_person.png')}}"></Td>
+                  </tr>
+              </table>
+            </div>
+            <div class="col-12">
+              <h6 class="small-text mt-2" style="width:100%;">Why this archetype?</h6>
+              <textarea name="profileimage" class="form form-control"></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Create act</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
 @if($ebookdata)
 <div class="ui-modal draggable" id="extractmodal">
   <div class="resizable">

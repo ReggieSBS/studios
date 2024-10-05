@@ -98,9 +98,6 @@
               <div class="collapse" id="ui-movie">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item">
-                    <a class="nav-link" href="/questions">Questions</a>
-                  </li>
-                  <li class="nav-item">
                     <a class="nav-link" href="/archetypes">Archytypes</a>
                   </li>
                   <li class="nav-item">
