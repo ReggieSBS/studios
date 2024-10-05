@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('plot_roles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('plot_id')->constrained('plots')->references("id")
-            ->on("plot_roles")->onDelete("cascade");
             $table->foreignId('movie_id')->constrained('movies')->references("id")
             ->on("acts")->onDelete("cascade");
-            $table->integer('number')->nullable(false)->default(0);
-            $table->string('answer')->nullable(false);
+            $table->integer('plot_id')->nullable(false)->default(0);
+            $table->integer('character_id')->nullable(false)->default(0);
+            $table->integer('archetype_id')->nullable(false)->default(0);
+            $table->string('role_desc')->nullable(false);
             $table->timestamps();
         });
     }

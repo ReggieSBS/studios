@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ebook;
 use App\Models\Act;
+use App\Models\Archetype;
 
 class ActController extends Controller
 {
@@ -46,7 +47,9 @@ class ActController extends Controller
         $actid = $request->id;
         $actdata = Act::query();
         $actdata = $actdata->where('id', $actid)->first();
+        $archetypedata = Archetype::query();
+        $archetypedata = $archetypedata->where('act_id', $actid)->first();
         
-        return view('webapp.act', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata]);
+        return view('webapp.act', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata]);
     }
 }

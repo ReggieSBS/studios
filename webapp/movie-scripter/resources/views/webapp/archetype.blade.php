@@ -52,7 +52,7 @@
                     <h4>Act {{ $archetypesdata->act_number }}</h4>
                     <p>During Act {{ $archetypesdata->act_number }}: {{ $archetypesdata->title }}, {{ $archetypesdata->name}} takes on the role of the archetype: {{$archetypesdata->archetype_name }}.</p>
                     <p>The act bring reggie duisterhof @if($archetypesdata->closer_to_goal == 1)more @else less @endif close to his/her goal because {{ $archetypesdata->answer }}.</p>
-                    <p>Visit act</p>
+                    <a class="btn btn-secondary btn-sm" style="width:100px !important;" href="/act/{{ $archetypesdata->act_id }}">Visit act</a>
                   </div>
                 </div>
               </div>

@@ -93,7 +93,7 @@
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-movie" aria-expanded="false" aria-controls="ui-movie">
                 <span class="menu-title">Movie Script</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-movie menu-icon"></i>
+                <i class="mdi mdi-movie-open menu-icon"></i>
               </a>
               <div class="collapse" id="ui-movie">
                 <ul class="nav flex-column sub-menu">
@@ -112,7 +112,7 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-act" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Acts</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-movie menu-icon"></i>
+                <i class="mdi mdi-movie-open menu-icon"></i>
             </a>
             <div class="collapse" id="ui-act">
                 <ul class="nav flex-column sub-menu">
