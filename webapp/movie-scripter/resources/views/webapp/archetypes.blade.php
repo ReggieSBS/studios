@@ -102,8 +102,12 @@
                     </div>
                   </div>
                 @else
-                  <div class="owl-carousel" id="owl-carousel">
-
+                  <div class="owl-carousel" id="owl-carousel3">
+                      @foreach($archetypesdata as $archtype)  
+                      <div class="item">
+                          <img src="{{ asset('/images/archetypes/'.$archtype->archetype_name.'.png') }}" height="300" style="width:auto;">
+                      </div>
+                      @endforeach
                   </div>
                 @endif
               </div>

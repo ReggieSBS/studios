@@ -14,6 +14,7 @@ class ArchetypeController extends Controller
 {
     public function overview(){
         $ebookid = session()->get('ebookid');
+        $movieid = session()->get('movieid');
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
@@ -38,7 +39,11 @@ class ArchetypeController extends Controller
             $moviedata = $moviedata->where('ebook_id', $ebookid)->first();
             $countmovies = $moviedata->where('ebook_id', $ebookid)->get()->count();
 
-            return view('webapp.archetypes', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies]);
+            $archetypesdata = Archetype::query();
+            $archetypesdata = $archetypesdata->where('movie_id', $movieid)->get();
+            $countarchetypes = $archetypesdata->count();
+
+            return view('webapp.archetypes', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'countarchetypes'=>$countarchetypes, 'archetypesdata'=>$archetypesdata]);
         }
         else
         {
@@ -49,9 +54,6 @@ class ArchetypeController extends Controller
     
     public function write(Request $request){
         $movieid = session()->get('movieid');
-
-   
-        
         $ebookid = session()->get('ebookid');
 
         $act = New Act();
@@ -63,7 +65,8 @@ class ArchetypeController extends Controller
         {
             $archetype = New Archetype();
             $archetype->movie_id = $movieid;
-            $archetype->closer_to_goal = $request->closer;
+            $archetype->movie_id = $movieid;
+            $archetype->archetype_name = $request->archetype;
             $archetype->answer = $request->answer;
             if($archetype->save())
             {
