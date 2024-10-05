@@ -80,6 +80,7 @@ Route::post('/movie/create', [MovieController::class, 'write'])->middleware('aut
 // ARCHETYPES
 Route::get('/archetypes', [ArchetypeController::class, 'overview'])->middleware('auth')->name('movie.archetypes');
 Route::post('/archetype/create', [ArchetypeController::class, 'write'])->middleware('auth')->name('archetype.write');
+Route::get('/archetype/{id}', [ArchetypeController::class, 'read'])->middleware('auth')->name('archetype.read');
 
 // ACTS
 Route::get('/acts', [ActController::class, 'overview'])->middleware('auth')->name('movie.acts');

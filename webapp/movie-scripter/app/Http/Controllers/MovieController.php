@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ebook;
+use App\Models\Act;
 use App\Models\Movie;
 
 class MovieController extends Controller
@@ -33,6 +34,7 @@ class MovieController extends Controller
         }
         return view('webapp.questions', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
     }
+
     public function formula(){
         $ebookid = session()->get('ebookid');
         $ebookpages=[];
@@ -57,14 +59,21 @@ class MovieController extends Controller
             $movieloop = Movie::query();
             $movieloop = $movieloop->where('ebook_id', $ebookid)->get()->toArray();
             foreach($movieloop as $movie){ $countmovies++; }
+
+            $actscount = 0;
+            $actdata = null;
             if($countmovies > 0)
             {
                 $movieloop = Movie::query();
                 $moviedata = $movieloop->where('ebook_id', $ebookid)->first();
                 session()->put('movieid', $moviedata->id);
+
+                $movieacts = Act::query();
+                $actdata = $movieacts->where('movie_id', $moviedata->id)->get();
+                $actscount = $actdata->count();
             }
 
-            return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies]);
+            return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'actscount'=>$actscount, 'actdata'=>$actdata]);
         }
         else
         {

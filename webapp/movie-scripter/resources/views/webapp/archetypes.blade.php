@@ -31,9 +31,11 @@
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
+                  @if($ebookdata)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Back to e-book">
                     <a class="btn btn-secondary text-white" href="/ebook/{{ $ebookdata->id }}"><i class="mdi mdi-book"></i></a>
                   </li>
+                  @endif
                   @if($countmovies > 0)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="New Act">
                     <a class="btn btn-success text-white" href="#" data-bs-toggle="modal" data-bs-target="#actModal"><i class="mdi mdi-plus"></i> New Act</a>
@@ -105,7 +107,7 @@
                   <div class="owl-carousel" id="owl-carousel3">
                       @foreach($archetypesdata as $archtype)  
                       <div class="item text-center" style="position:relative;">
-                          <img src="{{ asset('/images/archetypes/'.$archtype->archetype_name.'.png') }}" height="300" style="width:auto;"><br/>
+                          <a href="/archetype/{{ $archtype->id }}"><img src="{{ asset('/images/archetypes/'.$archtype->archetype_name.'.png') }}" height="300" style="width:auto;"><br/></a>
                           <h2 class="archetype-title">{{ $archtype->name }}</h2>
                           <div class="round-set">
                             <table style="width:100%; height:100%;">
