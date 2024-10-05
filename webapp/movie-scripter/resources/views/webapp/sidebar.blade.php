@@ -1,11 +1,11 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <div class="leftmenu"></div>
           <ul class="nav">
-          @if($ebookdata)
+            @if($ebookdata)
             <li class="nav-item nav-profile">
               <a href="/ebook/{{ $ebookdata->id }}" class="nav-link">
                 <div class="nav-profile-image">
-                  <span class="mdi mdi-36px mdi-book text-danger"></span>
+                  <span class="mdi mdi-36px mdi-read text-danger"></span>
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
@@ -122,7 +122,20 @@
                 </ul>
             </div>
             </li>
-            
+
+            @if(session()->exists('movieid'))
+            <li class="nav-item nav-profile bg-gradient-danger btn-c2a">
+              <a href="/formula" class="nav-link" style="padding: 0.35rem 0">
+                <div class="nav-profile-image">
+                  <span class="mdi mdi-36px mdi-movie-open text-white"></span>
+                  <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2 text-white">Ready.. set action!</span>
+                </div>
+              </a>
+            </li> 
+            @endif
 
           </ul>
         </nav>

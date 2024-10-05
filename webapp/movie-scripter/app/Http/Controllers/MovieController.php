@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Ebook;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -51,7 +53,40 @@ class MovieController extends Controller
             $totalebookpages = $ebookpages->count();
             $totalebookchapters = $ebookchapters->count();
             $totalebookcharacters = $ebookcharacters->count();
+            $countmovies = 0;
+            $movieloop = Movie::query();
+            $movieloop = $movieloop->where('ebook_id', $ebookid)->get()->toArray();
+            foreach($movieloop as $movie){ $countmovies++; }
+            if($countmovies > 0)
+            {
+                $movieloop = Movie::query();
+                $moviedata = $movieloop->where('ebook_id', $ebookid)->first();
+                session()->put('movieid', $moviedata->id);
+            }
+
+            return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies]);
         }
-        return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
+        else
+        {
+            return redirect(route('dashboard'))->with("success","Please select an e-book first");
+        }
+    }
+    
+    public function write(Request $request){
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'genre' => ['required', 'string']
+        ]);
+        
+        $ebookid = session()->get('ebookid');
+        $movie = New Movie();
+        $movie->name = $request->title;
+        $movie->genre = $request->genre;
+        $movie->ebook_id = $ebookid;
+        $movie->user_id = Auth::user()->id;
+        $movie->save();
+        $movieid = $request->id;        
+        session()->put('movieid', $movieid);
+        return redirect(route('movie.formula'))->with("success","Movie has been created");
     }
 }

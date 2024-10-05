@@ -90,7 +90,9 @@
                     <div class="clearfix">
                       <h4 class="card-title float-start">Related Chapter</h4><br/>
                       <hr><br/>
+                      @if($countchapters > 0)
                       <h1><a href="/chapter/{{ $chapterdata->id }}" class="text-black">{{ $chapterdata->title }}</a></h1>
+                      @endif
                     </div>
                   </div>
                 </div>

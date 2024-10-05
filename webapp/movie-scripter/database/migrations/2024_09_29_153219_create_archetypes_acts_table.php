@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('archetypes_acts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('archetype_id')->constrained('archetypes')->references("id")
-            ->on("archetypes_acts")->onDelete("cascade");
-            $table->foreignId('act_id')->constrained('acts');
+            $table->integer('archetype_id')->nullable(false);
+            $table->integer('act_id')->nullable(false);
             $table->timestamps();
         });
     }

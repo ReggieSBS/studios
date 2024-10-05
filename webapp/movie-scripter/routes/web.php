@@ -75,9 +75,11 @@ Route::post('/character/update-details', [CharacterController::class, 'updatedet
 
 // FORMULA
 Route::get('/formula', [MovieController::class, 'formula'])->middleware('auth')->name('movie.formula');
+Route::post('/movie/create', [MovieController::class, 'write'])->middleware('auth')->name('movie.create');
 
 // ARCHETYPES
 Route::get('/archetypes', [ArchetypeController::class, 'overview'])->middleware('auth')->name('movie.archetypes');
+Route::post('/archetype/create', [ArchetypeController::class, 'write'])->middleware('auth')->name('archetype.write');
 
 // ACTS
 Route::get('/acts', [ActController::class, 'overview'])->middleware('auth')->name('movie.acts');

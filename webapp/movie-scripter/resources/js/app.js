@@ -77,3 +77,10 @@ $( ".preloader2" ).delay(800).animate({
     $('.preloader2').delay(1000).fadeOut(300);
 });
 $('.preloader3').delay(1000).fadeOut(600);
+
+
+$(".tablinks").click(function(){
+    var id = $(this).attr("id");
+    $('.tabcontent').fadeOut(300);
+    $('#content_'+id).delay(310).slideDown(300);
+});

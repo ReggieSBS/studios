@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('movie_id')->constrained('movies')->references("id")
             ->on("acts")->onDelete("cascade");
-            $table->integer('number')->nullable(false)->default(0);
+            $table->integer('act_number')->nullable(false)->default(0);
             $table->string('title')->nullable(false);
-            $table->string('development')->nullable(false);
-            $table->string('description')->nullable(false);
+            $table->string('development')->nullable(true);
+            $table->string('description')->nullable(true);
             $table->timestamps();
         });
     }

@@ -40,6 +40,66 @@
             </div>
             
             <div class="row" style="min-height:1200px;">
+              
+            @if($totalebookpages > 0 && $totalebookchapters > 0 && $totalebookcharacters > 0 && $countmovies == 0)
+              <div class="col-md-12 col-lg-7 col-sm-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                      <h2>Congratulations!</h2>
+                      <h5>You are ready to start to create your movie</h5>
+                      <p>The e-book analysation phase is complete. Now please fill in the information below and click on create movie</p>
+                        <form method="post" action="{{ route('movie.create') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                        <div class="col-lg-6">
+                          <h5>Movie Title</h5>
+                          <input type="text" class="form form-control" name="title" placeholder="Jurassic Park 10" required> 
+                        </div>
+                        <div class="col-lg-4">
+                          <h5>Genre</h5>
+                          <select class="form form-control" name="genre" required> 
+                              <option value="" selected disabled>Make a choice</option>
+                              <option>Action</option>
+                              <option>Biography</option>
+                              <option>Crime</option>
+                              <option>Family</option>
+                              <option>Horror</option>
+                              <option>Romance</option>
+                              <option>Sports</option>
+                              <option>War</option>
+                              <option>Adventure</option>
+                              <option>Comedy</option>
+                              <option>Documentary</option>
+                              <option>Fantasy</option>
+                              <option>Thriller</option>
+                              <option>Animation</option>
+                              <option>Costume</option>
+                              <option>Drama</option>
+                              <option>History</option>
+                              <option>Musical</option>
+                              <option>Psychological</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-2">
+                        <h5><br/></h5>
+                          <button type="submit" class="btn btn-success" style="padding-left:0px; padding-right:0px; text-align:center;"><i class="mdi mdi-movie-open"></i></button>
+                        </div>
+                        </div>
+                        </form>
+                  </div>
+                </div>
+              </div>
+            @elseif($totalebookpages == 0 || $totalebookchapters == 0 || $totalebookcharacters == 0)
+              <div class="col-md-12 col-lg-7 col-sm-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                      <h2>Oh noooo!</h2>
+                      <h5>You are not ready with the conversion of your e-book</h5>
+                      <p>Please check the To Do List on your Dashboard to check what needs to be done before you can start working on your movie</p>
+                  </div>
+                </div>
+              </div>
+            @else
               <div class="col-md-12 col-lg-7 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -56,13 +116,12 @@
                 <div class="card" style="background-color: transparent; box-shadow:0px 0px 0px;">
                   <div class="card-body">
                     <h4 class="card-title text-white" style="font-size: 48px;">Timeline</h4>
-                    
                     @include('webapp.timeline')
                   </div>
                 </div>
               </div>
             </div>
-            
+          @endif
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
         

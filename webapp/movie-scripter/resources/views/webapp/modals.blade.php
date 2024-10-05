@@ -177,7 +177,7 @@
 
 <div class="modal" id="actModal">
   <div class="modal-dialog">
-    <form method="post" action="{{ route('character.write') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('archetype.write') }}" enctype="multipart/form-data">
       @csrf
       <div class="modal-content">
         <!-- Modal Header -->
@@ -188,38 +188,95 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="row">
-            <div class="col-12">
+            <div class="col-4">
+              <h6 class="small-text mt-2">Act nr.</h6>
+              <input type="number" name="act_number" class="form form-control" placeholder="1" required>
+            </div>
+            <div class="col-8">
               <h6 class="small-text mt-2">Title</h6>
-              <input type="text" name="name" class="form form-control" placeholder="John" required>
+              <input type="text" name="title" class="form form-control" placeholder="John" required>
             </div>
             <div class="col-12 text-center">
             <h6 class="small-text mt-2">Current archetype of the leading actor</h6>
               <table class="table">
                   <tr>
-                    <Td><img src="{{asset('/images/archetypes/hero.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/outlaw.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/sage.png')}}"></Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/hero.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip"data-bs-toggle="tooltip" title="Hero">
+                      <input type="radio" name="archetype" value="hero" style="zoom:1.5; position:absolute;" checked>
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/outlaw.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip" data-bs-toggle="tooltip" title="Rebel/Outlaw">
+                      <input type="radio" name="archetype" value="outlaw" style="zoom:1.5; position:absolute;">
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/sage.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip" data-bs-toggle="tooltip" title="Sage">
+                      <input type="radio" name="archetype" value="sage" style="zoom:1.5; position:absolute;">
+                    </Td>
                   </tr>
                   <tr>
-                    <Td><img src="{{asset('/images/archetypes/caregiver.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/creator.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/explorer.png')}}"></Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/caregiver.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Care Giver">
+                      <input type="radio" name="caregiver" value="sage" style="zoom:1.5; position:absolute;">
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/creator.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Creator / Artist">
+                      <input type="radio" name="archetype" value="creator" style="zoom:1.5; position:absolute;">
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/explorer.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Explorer">
+                      <input type="radio" name="archetype" value="explorer" style="zoom:1.5; position:absolute;">
+                    </Td>
                   </tr>
                   <tr>
-                    <Td><img src="{{asset('/images/archetypes/innocent.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/jetser.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/lover.png')}}"></Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/innocent.png')}}"style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Innocent">
+                      <input type="radio" name="archetype" value="innocent" style="zoom:1.5; position:absolute;">
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/jetser.png')}}"style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Jetser">
+                      <input type="radio" name="archetype" value="jetser" style="zoom:1.5; position:absolute;">
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/lover.png')}}"style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Lover">
+                      <input type="radio" name="archetype" value="lover" style="zoom:1.5; position:absolute;">
+                    </Td>
                   </tr>
                   <tr>
-                    <Td><img src="{{asset('/images/archetypes/magician.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/ruler.png')}}"></Td>
-                    <Td><img src="{{asset('/images/archetypes/regular_person.png')}}"></Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/magician.png')}}"style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Magician">
+                      <input type="radio" name="archetype" value="magician" style="zoom:1.5; position:absolute;">
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/ruler.png')}}"style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Ruler">
+                      <input type="radio" name="archetype" value="ruler" style="zoom:1.5; position:absolute;">
+                    </Td>
+                    <Td>
+                      <img src="{{asset('/images/archetypes/regular_person.png')}}"style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Regular Person">
+                      <input type="radio" name="archetype" value="regular_person" style="zoom:1.5; position:absolute;">
+                    </Td>
                   </tr>
               </table>
             </div>
-            <div class="col-12">
-              <h6 class="small-text mt-2" style="width:100%;">Why this archetype?</h6>
-              <textarea name="profileimage" class="form form-control"></textarea>
+            <div class="col-12 mt-2">
+              <h6 class="small-text mt-2" style="width:100%;">Why choose this archetype with this act?</h6>
+              <textarea name="why" class="form form-control" required></textarea>
+            </div>
+            <div class="col-12 mt-2">
+              <h6 class="small-text mt-2" style="width:100%;">Get the lead actor closer to his/her goal during this act?</h6>
+              <table>
+                <tr>
+                  <td><input type="radio" name="closer" style="zoom:1.5" value="1" checked></td>
+                  <td style="padding-left:15px;">Yes</td>
+                </tr>
+                <tr>
+                  <td><input type="radio" name="closer" style="zoom:1.5" value="0"></td>
+                  <td style="padding-left:15px;">No</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-12 mt-2">
+              <h6 class="small-text mt-2" style="width:100%;">Why gets he/she closer to his/her goal, or not?</h6>
+              <textarea name="answer" class="form form-control" required></textarea>
             </div>
           </div>
         </div>
