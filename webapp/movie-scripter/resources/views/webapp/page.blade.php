@@ -75,6 +75,21 @@
                 </div>
               </div>
               <div class="col-md-4 grid-margin">
+                <div class="mb-5">
+                  <table style="width:100%; float:left;">
+                    <tr>
+                        <td style="text-align: left;">
+                          <a href="#" style="color:#3b3b3b; text-shadow:1px 1px 1px #FFF;" data-bs-toggle="modal" data-bs-target="#pageCharacterModal"><span class="fa fa-plus-circle" style="font-size:35px;" data-bs-toggle="tooltip" title="Relate characters" data-bs-placement="left"></span></a>
+                        </td>
+                        <td style="text-align: left;">
+                          <div class="nav-profile-img" bis_skin_checked="1">
+                          <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                          <span class="availability-status online"></span>
+                          </div>
+                        </td>
+                    </tr>
+                  </table>
+                </div>
                 <div class="card">
                 <form class="pt-3" method="post" action="{{ route('page.summery') }}">
                 @csrf
@@ -119,6 +134,41 @@
     <!-- container-scroller -->
     @include('webapp.modals')
 
+    <div class="modal" id="pageCharacterModal">
+      <div class="modal-dialog">
+        <form method="post" action="{{ route('chapter.pages') }}" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Relate Characters</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                <table class="table table-striped">
+                  <tbody>
+                  @if($totalebookcharacters>0)
+                  @foreach($ebookcharacters as $ebookcharacter)
+                    <tr>
+                      <td style="text-align:center;"><input type="checkbox" name="characters[]" value="{{ $ebookcharacter->id }}" style="zoom:1.5"></td>
+                      <td style="vertical-align:middle; text-align:left;">{{ $ebookcharacter->name }}</td>
+                    </tr>
+                  @endforeach
+                  @endif
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Connect characters</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     
     <div class="modal" id="newPageModal">
       <div class="modal-dialog">

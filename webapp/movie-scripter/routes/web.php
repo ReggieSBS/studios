@@ -32,9 +32,6 @@ Route::post('/ai-request', [AiController::class, 'write'])->middleware('auth')->
 Route::get('/ai-response', [AiController::class, 'read'])->middleware('auth')->name('ai-response');
 
 
-
-
-
 // EBOOK
 Route::get('/ebook/{id}', [EbookController::class, 'read'])->middleware('auth')->name('ebook.read');
 Route::post('/ebook/write', [EbookController::class, 'write'])->middleware('auth')->name('ebook.write');
@@ -69,7 +66,6 @@ Route::get('/character/{id}', [CharacterController::class, 'read'])->middleware(
 Route::post('/character/write', [CharacterController::class, 'write'])->middleware('auth')->name('character.write');
 Route::post('/character/update', [CharacterController::class, 'update'])->middleware('auth')->name('character.update');
 Route::post('/character/update-details', [CharacterController::class, 'updatedetails'])->middleware('auth')->name('character.update-details');
-
 
 
 // MOVIE

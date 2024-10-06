@@ -17,6 +17,9 @@ class PageController extends Controller
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
+        $totalebookpages = 0;
+        $totalebookchapters = 0;
+        $totalebookcharacters = 0;
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
 
@@ -28,6 +31,9 @@ class PageController extends Controller
             $ebookpages = $ebooksdata[0];
             $ebookchapters = $ebooksdata[1];
             $ebookcharacters = $ebooksdata[2];
+            $totalebookpages = $ebookpages->count();
+            $totalebookchapters = $ebookchapters->count();
+            $totalebookcharacters = $ebookcharacters->count();
         }
 
         $pageid = $request->id;        
@@ -64,7 +70,7 @@ class PageController extends Controller
         $messages = Message::where('receiver', Auth::user()->id)->get();
         $messagescount = $messages->count();
 
-        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata, 'previouspage'=>$previouspage, 'nextpage'=>$nextpage, 'nxtpg'=>$nxtpg, 'newpage'=>$newpage, 'chapterdata'=>$chapterdata, 'countchapters'=>$countchapters, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata, 'previouspage'=>$previouspage, 'nextpage'=>$nextpage, 'nxtpg'=>$nxtpg, 'newpage'=>$newpage, 'chapterdata'=>$chapterdata, 'countchapters'=>$countchapters, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
     }
     
     public function write(Request $request){

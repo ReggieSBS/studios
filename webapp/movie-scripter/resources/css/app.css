@@ -172,16 +172,6 @@ a{
 
 .logo-img{
     height: auto !important;
-    width: 260px !important;
-    position: absolute;
-    top: 0px;
-    left: -15px;
-    transform: rotate(5deg);
-    opacity:1;
-    transition:all 0.2s ease-in;
-}
-.logo-img:hover{
-    height: auto !important;
     width: 340px !important;
     position: absolute;
     top: 0px;
@@ -189,6 +179,17 @@ a{
     transform: rotate(0deg);
     opacity:1;
     transition:all 0.2s ease-in;
+}
+.logo-img:hover{
+    height: auto !important;
+    width: 260px !important;
+    position: absolute;
+    top: 0px;
+    left: -15px;
+    transform: rotate(5deg);
+    opacity:1;
+    transition:all 0.2s ease-in;
+    
 }
 @media screen and (max-width: 500px) {
 

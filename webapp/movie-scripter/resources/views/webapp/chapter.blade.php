@@ -72,6 +72,33 @@
                 </div>
               </div>
               <div class="col-md-4 grid-margin">
+                <div class="mb-5">
+                  <table style="width:100%; float:left;">
+                    <tr>
+                        <td style="text-align: left;">
+                            <span class="fa fa-plus-circle" style="font-size:35px;"></span>
+                        </td>
+                        <td style="text-align: left;">
+                            <div class="nav-profile-img" bis_skin_checked="1">
+                            <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                            <span class="availability-status online"></span>
+                            </div>
+                        </td>
+                        <td style="text-align: left;">
+                            <div class="nav-profile-img" bis_skin_checked="1">
+                            <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                            <span class="availability-status online"></span>
+                            </div>
+                        </td>
+                        <td style="text-align: left;">
+                            <div class="nav-profile-img" bis_skin_checked="1">
+                            <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                            <span class="availability-status online"></span>
+                            </div>
+                        </td>
+                    </tr>
+                  </table>
+                </div>
                 <div class="card">
                 <form class="pt-3" method="post" action="{{ route('chapter.summery') }}">
                 @csrf
