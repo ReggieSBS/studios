@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
             ->on("chapters")->onDelete("cascade");
             $table->integer('chapter_number')->nullable(false);
+            $table->integer('archetype_id')->nullable(true);
             $table->string('title')->nullable(true);
             $table->string('summery')->nullable(true);
             $table->longText('content')->nullable(true);

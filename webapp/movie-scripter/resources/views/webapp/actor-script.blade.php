@@ -53,6 +53,12 @@
                     <div class="card-body">
                       <table class="table table-striped">
                           <tbody>
+                            @foreach($plot->actinglines as $line)
+                              <tr>
+                                <td style="width:25%; font-weight:bold;"><a class="fa fa-times-circle text-danger" style="position: absolute; left:25px;"></a> {{ $line->character }} :</td>
+                                <td>"{{ $line->line }}"</td>
+                              </tr>
+                            @endforeach
                           </tbody>
                       </table>
                     </div>
@@ -64,23 +70,24 @@
               
               <div class="col-lg-4">
                   <div class="card" style="height:285px;">
+                  <form method="post" action="{{ route('plot.writeline') }}" enctype="multipart/form-data">
+                  @csrf
                   <span class="fa fa-caret-left text-white" style="font-size:190px; position:absolute; top:15%; left:-60px;"></span>
                   <input type="hidden" name="act_id" value="{{ $actdata->id }}">
                   <input type="hidden" name="plot_id" value="{{ $plot->id }}">
                     <div class="card-body">
-                      <h4 style="width:100%;">PLOT {{ $plot->plot_number }} {{ $plot->title }} Lines
-
-                      </h4>
+                      <h4 style="width:100%;">PLOT {{ $plot->plot_number }} {{ $plot->title }} Lines</h4>
                       <hr>
-                      <select class="form form-control" name="character_id" required>
+                      <select class="form form-control" name="character" required>
                         <option value="" disabled selected>Choose a Character...</option>
-                        @foreach($ebookcharacters as $character)
-                          <option>{{ $character->name }}</option>
+                        @foreach($plot->plotroles as $plotrole)
+                          <option>{{ $plotrole->character }}</option>
                         @endforeach
                       </select>
                       <textarea class="form form-control" name="line" placeholder="What needs to be said?" required></textarea>
-                      <button class="btn btn-secondary">Add line</button>
+                      <button type="submit" class="btn btn-secondary">Add line</button>
                     </div>
+                  </form>
                   </div>
               </div>
             </div>

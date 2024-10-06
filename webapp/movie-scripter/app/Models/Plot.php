@@ -18,4 +18,8 @@ class Plot extends Model
     {
         return $this->hasMany(PlotRole::class);
     }
+    public function actinglines(): HasMany
+    {
+        return $this->hasMany(ActingLines::class);
+    }
 }

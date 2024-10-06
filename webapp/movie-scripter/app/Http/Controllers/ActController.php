@@ -8,6 +8,7 @@ use App\Models\Ebook;
 use App\Models\PlotRole;
 use App\Models\Plot;
 use App\Models\Act;
+use App\Models\ActingLines;
 use App\Models\Archetype;
 
 class ActController extends Controller
@@ -85,9 +86,10 @@ class ActController extends Controller
 
         $actid = $request->id;
         $actdata = Act::where('id', $actid)->first();
-        $plotsdata = Plot::with('plotroles')->where('act_id', $actid)->get();
+        $plotsdata = Plot::with('plotroles')->with('actinglines')->where('act_id', $actid)->get();
 
         $archetypedata = Archetype::where('act_id', $actid)->first();
+        
         
         return view('webapp.actor-script', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata, 'plotsdata'=>$plotsdata]);
     }
@@ -135,13 +137,25 @@ class ActController extends Controller
         
         $plot_role = New PlotRole();
         $plot_role->archetype = $request->archetype;
-        $plot_role->character_id = $request->character_id;
+        $plot_role->character = $request->character_id;
         $plot_role->role_desc = $request->role_desc;
         $plot_role->movie_id = $movieid;
         $plot_role->plot_id = $plotid;
         $plot_role->save();
         $plot_role = $request->id;        
         return redirect(route('movie.act', $actid));
+    }
+
+    public function writeline(Request $request){
+        $actid = $request->act_id;
+        $movieid = session()->get('movieid');
+        $actingline = New ActingLines();
+        $actingline->movie_id = $movieid;
+        $actingline->plot_id = $request->plot_id;
+        $actingline->character = $request->character;
+        $actingline->line = $request->line;
+        $actingline->save();
+        return redirect(route('movie.actorscript', $actid));
     }
 
 }

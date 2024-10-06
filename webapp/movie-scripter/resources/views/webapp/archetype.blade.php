@@ -52,9 +52,26 @@
                     <h4>Act {{ $archetypesdata->act_number }}</h4>
                     <p>During Act {{ $archetypesdata->act_number }}: {{ $archetypesdata->title }}, {{ $archetypesdata->name}} takes on the role of the archetype: {{$archetypesdata->archetype_name }}.</p>
                     <p>The act bring reggie duisterhof @if($archetypesdata->closer_to_goal == 1)more @else less @endif close to his/her goal because {{ $archetypesdata->answer }}.</p>
-                    <a class="btn btn-secondary btn-sm" style="width:100px !important;" href="/act/{{ $archetypesdata->act_id }}">Visit act</a>
+                    <a class="btn btn-default btn-sm" style="width:100px !important;"><i class="fa fa-edit"></i> change</a>
+                    <a class="btn btn-secondary btn-sm" style="width:125px !important; float:right;" href="/act/{{ $archetypesdata->act_id }}">Visit act <i class="mdi mdi-arrow-right"></i></a>
                   </div>
                 </div>
+
+                <div class="card mt-2">
+                  <div class="card-header">
+                    <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#archetypeChapterModal"><span class="fa fa-plus-circle"></span></a>
+                    Chapter relations
+
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-striped">
+                      <tr>
+                        <td></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
               </div>
             </div>
            
@@ -70,5 +87,42 @@
     </div>
     <!-- container-scroller -->
     @include('webapp.modals')
+
+    
+    <div class="modal" id="archetypeChapterModal">
+      <div class="modal-dialog">
+        <form method="post" action="{{ route('archetype.chapter') }}" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-content">
+            <input type="hidden" name="archetype_id" value="{{ $archetypesdata->id }}">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Relate Chapters</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                <table class="table table-striped">
+                  <tbody>
+                  @foreach($ebookchapters as $chapter)
+                    <tr>
+                      <td style="text-align:center;"><input type="checkbox" name="chapter[]" value="{{ $chapter->id }}" style="zoom:1.5"></td>
+                      <td style="vertical-align:middle; text-align:left;">Chapter {{ $chapter->chapter_number }}</td>
+                    </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Connect pages</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
   </body>
 </html>

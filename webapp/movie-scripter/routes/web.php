@@ -82,6 +82,7 @@ Route::post('/movie/update', [MovieController::class, 'update'])->middleware('au
 Route::get('/archetypes', [ArchetypeController::class, 'overview'])->middleware('auth')->name('movie.archetypes');
 Route::post('/archetype/create', [ArchetypeController::class, 'write'])->middleware('auth')->name('archetype.write');
 Route::get('/archetype/{id}', [ArchetypeController::class, 'read'])->middleware('auth')->name('archetype.read');
+Route::post('/archetype/chapter', [ArchetypeController::class, 'chapter'])->middleware('auth')->name('archetype.chapter');
 
 // ACTS
 Route::get('/acts', [ActController::class, 'overview'])->middleware('auth')->name('movie.acts');
@@ -92,5 +93,4 @@ Route::get('/actor-script/{id}', [ActController::class, 'readscript'])->middlewa
 Route::post('/plot/write', [ActController::class, 'write'])->middleware('auth')->name('plot.write');
 Route::post('/plot/update', [ActController::class, 'update'])->middleware('auth')->name('plot.update');
 Route::post('/plotrole/write', [ActController::class, 'writerole'])->middleware('auth')->name('plotrole.write');
-
-// ROLES
+Route::post('/plot/write-line', [ActController::class, 'writeline'])->middleware('auth')->name('plot.writeline');

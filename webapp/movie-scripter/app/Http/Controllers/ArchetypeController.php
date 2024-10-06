@@ -8,6 +8,7 @@ use App\Models\Ebook;
 use App\Models\Act;
 use App\Models\Archetype;
 use App\Models\ArchetypeActs;
+use App\Models\Chapter;
 use App\Models\Character;
 use App\Models\Movie;
 
@@ -144,4 +145,25 @@ class ArchetypeController extends Controller
         }
         
     }
+
+
+    public function chapter(Request $request){
+
+        $archetype_id = $request->archetype_id;
+
+        Chapter::where('archetype_id', $archetype_id)->update((['archetype_id'=>'0']));
+
+        if($request->page!=null)
+        {
+            foreach($request->chapter as $chapter)
+            {
+                $chapter = Chapter::find($chapter);
+                $chapter->archetype_id = $archetype_id;
+                $chapter->save();
+            }
+        }
+
+        return redirect('/archetype/'.$archetype_id);
+    }
+
 }
