@@ -80,7 +80,9 @@ class EbookController extends Controller
         session()->put('ebookid', $ebookid);
 
         $ebooks = User::with('ebooks')->get();
-        $ebookscount = $ebooks->count();
+
+        $ebookscount = Ebook::where('user_id', Auth::user()->id)->get()->count();
+
         $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
         $ebookpages = $ebooksdata[0];
