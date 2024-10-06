@@ -36,7 +36,9 @@
                     <a class="btn btn-secondary text-white" href="/actor-script/{{ $actdata->id }}"><i class="fa fa-file-text"></i></a>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete act">
-                    <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
+                  <form method="post" class="delform" action="{{ route('delete.act') }}">@csrf<input type="hidden" name="act_id" value="{{ $actdata->id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze act">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
@@ -55,7 +57,7 @@
                   <input type="hidden" name="act_id" value="{{ $actdata->id }}">
                   <input type="hidden" name="plot_id" value="{{ $plot->id }}">
                     <div class="card-body">
-                      <h4 style="width:100%;">PLOT <input type="number" name="plot_number" value="{{ $plot->plot_number }}" style="background:transparent; border:none; width:75px !important;" required>  <button type="submit" class="btn btn-sm btn-secondary" style="width:50px !important; float:right; margin-top:-5px;"><i class="fa fa-save"></i></button></h4>
+                      <h4 style="width:100%;">PLOT <input type="number" name="plot_number" value="{{ $plot->plot_number }}" style="background:transparent; border:none; width:75px !important;" required>  <button type="submit" class="btn btn-sm btn-default" style="width:50px !important; float:right; margin-top:-3px;" data-bs-toggle="tooltip" title="Save changes"><i class="fa fa-save"></i></button></h4>
                       <hr>
                       <input type="text" class="form form-control" name="title" style="background:transparent; border:none; font-size:20px; font-weight:bold;" value="{{ $plot->title }}" required><br/>
                       <textarea class="form form-control" name="plot_desc" required>{{ $plot->description }}</textarea>
@@ -64,24 +66,24 @@
               </form>
               </div>
               <div class="col-lg-8">
-              <form method="post" action="{{ route('plotrole.write') }}" enctype="multipart/form-data">
-                @csrf
                   <div class="card" style="position:relative;height:250px;">
-                  <input type="hidden" name="plot_id" value="{{ $plot->id }}">
-                  <input type="hidden" name="act_id" value="{{ $actdata->id }}">
                     <span class="fa fa-caret-left text-white" style="font-size:190px; position:absolute; top:15%; left:-60px;"></span>
                     <div class="card-body">
+                    <form method="post" action="{{ route('plotrole.write') }}" enctype="multipart/form-data">
+                      @csrf
+                        <input type="hidden" name="plot_id" value="{{ $plot->id }}">
+                        <input type="hidden" name="act_id" value="{{ $actdata->id }}">
                       <table class="table table-striped">
                         <thead>
-                            <td>
+                            <th>
                               <select class="form form-control" name="character_id" required>
                                 <option value="" disabled selected>Choose a Character...</option>
                                 @foreach($ebookcharacters as $character)
                                   <option>{{ $character->name }}</option>
                                 @endforeach
                               </select>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                               <select class="form form-control" name="archetype" required>
                                 <option value="" disabled selected>Choose Archetype...</option>
                                   <option>hero</option>
@@ -97,28 +99,30 @@
                                   <option>ruler</option>
                                   <option value="regular_person">regular person</option>
                               </select>
-                            </td>
-                            <td>
+                            </th>
+                            <th>
                               <input type="text" class="form form-control" name="role_desc" placeholder="Describe role.." required>
-                            </td>
-                            <td>
-                              <button type="submit" class="btn btn-secondary btn-sm"><i class="mdi mdi-plus"></i></button>
-                            </td>
+                            </th>
+                            <th>
+                              <button type="submit" class="btn btn-secondary btn-sm" style="width:75px !important;"><i class="mdi mdi-plus"></i></button>
+                            </th>
                         </thead>
+                      </table>
+                      </form>
+                      <table class="table table-striped">
                           <tbody>
                             @foreach($plot->plotroles as $plotrole)
                             <tr>
-                              <td><img src="{{ asset('/images/archetypes/'.$plotrole->archetype.'.png') }}" height="35" data-bs-toggle="tooltip" title="Character takes on the archetype: {{ $plotrole->archetype }}"></td>
+                              <td style="width:50px;"><img src="{{ asset('/images/archetypes/'.$plotrole->archetype.'.png') }}" height="35" data-bs-toggle="tooltip" title="Character takes on the archetype: {{ $plotrole->archetype }}"></td>
                               <td>{{ $plotrole->character }}</td>
                               <td>{{ $plotrole->role_desc }}</td>
-                              <td><a class="text-danger"><i class="mdi mdi-trash-can"></i></a></td>
+                              <td><form method="post" action="{{ route('delete.plotrole') }}">@csrf<input type="hidden" name="plotrole_id" value="{{ $plotrole->id }}"><input type="hidden" name="act_id" value="{{ $actdata->id }}"><button type="submit" class="text-danger border-0" style="background:transparent;"><i class="fa fa-times-circle"></i></button></form></td>
                             </tr>
                             @endforeach
                           </tbody>
                       </table>
                     </div>
                   </div>
-              </form>
               </div>
             </div>
             @endforeach

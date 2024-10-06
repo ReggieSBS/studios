@@ -5,6 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Ebook;
 use App\Models\User;
 use App\Models\Act;
+use App\Models\Page;
+use App\Models\Chapter;
+use App\Models\Movie;
+use App\Models\Archetype;
+use App\Models\Plot;
+use App\Models\PlotRole;
+use App\Models\ActingLines;
+use App\Models\Character;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -106,6 +115,26 @@ class EbookController extends Controller
     
     public function extract(){
        
+    }
+
+    
+    public function delete(Request $request){
+        $ebookid = session()->get('ebookid');
+        $movie = Movie::where('ebook_id', $ebookid)->first();
+        $movieid = $movie->id;
+
+        Chapter::where('ebook_id',$ebookid)->delete();
+        Page::where('ebook_id',$ebookid)->delete();
+        Character::where('ebook_id',$ebookid)->delete();
+        Act::where('movie_id',$movieid)->delete();
+        Plot::where('movie_id',$movieid)->delete();
+        PlotRole::where('movie_id',$movieid)->delete();
+        ActingLines::where('movie_id',$movieid)->delete();
+        Archetype::where('movie_id',$movieid)->delete();
+        Movie::where('movie_id',$movieid)->delete();
+        Ebook::where('ebook_id',$ebookid)->delete();
+
+        return redirect('/dashboard');
     }
 
 }

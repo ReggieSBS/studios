@@ -11,6 +11,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ArchetypeController;
 use App\Http\Controllers\ActController;
 use App\Http\Middleware\Authenticate;
+use App\Models\Character;
+use App\Models\Ebook;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -95,3 +97,15 @@ Route::post('/plot/write', [ActController::class, 'write'])->middleware('auth')-
 Route::post('/plot/update', [ActController::class, 'update'])->middleware('auth')->name('plot.update');
 Route::post('/plotrole/write', [ActController::class, 'writerole'])->middleware('auth')->name('plotrole.write');
 Route::post('/plot/write-line', [ActController::class, 'writeline'])->middleware('auth')->name('plot.writeline');
+
+
+// DELETES
+Route::post('/plotrole/delete', [ActController::class, 'deleterole'])->middleware('auth')->name('delete.plotrole');
+Route::post('/actorline/delete', [ActController::class, 'deleteline'])->middleware('auth')->name('delete.line');
+Route::post('/act/delete', [ActController::class, 'delete'])->middleware('auth')->name('delete.act');
+Route::post('/character/delete', [CharacterController::class, 'delete'])->middleware('auth')->name('delete.character');
+Route::post('/page/delete', [PageController::class, 'delete'])->middleware('auth')->name('delete.page');
+Route::post('/page/chapter', [ChapterController::class, 'delete'])->middleware('auth')->name('delete.chapter');
+Route::post('/ebook/delete', [EbookController::class, 'delete'])->middleware('auth')->name('delete.ebook');
+
+

@@ -123,4 +123,13 @@ class PageController extends Controller
         }
     }
 
+
+    
+    public function delete(Request $request){
+        $ebookid = session()->get('ebookid');
+        $pageid = $request->page_id;
+        Page::where('id',$pageid)->delete();
+        return redirect('/ebook/'.$ebookid);
+    }
+
 }

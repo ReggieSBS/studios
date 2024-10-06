@@ -184,4 +184,13 @@ class ChapterController extends Controller
     }
 
 
+    public function delete(Request $request){
+        $ebookid = session()->get('ebookid');
+        $chapter_id = $request->chapter_id;
+        Page::where('chapter_id', $chapter_id)->update((['chapter_id'=>'0']));
+        Chapter::where('id',$chapter_id)->delete();
+        return redirect('/ebooks/'.$ebookid);
+    }
+
+
 }

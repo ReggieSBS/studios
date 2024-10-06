@@ -65,9 +65,15 @@
                   </div>
                   <div class="card-body">
                     <table class="table table-striped">
-                      <tr>
-                        <td></td>
-                      </tr>
+                      @if($actchapterstotal > 0)
+                        @foreach($actchapters as $chapter)
+                          <tr>
+                            <td style="padding-right:10px;"><a><span class="fa fa-times-circle text-danger"></span></a></td>
+                            <td>Chapter {{ $chapter->chapter_number}}</td>
+                            <td>{{ $chapter->title}}</td>
+                          </tr>
+                        @endforeach
+                      @endif
                     </table>
                   </div>
                 </div>
@@ -112,10 +118,10 @@
                 </div>
                 <div class="col-lg-8">
                   <h4>Title</h4>
-                  <input type="number" class="form form-control" name="title" value="{{$archetypesdata->title}}" required>
+                  <input type="text" class="form form-control" name="title" value="{{$archetypesdata->title}}" required>
                 </div>
               </div>
-              <div class="row">
+              <div class="row mt-5">
                 <div class="col-lg-12">
                     <table>
                       <tr>
@@ -129,9 +135,9 @@
                     </table>
                 </div>
               </div>
-              <div class="row">
+              <div class="row mt-2">
                 <div class="col-lg-12">
-                  <h4>Why brings this act the lead actor closer the it's goal, or not?</h4>
+                  <h6>Why brings this act the lead actor closer the it's goal, or not?</h6>
                   <textarea name="answer" class="form form-control" required>{{$archetypesdata->answer}}</textarea>
                 </div>
               </div>

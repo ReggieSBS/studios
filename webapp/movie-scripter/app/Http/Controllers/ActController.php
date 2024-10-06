@@ -10,6 +10,7 @@ use App\Models\Plot;
 use App\Models\Act;
 use App\Models\ActingLines;
 use App\Models\Archetype;
+use App\Models\Character;
 
 class ActController extends Controller
 {
@@ -74,6 +75,7 @@ class ActController extends Controller
             $totalebookpages = $ebookpages->count();
             $totalebookchapters = $ebookchapters->count();
             $totalebookcharacters = $ebookcharacters->count();
+            $maincharacterdata = Character::where('main_character', 1)->where('ebook_id', $ebookid)->first();
         }
 
         $actscount = 0;
@@ -87,11 +89,10 @@ class ActController extends Controller
         $actid = $request->id;
         $actdata = Act::where('id', $actid)->first();
         $plotsdata = Plot::with('plotroles')->with('actinglines')->where('act_id', $actid)->get();
-
         $archetypedata = Archetype::where('act_id', $actid)->first();
         
         
-        return view('webapp.actor-script', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata, 'plotsdata'=>$plotsdata]);
+        return view('webapp.actor-script', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata, 'plotsdata'=>$plotsdata, 'maincharacterdata'=>$maincharacterdata]);
     }
 
 
@@ -157,5 +158,36 @@ class ActController extends Controller
         $actingline->save();
         return redirect(route('movie.actorscript', $actid));
     }
+    
+
+    public function deleterole(Request $request){
+        $actid = $request->act_id;
+        $plotrole_id = $request->plotrole_id;
+        PlotRole::where('id',$plotrole_id)->delete();
+        return redirect(route('movie.act', $actid));
+    }
+
+    public function deleteline(Request $request){
+        $actid = $request->act_id;
+        $line_id = $request->line_id;
+        ActingLines::where('id',$line_id)->delete();
+        return redirect(route('movie.actorscript', $actid));
+    }
+    public function delete(Request $request){
+
+        $actid = $request->act_id;
+        $plots = Plot::where('act_id',$actid)->get();
+        foreach($plots as $plot)
+        {
+            $plotid = $plot->id;
+            PlotRole::where('plot_id',$plotid)->delete();
+            ActingLines::where('plot_id',$plotid)->delete();
+        }
+        Plot::where('act_id',$actid)->delete();
+        Archetype::where('act_id',$actid)->delete();
+        Act::where('id',$actid)->delete();
+        return redirect(route('movie.archetypes'));
+    }
+
 
 }

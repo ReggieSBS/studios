@@ -48,7 +48,10 @@
                   </li>
                   @endif
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete page">
-                    <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
+                  <form method="post" class="delform" action="{{ route('delete.page') }}">@csrf
+                    <input type="hidden" name="page_id" value="{{ $pagedata->id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
                     <button class="btn btn-primary text-white btnopenextract" type="button"><i class="mdi mdi-book"></i></button>

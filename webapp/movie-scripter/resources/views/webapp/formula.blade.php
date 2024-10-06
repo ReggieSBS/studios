@@ -137,7 +137,7 @@
                             </select>
                           </td>
                           <td>
-                            <button type="submit" class="btn btn-secondary" style="float:right; box-shadow: 0px 0px 0px #000 !important; border:none !important; margin-top:-5px; width:150px !important;"><i class="mdi mdi-check"></i>Save</button>
+                            <button type="submit" class="btn btn-default" style="float:right;margin-top:-3px; width:70px !important; padding-left:0px !important; padding-right:0px !important; " data-bs-toggle="tooltip" title="Save changes"><i class="fa fa-save"></i></button>
                           </td>
                         </tr>
                       </table>

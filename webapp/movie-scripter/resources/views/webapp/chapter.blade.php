@@ -27,7 +27,6 @@
             <div class="page-header">
               <a href="/ebook/{{ $ebookdata->id }}" >
               <h3 class="page-title" data-bs-toggle="tooltip" title="Back to e-book">
-                
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-arrow-left"></i>
                 </span> {{ $ebookdata->name }}
@@ -48,7 +47,10 @@
                   </li>
                   @endif
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete chapter">
-                    <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
+                  <form method="post" class="delform" action="{{ route('delete.chapter') }}">@csrf
+                    <input type="hidden" name="chapter_id" value="{{ $chapterdata->id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
                     <button class="btn btn-primary text-white btnopenextract" type="button"><i class="mdi mdi-book"></i></button>

@@ -6,6 +6,10 @@ use App\Models\Character;
 use App\Models\Ebook;
 use App\Models\User;
 use App\Models\Act;
+use App\Models\Plot;
+use App\Models\Archetype;
+use App\Models\PlotRole;
+use App\Models\ActingLines;
 use Illuminate\Http\Request;
 
 class CharacterController extends Controller
@@ -134,5 +138,34 @@ class CharacterController extends Controller
         $character->save();
         return redirect('/character/'.$characterid);
     }
+
+
+    public function delete(Request $request){
+        $characterid = session()->get('characterid');
+        $character = Character::find($characterid);
+        
+        $archetypes = Archetype::where('character_id',$characterid);
+
+        foreach($archetypes as $archetype)
+        {
+            $archtypeid = $archetype->id;
+            $actid = $archetype->id;
+            $plots = Plot::where('act_id',$actid)->get();
+            foreach($plots as $plot)
+            {
+                $plotid = $plot->id;
+                PlotRole::where('plot_id',$plotid)->delete();
+                ActingLines::where('plot_id',$plotid)->delete();
+            }
+            Plot::where('act_id',$actid)->delete();
+            Archetype::where('id',$archtypeid)->delete();
+            Act::where('id',$actid)->delete();
+        }
+        Character::where('id',$character->id)->delete();
+
+        return redirect('/characters');
+    }
+
+    
     
 }

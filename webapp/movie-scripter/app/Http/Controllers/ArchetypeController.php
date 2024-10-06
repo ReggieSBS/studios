@@ -100,7 +100,10 @@ class ArchetypeController extends Controller
                 session()->put('movieid', $moviedata->id);
             }
 
-            $archetypesdata = Archetype::select('archetypes.id', 'archetypes.archetype_name', 'archetypes.act_id', 'archetypes.movie_id', 'archetypes.character_id', 'acts.act_number', 'archetypes.closer_to_goal', 'archetypes.answer', 'acts.title', 'characters.name', 'characters.profile_image')->where('archetypes.id', $archetypeid)->orderBy('act_id', 'asc')->leftJoin('acts', 'acts.id', '=', 'archetypes.act_id')->leftJoin('characters', 'characters.id', '=', 'archetypes.character_id')->first();
+            $archetypesdata = Archetype::select('archetypes.id', 'archetypes.archetype_name', 'archetypes.act_id', 'archetypes.movie_id', 'archetypes.character_id', 'acts.act_number', 'archetypes.closer_to_goal', 'archetypes.answer', 'acts.id', 'acts.title', 'characters.name', 'characters.profile_image')->where('archetypes.id', $archetypeid)->orderBy('act_id', 'asc')->leftJoin('acts', 'acts.id', '=', 'archetypes.act_id')->leftJoin('characters', 'characters.id', '=', 'archetypes.character_id')->first();
+
+            $actchapters = Chapter::where('archetype_id',$archetypesdata->id)->get();
+            $actchapterstotal = $actchapters->count();
 
 
             $actscount = 0;
@@ -110,7 +113,7 @@ class ArchetypeController extends Controller
                 $acts = Act::where('movie_id', $movieid)->get();
                 $actscount = $acts->count();
             }
-            return view('webapp.archetype', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts]);
+            return view('webapp.archetype', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts, 'actchapters'=>$actchapters, 'actchapterstotal'=>$actchapterstotal]);
         }
         else
         {
@@ -153,7 +156,7 @@ class ArchetypeController extends Controller
 
         Chapter::where('archetype_id', $archetype_id)->update((['archetype_id'=>'0']));
 
-        if($request->page!=null)
+        if($request->chapter!=null)
         {
             foreach($request->chapter as $chapter)
             {

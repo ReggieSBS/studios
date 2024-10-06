@@ -62,11 +62,17 @@
                   </li>
                   @endif
 
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Download">
-                    <a class="btn btn-primary text-white " href="{{ asset($ebookdata->file) }}" download><i class="mdi mdi-download"></i></a>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Download Original e-book">
+                    <a class="btn btn-warning text-white " href="{{ asset($ebookdata->file) }}" download><i class="mdi mdi-download"></i></a>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from word or pdf">
                     <a class="btn btn-success text-white btnopenextract" ><i class="mdi mdi-book"></i></a>
+                  </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete e-book">
+                  <form method="post" class="delform" action="{{ route('delete.ebook') }}">@csrf
+                    <input type="hidden" name="ebook_id" value="{{ $ebookdata->id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                 </ul>
               </nav>

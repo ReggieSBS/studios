@@ -37,7 +37,10 @@
                     <a class="btn btn-secondary text-white" href="/ebook/{{ $ebookdata->id }}"><i class="mdi mdi-book"></i></a>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete character">
-                    <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
+                  <form method="post" class="delform" action="{{ route('delete.character') }}">@csrf
+                    <input type="hidden" name="character_id" value="{{ $characterdata->id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze character">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
@@ -51,7 +54,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="clearfix">
-                      <h4 class="card-title float-start">Images </h4>
+                      <h4 class="card-title float-start" style="width:100%;">Images <button class="btn btn-sm btn-default" type="submit" style="width:40px !important; float:right; margin-top:-5px;" data-bs-toggle="tooltip" title="Upload images"><span class="fa fa-upload" style="float:right;"></span></button></h4>
                     </div>
                   </div>
                 </div>
@@ -61,7 +64,7 @@
                     <div class="clearfix">
                     <div class="container">
                       <div class="row">
-                        <h4 class="card-title float-start" style="width:100%;">Information <button class="btn btn-sm btn-secondary" type="submit" style="width:40px !important; float:right; margin-top:-5px;" data-bs-toggle="tooltip" title="Save changes"><span class="fa fa-save" style="float:right;"></span></button> </h4>
+                        <h4 class="card-title float-start" style="width:100%;">Information <button class="btn btn-sm btn-default" type="submit" style="width:40px !important; float:right; margin-top:-5px;" data-bs-toggle="tooltip" title="Save changes"><span class="fa fa-save" style="float:right;"></span></button> </h4>
                       </div>
                       <form class="pt-3" method="post" action="{{ route('character.update-details') }}">
                       @csrf
@@ -137,7 +140,7 @@
                             </Td>
                             <Td class="pr-5" style="vertical-align: middle; width:33%">Character</Td>
                             <Td class="pr-5" style="width:34%"><input type="text" class="form form-control" name="name" value="{{ $characterdata->name }}" placeholder="Name ...."></Td>
-                            <td style="width:33%; text-align:right;"><button type="submit" class="btn btn-secondary" style="float:right; box-shadow: 0px 0px 0px #000 !important; border:none !important;"><i class="mdi mdi-check"></i>Save changes</button></td>
+                            <td style="width:33%; text-align:right;"><button type="submit" class="btn btn-default" style="float:right; width:120px;"><i class="fa fa-save"></i> Save changes</button></td>
                           </Tr>
                         </table>
                       </h4><br/><br/><br/>

@@ -106,3 +106,9 @@ $(".tablinks").click(function(){
     $('.tabcontent').fadeOut(300);
     $('#content_'+id).delay(310).slideDown(300);
 });
+
+
+$('.delform').submit(function() {
+    var c = confirm("Are you sure?");
+    return c; //you can just return c because it will be true or false
+});

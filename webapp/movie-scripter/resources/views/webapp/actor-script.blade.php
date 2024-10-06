@@ -45,25 +45,27 @@
             @foreach($plotsdata as $plot)
             <div class="row mb-5">
               <div class="col-lg-8">
-              <form method="post" action="{{ route('plotrole.write') }}" enctype="multipart/form-data">
-                @csrf
                   <div class="card" style="position:relative;height:285px;">
-                  <input type="hidden" name="plot_id" value="{{ $plot->id }}">
-                  <input type="hidden" name="act_id" value="{{ $actdata->id }}">
                     <div class="card-body">
                       <table class="table table-striped">
                           <tbody>
                             @foreach($plot->actinglines as $line)
                               <tr>
-                                <td style="width:25%; font-weight:bold;"><a class="fa fa-times-circle text-danger" style="position: absolute; left:25px;"></a> {{ $line->character }} :</td>
+                                
+                                <td style="width:25%; font-weight:bold;">
+                                  {{ $line->character }} :</td>
                                 <td>"{{ $line->line }}"</td>
+                                <td style="width:20px; text-align:center; background:#fe7c96 !important;">
+                                  <form method="post" action="{{ route('delete.line') }}">
+                                    @csrf<input type="hidden" name="line_id" value="{{ $line->id }}"><input type="hidden" name="act_id" value="{{ $actdata->id }}"><button type="submit" class="border-0" style="background:transparent;color:#FFF;"><i class="fa fa-times-circle"></i></button>
+                                  </form>
+                                </td>
                               </tr>
                             @endforeach
                           </tbody>
                       </table>
                     </div>
                   </div>
-              </form>
               </div>
 
 
@@ -80,6 +82,7 @@
                       <hr>
                       <select class="form form-control" name="character" required>
                         <option value="" disabled selected>Choose a Character...</option>
+                        <option value="{{ $maincharacterdata->name }}">{{ $maincharacterdata->name }} (Lead Role)</option>
                         @foreach($plot->plotroles as $plotrole)
                           <option>{{ $plotrole->character }}</option>
                         @endforeach

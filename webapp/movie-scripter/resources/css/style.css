@@ -25297,11 +25297,17 @@ dl li {
   border-radius: 100%;
   border: 2px solid #ffffff;
 }
-.navbar .navbar-menu-wrapper .count-indicator .count-symbol {
-  top: 17px;
-  right: -3px;
-  width: 10px;
-  height: 10px;
+.navbar .navbar-menu-wrapper .count-indicator .count-symbol {    
+  width: 22px;
+  height: 9px;
+  padding-left: 6px;
+  padding-bottom: 19px;
+  color: #FFF;
+  top: 8px;
+  font-size: 11px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+  right: -15px;
 }
 .navbar .navbar-menu-wrapper .count-indicator .count-number {
   min-width: 14px;
