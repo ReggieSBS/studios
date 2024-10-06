@@ -40,6 +40,21 @@
             </div>
             <div class="row">
               <div class="owl-carousel mb-5 col-12" id="owl-carousel">
+              <div class="item">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#myModal" style="text-decoration:none;">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <div style="position:relative; z-index:9">
+                      <h4 class="font-weight-normal mb-3"> <i class="mdi mdi-plus float-end" style="position:absolute; font-size:120px; right:-35px; top:-50px;"></i>
+                      </h4>
+                      <h2 class="mb-5 text-avatar" style="text-shadow: 0px -2px 3px #000;">New <br/><br/>project</h2>
+                      <h6 class="card-text text-small" style="text-shadow: 0px 0px 5px #000;">Upload an e-book</h6>
+                    </div>
+                  </div>
+                </div>
+                </a>
+              </div>
               @foreach($ebooks->first()->ebooks as $ebook)
               <div class="item">
                 <a href="/ebook/{{$ebook->id}}" style="text-decoration:none;">
@@ -84,7 +99,7 @@
                             <td>  </td>
                             <td>
                               <div class="progress">
-                                <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $ebook->complete }}%" aria-valuenow="{{$ebook->complete}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $completionprogress }}%" aria-valuenow="{{$completionprogress}}" aria-valuemin="0" aria-valuemax="100"></div>
                               </div>
                             </td>
                           </tr>
@@ -98,11 +113,11 @@
               <div class="col-md-5 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title text-dark">Todo List</h4>
-                    <div class="add-items d-flex">
-                      <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?">
-                      <button class="add btn btn-gradient-primary font-weight-bold todo-list-add-btn" id="add-task">Add</button>
-                    </div>
+                    <h4 class="card-title text-dark" style="width:100%;">Todo List 
+                      @if($completionprogress > 29 && $completionprogress < 50)
+                      <a href="/formula" class="add btn btn-gradient-primary font-weight-bold" style="width:200px !important; float:right !important; margin-top:-15px;"><i class="mdi mdi-movie-open"></i> Create Movie</a>
+                      @endif
+                    </h4>
                     <div class="list-wrapper">
                       <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
                         <li class="completed">
@@ -110,17 +125,106 @@
                             <label class="form-check-label">
                               <input class="checkbox" type="checkbox" checked> Register an account </label>
                           </div>
-                          <i class="remove mdi mdi-close-circle-outline"></i>
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
                         </li>
-                        
                         <li>
                           <div class="form-check">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox"> Upload an e-book </label>
+                              <input class="checkbox" type="checkbox" @if($ebookid != "") checked @endif> Upload an e-book </label>
                           </div>
-                          <i class="remove mdi mdi-close-circle-outline"></i>
+                          @if($ebookid != "")
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
                         </li>
+                        @if($completionprogress > 9)
+                        <li>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" @if(count($ebookpages)>0) checked @endif> Create pages </label>
+                          </div>
+                          @if(count($ebookpages)>0)
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
+                        </li>
+                        <li>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" @if(count($ebookchapters)>0) checked @endif> Create chapters </label>
+                          </div>
+                          @if(count($ebookchapters)>0)
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
+                        </li>
+                        <li>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" @if(count($ebookcharacters)>0) checked @endif> Create characters </label>
+                          </div>
+                          @if(count($ebookcharacters)>0)
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
+                        </li>
+                        @endif
+
                         
+                        @if($completionprogress >= 50)
+                        <li>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" @if($actscount>0) checked @endif> Create Acts </label>
+                          </div>
+                          @if($actscount>0)
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
+                        </li>
+
+
+                        <li>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" @if($chaptercheck == 1) checked @endif> Relate Acts to Chapters </label>
+                          </div>
+                          @if($chaptercheck == 1)
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
+                        </li>
+                        <li>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" @if($plotscount>0) checked @endif> Create Plots </label>
+                          </div>
+                          @if($plotscount>0)
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
+                        </li>
+                        <li>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="checkbox" type="checkbox" @if($linescounts>0) checked @endif> Create Actor Script (Lines) </label>
+                          </div>
+                          @if($linescounts>0)
+                          <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @else
+                          <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
+                          @endif
+                        </li>
+
+                        @endif
+
                       </ul>
                     </div>
                   </div>

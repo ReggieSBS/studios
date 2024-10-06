@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_subscriptions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->references("id")
-            ->on("user_subscriptions")->onDelete("cascade");
+            ->on("user_subscriptions");
             $table->foreignId('licence_id')->constrained('licences');
             $table->integer('high_risk')->nullable(false)->default(0);
             $table->integer('disabled')->nullable(false)->default(0);

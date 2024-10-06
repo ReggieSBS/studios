@@ -46,17 +46,17 @@
                     <a class="btn btn-secondary text-white" type="button" href="/chapter/{{$nextchapter}}"><i class="mdi mdi-arrow-right"></i></a>
                   </li>
                   @endif
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete chapter">
-                  <form method="post" class="delform" action="{{ route('delete.chapter') }}">@csrf
-                    <input type="hidden" name="chapter_id" value="{{ $chapterdata->id }}">
-                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
-                  </form>
-                  </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
                     <button class="btn btn-primary text-white btnopenextract" type="button"><i class="mdi mdi-book"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze chapter">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete chapter">
+                  <form method="post" class="delform" action="{{ route('delete.chapter') }}">@csrf
+                    <input type="hidden" name="chapter_id" value="{{ $chapterdata->id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                 </ul>
               </nav>

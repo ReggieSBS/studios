@@ -154,6 +154,10 @@
                 <div class="card" style="background-color: transparent; box-shadow:0px 0px 0px;">
                   <div class="card-body">
                     <h4 class="card-title text-white" style="font-size: 48px;">Timeline</h4>
+                    @if($actscount==0)
+                      <p>Are you ready to produce your movie and create your first act?</p>
+                      <a class="btn btn-secondary" href="/archetypes"><span class="mdi mdi-movie-open"></span> Start your story</a>
+                    @endif
                     @include('webapp.timeline')
                   </div>
                 </div>

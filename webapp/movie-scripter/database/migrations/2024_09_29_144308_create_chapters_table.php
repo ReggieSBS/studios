@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
-            ->on("chapters")->onDelete("cascade");
+            ->on("chapters");
             $table->integer('chapter_number')->nullable(false);
             $table->integer('archetype_id')->nullable(true);
             $table->string('title')->nullable(true);

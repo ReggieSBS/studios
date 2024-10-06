@@ -47,17 +47,17 @@
                     <a class="btn btn-secondary text-white" type="button" href="/page/{{$nextpage}}"><i class="mdi mdi-arrow-right"></i></a>
                   </li>
                   @endif
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete page">
-                  <form method="post" class="delform" action="{{ route('delete.page') }}">@csrf
-                    <input type="hidden" name="page_id" value="{{ $pagedata->id }}">
-                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
-                  </form>
-                  </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from e-book word or pdf">
                     <button class="btn btn-primary text-white btnopenextract" type="button"><i class="mdi mdi-book"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Convert into movie">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
+                  </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete page">
+                  <form method="post" class="delform" action="{{ route('delete.page') }}">@csrf
+                    <input type="hidden" name="page_id" value="{{ $pagedata->id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                 </ul>
               </nav>

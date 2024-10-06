@@ -14,18 +14,35 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-            <input type="text" name="title" class="form form-control" placeholder="Title" required>
-            <input type="text" name="author" class="form form-control" placeholder="Author" required>
-            <input type="text" name="publisher" class="form form-control" placeholder="Publisher" required>
-            <h6 class="small-text mt-2">Cover image</h6>
+          <div class="row">
+            <div class="col-lg-12">
+            <h4 class="mt-2">Titel</h4>
+            <input type="text" name="title" class="form form-control" placeholder="Harry Potter" required>
+            </div>
+            <div class="col-lg-12">
+            <h4 class="mt-2">Author</h4>
+            <input type="text" name="author" class="form form-control" placeholder="J.K. Rowling" required>
+            </div>
+            <div class="col-lg-8">
+            <h4 class="mt-2">Publisher</h4>
+            <input type="text" name="publisher" class="form form-control" placeholder="Bloomsbury" required>
+            </div>
+            <div class="col-lg-4">
+            <h5 class="mt-2">Publish date</h5>
+            <input type="date" name="publish_date" class="form form-control" required>
+            </div>
+            <div class="col-lg-12">
+            <h6 class="small-text mt-5">Cover image</h6>
             <input type="file" name="cover" class="form form-control" accept=".jpeg,.jpg,.png,.gif" required>
             <h6 class="small-text mt-2">E-book file</h6>
             <input type="file" name="ebook" class="form form-control" accept=".pdf,.docx,.doc" required>
+            </div>
+          </div>
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Upload</button>
+          <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Upload</button>
         </div>
 
       </div>

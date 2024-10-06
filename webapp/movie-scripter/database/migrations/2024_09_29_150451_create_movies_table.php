@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
-            ->on("chapters")->onDelete("cascade");
+            ->on("chapters");
             $table->foreignId('user_id')->constrained('users')->references("id")
-            ->on("movies")->onDelete("cascade");
+            ->on("movies");
             $table->string('name')->nullable(false);
             $table->string('genre')->nullable(false);
             $table->string('formula')->nullable(true);

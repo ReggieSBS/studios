@@ -34,8 +34,8 @@
               </h3></a>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>All characters <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                  <li class="actionbar_item" aria-current="page">
+                    <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#characterModal"><i class="mdi mdi-plus"></i> New Character</button>
                   </li>
                 </ul>
               </nav>
@@ -64,26 +64,30 @@
 
 
               <div class="col-lg-5">
-                <h2 style="text-align: center;">Antagonist</h2>
-                <hr>
-                <div class="row">
-                  @if($seccharacteravailable == 1)
-                  <div class="col-lg-4">
-                      <a href="/character/{{ $maincharacterdata->id }}"><img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;"></a>
+                <div class="card">
+                  <div class="card-body">
+                    <h2 style="text-align: center;">Antagonist</h2>
+                    <hr>
+                    <div class="row">
+                      @if($seccharacteravailable == 1)
+                      <div class="col-lg-4">
+                          <a href="/character/{{ $maincharacterdata->id }}"><img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;"></a>
+                      </div>
+                      <div class="col-lg-8">
+                        <h2>{{ $secondarycharacterdata->name }}</h2>
+                        <em>{{ $secondarycharacterdata->personality_desc }}</em><br/><br/>
+                        <p>{{ $secondarycharacterdata->accomplishment_desc }}</p>
+                      </div>
+                      @else 
+                      <div class="col-lg-4">
+                          
+                      </div>
+                      <div class="col-lg-8">
+                        <h4>Yet unknown</h4>
+                      </div>
+                      @endif
+                    </div>
                   </div>
-                  <div class="col-lg-8">
-                    <h2>{{ $secondarycharacterdata->name }}</h2>
-                    <em>{{ $secondarycharacterdata->personality_desc }}</em><br/><br/>
-                    <p>{{ $secondarycharacterdata->accomplishment_desc }}</p>
-                  </div>
-                  @else 
-                  <div class="col-lg-4">
-                      
-                  </div>
-                  <div class="col-lg-8">
-                    <h4>Yet unknown</h4>
-                  </div>
-                  @endif
                 </div>
               </div>
 

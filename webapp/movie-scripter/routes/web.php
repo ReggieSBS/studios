@@ -107,5 +107,6 @@ Route::post('/character/delete', [CharacterController::class, 'delete'])->middle
 Route::post('/page/delete', [PageController::class, 'delete'])->middleware('auth')->name('delete.page');
 Route::post('/page/chapter', [ChapterController::class, 'delete'])->middleware('auth')->name('delete.chapter');
 Route::post('/ebook/delete', [EbookController::class, 'delete'])->middleware('auth')->name('delete.ebook');
+Route::post('/archetype/delete', [ArchetypeController::class, 'delete'])->middleware('auth')->name('delete.archetype');
 
 

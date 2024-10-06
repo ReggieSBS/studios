@@ -36,14 +36,14 @@
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Back to e-book">
                     <a class="btn btn-secondary text-white" href="/ebook/{{ $ebookdata->id }}"><i class="mdi mdi-book"></i></a>
                   </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze character">
+                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
+                  </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete character">
                   <form method="post" class="delform" action="{{ route('delete.character') }}">@csrf
                     <input type="hidden" name="character_id" value="{{ $characterdata->id }}">
                     <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
                   </form>
-                  </li>
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze character">
-                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
                   </li>
                 </ul>
               </nav>

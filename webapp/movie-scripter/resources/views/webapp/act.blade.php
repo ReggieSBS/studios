@@ -35,13 +35,13 @@
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Acting Script">
                     <a class="btn btn-secondary text-white" href="/actor-script/{{ $actdata->id }}"><i class="fa fa-file-text"></i></a>
                   </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze act">
+                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
+                  </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete act">
                   <form method="post" class="delform" action="{{ route('delete.act') }}">@csrf<input type="hidden" name="act_id" value="{{ $actdata->id }}">
                     <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
                   </form>
-                  </li>
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze act">
-                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
                   </li>
                 </ul>
               </nav>

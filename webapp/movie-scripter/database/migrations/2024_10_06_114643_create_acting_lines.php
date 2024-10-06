@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('acting_lines', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('movie_id')->constrained('movies')->references("id")->on("acts")->onDelete("cascade");
+            $table->foreignId('movie_id')->constrained('movies')->references("id")->on("acts");
             $table->integer('plot_id')->constrained('plots')->references("id")->on("acting_lines");
             $table->string('character')->nullable(false)->default(0);
             $table->longText('line')->nullable(true);

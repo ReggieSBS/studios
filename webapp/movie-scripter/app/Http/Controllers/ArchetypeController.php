@@ -8,6 +8,9 @@ use App\Models\Ebook;
 use App\Models\Act;
 use App\Models\Archetype;
 use App\Models\ArchetypeActs;
+use App\Models\Plot;
+use App\Models\ActingLines;
+use App\Models\PlotRole;
 use App\Models\Chapter;
 use App\Models\Character;
 use App\Models\Movie;
@@ -191,10 +194,10 @@ class ArchetypeController extends Controller
 
         $act = Act::find($act_id);
         $act->act_number = $request->act_number;
+        $act->title = $request->title;
         if($act->save())
         {
             $archetype = Archetype::find($archetype_id);
-            $archetype->archetype_name = $request->archetype;
             $archetype->closer_to_goal = $closer_to_goal;
             $archetype->answer = $request->answer;
             if($archetype->save())
@@ -203,6 +206,23 @@ class ArchetypeController extends Controller
             }
         }
         
+    }
+
+
+    public function delete(Request $request){
+
+        $actid = $request->act_id;
+        $plots = Plot::where('act_id',$actid)->get();
+        foreach($plots as $plot)
+        {
+            $plotid = $plot->id;
+            PlotRole::where('plot_id',$plotid)->delete();
+            ActingLines::where('plot_id',$plotid)->delete();
+        }
+        Plot::where('act_id',$actid)->delete();
+        Archetype::where('act_id',$actid)->delete();
+        Act::where('id',$actid)->delete();
+        return redirect(route('movie.archetypes'));
     }
 
 }

@@ -31,11 +31,14 @@
               </h3></a>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
-                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete archetype">
-                    <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
-                  </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze archetype">
                     <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
+                  </li>
+                  
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete act">
+                  <form method="post" class="delform" action="{{ route('delete.archetype') }}">@csrf<input type="hidden" name="act_id" value="{{ $archetypesdata->act_id }}">
+                    <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
+                  </form>
                   </li>
                 </ul>
               </nav>

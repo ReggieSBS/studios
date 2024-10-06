@@ -9,6 +9,9 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize" style="z-index:999;">
             <span class="mdi mdi-menu" style="text-shadow:0px 0px 0px #000 !important; color:#000;"></span>
           </button>
+          <a class="align-self-center" href="/dashboard" style="z-index:999;">
+            <span class="fa fa-dashboard" style="text-shadow:0px 0px 0px #000 !important; color: #fe7c96; font-size: 18px;" data-toggle="tooltip" data-placement="bottom" title="Go to dasbhoard"></span>
+          </a>
           <div class="search-field d-none d-md-block">
             <form class="d-flex align-items-center h-100" action="#">
               <div class="input-group">

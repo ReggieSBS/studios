@@ -30,20 +30,22 @@ class EbookController extends Controller
             'publisher' => ['required', 'string']
         ]);
 
+        // CHANGE IF DEPLOYED ONLINE
         $file = $request->file('cover');
         $namecover  = $file->getClientOriginalName();
         $file->storeAs('/app/public/images/covers/', $namecover, 'public');
-        $cover = $file;
+        $cover = '/images/covers/'. $namecover;
 
         $fileebook = $request->file('ebook');
         $namefile  = $fileebook->getClientOriginalName();
         $fileebook->storeAs('/app/public/ebooks/', $namefile, 'public');
-        $file = $fileebook;
+        $file = '/ebooks/'. $namefile;
 
         $ebook = New Ebook();
         $ebook->name = $request->title;
         $ebook->author = $request->author;
         $ebook->publisher = $request->publisher;
+        $ebook->publish_date = $request->publish_date;
         $ebook->image = $cover;
         $ebook->file = $file;
         $ebook->active = 1;
@@ -56,6 +58,7 @@ class EbookController extends Controller
 
     public function read(Request $request)
     {
+        $conversionprogress = 0;
         $ebookid = $request->id;
         $ebookpages=[];
         $ebookchapters=[];
@@ -75,6 +78,18 @@ class EbookController extends Controller
             $totalebookpages = $ebookpages->count();
             $totalebookchapters = $ebookchapters->count();
             $totalebookcharacters = $ebookcharacters->count();
+            if(count($ebookpages)>0)
+            {
+                $conversionprogress = $conversionprogress + 33;
+            }
+            if(count($ebookchapters)>0)
+            {
+                $conversionprogress = $conversionprogress + 33;
+            }
+            if(count($ebookcharacters)>0)
+            {
+                $conversionprogress = $conversionprogress + 33;
+            }
         }
 
         
@@ -84,9 +99,10 @@ class EbookController extends Controller
             $movieid = session()->get('movieid');
             $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
+            $conversionprogress = 100;
         }
 
-        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts]);
+        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'conversionprogress'=>$conversionprogress]);
     }
 
     public function content(Request $request){
@@ -121,18 +137,20 @@ class EbookController extends Controller
     public function delete(Request $request){
         $ebookid = session()->get('ebookid');
         $movie = Movie::where('ebook_id', $ebookid)->first();
-        $movieid = $movie->id;
+        if($movie){
+            $movieid = $movie->id;
+            Act::where('movie_id',$movieid)->delete();
+            Plot::where('movie_id',$movieid)->delete();
+            PlotRole::where('movie_id',$movieid)->delete();
+            ActingLines::where('movie_id',$movieid)->delete();
+            Archetype::where('movie_id',$movieid)->delete();
+            Movie::where('id',$movieid)->delete();
+        }
 
         Chapter::where('ebook_id',$ebookid)->delete();
         Page::where('ebook_id',$ebookid)->delete();
         Character::where('ebook_id',$ebookid)->delete();
-        Act::where('movie_id',$movieid)->delete();
-        Plot::where('movie_id',$movieid)->delete();
-        PlotRole::where('movie_id',$movieid)->delete();
-        ActingLines::where('movie_id',$movieid)->delete();
-        Archetype::where('movie_id',$movieid)->delete();
-        Movie::where('movie_id',$movieid)->delete();
-        Ebook::where('ebook_id',$ebookid)->delete();
+        Ebook::where('id',$ebookid)->delete();
 
         return redirect('/dashboard');
     }
