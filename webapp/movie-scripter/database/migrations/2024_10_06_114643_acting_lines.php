@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plot_roles', function (Blueprint $table) {
+        Schema::create('acting_lines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('movie_id')->constrained('movies')->references("id")->on("acts")->onDelete("cascade");
-            $table->integer('plot_id')->constrained('plots')->references("id")->on("plot_roles");
-            $table->string('character')->nullable(false)->default(0);
+            $table->integer('plot_id')->constrained('plots')->references("id")->on("acting_lines");
             $table->string('archetype')->nullable(false)->default(0);
-            $table->string('role_desc')->nullable(false);
+            $table->string('character')->nullable(false)->default(0);
+            $table->longText('line')->nullable(false)->default(0);
+            $table->integer('sort')->nullable(false)->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plot_roles');
+        //
     }
 };

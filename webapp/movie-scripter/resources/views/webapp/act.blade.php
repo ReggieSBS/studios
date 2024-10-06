@@ -32,6 +32,9 @@
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Add Plot">
                     <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#plotModal"><i class="mdi mdi-plus"></i></button>
                   </li>
+                  <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Acting Script">
+                    <a class="btn btn-secondary text-white" href="/actor-script/{{ $actdata->id }}"><i class="fa fa-file-text"></i></a>
+                  </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete act">
                     <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
                   </li>
@@ -70,12 +73,11 @@
                     <div class="card-body">
                       <table class="table table-striped">
                         <thead>
-                          <th>
                             <td>
                               <select class="form form-control" name="character_id" required>
-                                <option value="" disabled selected>Choose Characater...</option>
+                                <option value="" disabled selected>Choose a Character...</option>
                                 @foreach($ebookcharacters as $character)
-                                  <option value="{{ $character->id }}">{{ $character->name }}</option>
+                                  <option>{{ $character->name }}</option>
                                 @endforeach
                               </select>
                             </td>
@@ -102,15 +104,16 @@
                             <td>
                               <button type="submit" class="btn btn-secondary btn-sm"><i class="mdi mdi-plus"></i></button>
                             </td>
-                          </th>
                         </thead>
                           <tbody>
+                            @foreach($plot->plotroles as $plotrole)
                             <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td><img src="{{ asset('/images/archetypes/'.$plotrole->archetype.'.png') }}" height="35" data-bs-toggle="tooltip" title="Character takes on the archetype: {{ $plotrole->archetype }}"></td>
+                              <td>{{ $plotrole->character }}</td>
+                              <td>{{ $plotrole->role_desc }}</td>
+                              <td><a class="text-danger"><i class="mdi mdi-trash-can"></i></a></td>
                             </tr>
+                            @endforeach
                           </tbody>
                       </table>
                     </div>

@@ -86,6 +86,7 @@ Route::get('/archetype/{id}', [ArchetypeController::class, 'read'])->middleware(
 // ACTS
 Route::get('/acts', [ActController::class, 'overview'])->middleware('auth')->name('movie.acts');
 Route::get('/act/{id}', [ActController::class, 'read'])->middleware('auth')->name('movie.act');
+Route::get('/actor-script/{id}', [ActController::class, 'readscript'])->middleware('auth')->name('movie.actorscript');
 
 // PLOTS
 Route::post('/plot/write', [ActController::class, 'write'])->middleware('auth')->name('plot.write');
