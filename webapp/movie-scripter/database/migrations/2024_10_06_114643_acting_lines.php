@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('plot_id')->constrained('plots')->references("id")->on("acting_lines");
             $table->string('archetype')->nullable(false)->default(0);
             $table->string('character')->nullable(false)->default(0);
-            $table->longText('line')->nullable(false)->default(0);
+            $table->longText('line')->nullable(true);
             $table->integer('sort')->nullable(false)->default(0);
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('acting_lines');
     }
 };
