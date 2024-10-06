@@ -72,8 +72,6 @@ Route::post('/character/update-details', [CharacterController::class, 'updatedet
 
 
 
-
-
 // MOVIE
 
 // FORMULA
@@ -109,5 +107,6 @@ Route::post('/page/delete', [PageController::class, 'delete'])->middleware('auth
 Route::post('/page/chapter', [ChapterController::class, 'delete'])->middleware('auth')->name('delete.chapter');
 Route::post('/ebook/delete', [EbookController::class, 'delete'])->middleware('auth')->name('delete.ebook');
 Route::post('/archetype/delete', [ArchetypeController::class, 'delete'])->middleware('auth')->name('delete.archetype');
+Route::post('/messages/delete', [DashboardController::class, 'deletemsg'])->middleware('auth')->name('delete.messages');
 
 

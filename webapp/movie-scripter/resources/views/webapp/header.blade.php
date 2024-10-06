@@ -43,7 +43,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="mdi mdi-email-outline" style="text-shadow:0px 0px 0px #000;"></i>
-                <span class="count-symbol bg-warning" style="width:20px; height:20px; padding-bottom:10px; padding-left:5px;">{{ $messagescount }}</span>
+                <span class="count-symbol bg-success" style="width:20px; height:20px; padding-bottom:10px; padding-left:5px;">{{ $messagescount }}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                 <h6 class="p-3 mb-0">Messages</h6>
@@ -51,11 +51,11 @@
 
                 @if($messagescount>0)
                 @foreach($messages as $message)
-                <a class="dropdown-item preview-item">
+                <a href="" class="dropdown-item preview-item" data-toggle="tooltip" data-placement="left" title="{{ $message->message }}" style="cursor:wait;">
                   <div class="preview-thumbnail">
                     <img src="{{ asset('/images/mascot-msg-icon.png') }}" alt="image" class="profile-pic">
                   </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center" data-toggle="tooltip" data-placement="left" title="{{ $message->message }}">
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                     <h6 class="preview-subject ellipsis mb-1 font-weight-normal">
                       {{ substr($message->message, 0,  20); }}
                     </h6>
@@ -64,35 +64,15 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 @endforeach
-                <a class="p-3 mb-0 text-center text-danger">Delete messages</a>
+                <form method="post" action="{{ route('delete.messages') }}">@csrf
+                  <button type="submit" class="p-3 mb-0 text-center text-danger" style="border:none; background:transparent;">Delete messages</button>
+                </form>
                 @else
                 <p class="p-3 mb-0 text-center">No messages found</p>
                 @endif
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                <i class="mdi mdi-bell-outline" style="text-shadow:0px 0px 0px #000;"></i>
-                <span class="count-symbol bg-danger">2</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                <h6 class="p-3 mb-0">Notifications</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-success">
-                      <i class="mdi mdi-calendar"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                    <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
-              </div>
-            </li>
+            
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link" style="cursor:pointer;">
                 <i class="mdi mdi-fullscreen" id="fullscreen-button" style="text-shadow:0px 0px 0px #000;"></i>

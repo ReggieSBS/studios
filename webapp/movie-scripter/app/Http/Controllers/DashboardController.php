@@ -120,4 +120,12 @@ class DashboardController extends Controller
 
         return view('webapp.dashboard', ['ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'actscount'=>$actscount, 'acts'=>$acts, 'completionprogress'=>$completionprogress, 'archetypescount'=>$archetypescount, 'plotscount'=>$plotscount, 'linescounts'=>$linescounts, 'chaptercheck'=>$chaptercheck, 'ebookid'=>$ebookid, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
+
+    
+
+    public function deletemsg(Request $request){
+
+        Message::where('receiver',Auth::user()->id)->delete();
+        return redirect('/dashboard');
+    }
 }
