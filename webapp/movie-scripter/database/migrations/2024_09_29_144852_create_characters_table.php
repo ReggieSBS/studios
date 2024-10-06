@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
-            ->on("chapters");
+            $table->integer('ebook_id')->nullable(false)->default(0);
             $table->string('name')->nullable(false);
             $table->string('gender')->nullable(false);
             $table->integer('age')->nullable(true);

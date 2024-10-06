@@ -96,6 +96,7 @@
                       <h2>Oh noooo!</h2>
                       <h5>You are not ready with the conversion of your e-book</h5>
                       <p>Please check the To Do List on your Dashboard to check what needs to be done before you can start working on your movie</p>
+                      <a class="btn btn-secondary" href="/dashboard" style="width:275px;"><span class="mdi mdi-list-status"></span> Check To Do's</a>
                   </div>
                 </div>
               </div>

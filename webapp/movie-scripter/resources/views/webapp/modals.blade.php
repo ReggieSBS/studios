@@ -80,6 +80,9 @@
   <div class="modal-dialog">
     <form method="post" action="{{ route('page.write') }}" enctype="multipart/form-data">
       @csrf
+      @if($ebookdata)
+      <input type="hidden" name="ebookid" value="{{ $ebookdata->id }}">
+      @endif
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">

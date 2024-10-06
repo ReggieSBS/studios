@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ebook_id')->constrained('ebooks')->references("id")
-            ->on("pages");
+            $table->integer('ebook_id')->nullable(true)->default(0);
             $table->integer('chapter_id')->nullable(true)->default(0);
             $table->integer('page_number')->nullable(false);
             $table->longText('summery')->nullable(true);

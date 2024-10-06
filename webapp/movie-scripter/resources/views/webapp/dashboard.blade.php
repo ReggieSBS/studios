@@ -138,7 +138,7 @@
                           <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
                           @endif
                         </li>
-                        @if($completionprogress > 9)
+                        @if($ebookid != "")
                         <li>
                           <div class="form-check">
                             <label class="form-check-label">
@@ -150,6 +150,8 @@
                           <i class="text-danger fa fa-times-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>
                           @endif
                         </li>
+                        @endif
+                        @if($completionprogress > 9)
                         <li>
                           <div class="form-check">
                             <label class="form-check-label">

@@ -70,8 +70,7 @@ class PageController extends Controller
     public function write(Request $request){
         
         $amount = $request->amount;
-
-        $ebookid = session()->get('ebookid');
+        $ebookid = $request->ebookid;
 
         for($i=1;$i<=$amount;$i++)
         {;
