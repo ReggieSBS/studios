@@ -43,23 +43,31 @@
             <li class="nav-item dropdown">
               <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="mdi mdi-email-outline" style="text-shadow:0px 0px 0px #000;"></i>
-                <span class="count-symbol bg-warning" style="width:20px; height:20px; padding-bottom:10px; padding-left:5px;">2</span>
+                <span class="count-symbol bg-warning" style="width:20px; height:20px; padding-bottom:10px; padding-left:5px;">{{ $messagescount }}</span>
               </a>
               <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                 <h6 class="p-3 mb-0">Messages</h6>
                 <div class="dropdown-divider"></div>
+
+                @if($messagescount>0)
+                @foreach($messages as $message)
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face4.jpg" alt="image" class="profile-pic">
+                    <img src="{{ asset('/images/mascot-msg-icon.png') }}" alt="image" class="profile-pic">
                   </div>
-                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
-                    <p class="text-gray mb-0"> 1 Minutes ago </p>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center" data-toggle="tooltip" data-placement="left" title="{{ $message->message }}">
+                    <h6 class="preview-subject ellipsis mb-1 font-weight-normal">
+                      {{ substr($message->message, 0,  20); }}
+                    </h6>
+                    <p class="text-gray mb-0"> Send by Mosci </p>
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                
-                <h6 class="p-3 mb-0 text-center">4 new messages</h6>
+                @endforeach
+                <a class="p-3 mb-0 text-center text-danger">Delete messages</a>
+                @else
+                <p class="p-3 mb-0 text-center">No messages found</p>
+                @endif
               </div>
             </li>
             <li class="nav-item dropdown">

@@ -10,7 +10,9 @@ use App\Models\Plot;
 use App\Models\Archetype;
 use App\Models\PlotRole;
 use App\Models\ActingLines;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CharacterController extends Controller
 {
@@ -56,7 +58,11 @@ class CharacterController extends Controller
             $actscount = $acts->count();
         }
 
-        return view('webapp.characters', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'maincharacterdata'=>$maincharacterdata, 'secondarycharacterdata'=>$secondarycharacterdata, 'seccharacteravailable'=>$seccharacteravailable, 'actscount'=>$actscount, 'acts'=>$acts]);
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
+
+        return view('webapp.characters', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'maincharacterdata'=>$maincharacterdata, 'secondarycharacterdata'=>$secondarycharacterdata, 'seccharacteravailable'=>$seccharacteravailable, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
    
     public function read(Request $request){
@@ -91,8 +97,12 @@ class CharacterController extends Controller
             $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
         }
+        
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
 
-        return view('webapp.character', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'characterdata'=>$characterdata, 'actscount'=>$actscount, 'acts'=>$acts]);
+        return view('webapp.character', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'characterdata'=>$characterdata, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
     
     public function write(Request $request){

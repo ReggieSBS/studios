@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Act;
 use App\Models\Page;
 use App\Models\Chapter;
+use App\Models\Message;
 use App\Models\Movie;
 use App\Models\Archetype;
 use App\Models\Plot;
@@ -53,11 +54,22 @@ class EbookController extends Controller
         $ebook->save();
         $ebookid = $ebook->id;
         session()->put('ebookid', $ebookid);
+
+        
+        $message = New Message();
+        $message->sender = 0;
+        $message->receiver = Auth::user()->id;
+        $message->message = "Congratulations!, I have seen that you've create a new e-book. The first steps are to define the amount of pages and chapters.. Are you ready to create your own movie? Ready? set... action!";
+        $message->save();
+
+
         return redirect('/ebook/'.$ebookid);
     }
 
     public function read(Request $request)
     {
+        session()->forget('ebookid');
+        session()->forget('movieid');
         $conversionprogress = 0;
         $ebookid = $request->id;
         $ebookpages=[];
@@ -68,31 +80,29 @@ class EbookController extends Controller
         session()->put('ebookid', $ebookid);
 
         $ebooks = User::with('ebooks')->get();
+        $ebookscount = $ebooks->count();
         $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
+        $ebookpages = $ebooksdata[0];
+        $ebookchapters = $ebooksdata[1];
+        $ebookcharacters = $ebooksdata[2];
+        $totalebookpages = $ebookpages->count();
+        $totalebookchapters = $ebookchapters->count();
+        $totalebookcharacters = $ebookcharacters->count();
 
-        if(session()->exists('ebookid')){
-            $ebookpages = $ebooksdata[0];
-            $ebookchapters = $ebooksdata[1];
-            $ebookcharacters = $ebooksdata[2];
-            $totalebookpages = $ebookpages->count();
-            $totalebookchapters = $ebookchapters->count();
-            $totalebookcharacters = $ebookcharacters->count();
-            if(count($ebookpages)>0)
-            {
-                $conversionprogress = $conversionprogress + 33;
-            }
-            if(count($ebookchapters)>0)
-            {
-                $conversionprogress = $conversionprogress + 33;
-            }
-            if(count($ebookcharacters)>0)
-            {
-                $conversionprogress = $conversionprogress + 33;
-            }
+        if(count($ebookpages)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+        if(count($ebookchapters)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+        if(count($ebookcharacters)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
         }
 
-        
         $actscount = 0;
         $acts = null;
         if(session()->exists('movieid')){
@@ -102,7 +112,12 @@ class EbookController extends Controller
             $conversionprogress = 100;
         }
 
-        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'conversionprogress'=>$conversionprogress]);
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
+
+
+        return view('webapp.ebook', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'conversionprogress'=>$conversionprogress, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
 
     public function content(Request $request){
@@ -131,6 +146,17 @@ class EbookController extends Controller
     
     public function extract(){
        
+    }
+
+    public function update(Request $request){
+        $ebookid = session()->get('ebookid');
+        $ebook = Ebook::find($ebookid);
+        $ebook->name = $request->name;
+        $ebook->author = $request->author;
+        $ebook->publisher = $request->publisher;
+        $ebook->publish_date = $request->publish_date;
+        $ebook->save();
+        return redirect('/ebook/'.$ebookid);
     }
 
     

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Chapter;
 use App\Models\Ebook;
 use App\Models\Act;
+use App\Models\Message;
 use App\Models\Page;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChapterController extends Controller
 {
@@ -54,9 +56,14 @@ class ChapterController extends Controller
             $actscount = $acts->count();
         }
 
+        
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
+
         $chapterpages = Page::where('chapter_id', $chapterid)->get();
 
-        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'nxtchp'=>$nxtchp, 'newchapter'=>$newchapter, 'chapterpages'=>$chapterpages, 'actscount'=>$actscount, 'acts'=>$acts]);
+        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'nxtchp'=>$nxtchp, 'newchapter'=>$newchapter, 'chapterpages'=>$chapterpages, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
     
     public function write(Request $request){

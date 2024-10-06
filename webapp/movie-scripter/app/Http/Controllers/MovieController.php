@@ -7,41 +7,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ebook;
 use App\Models\Act;
+use App\Models\Message;
 use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    public function overview(){
-        $ebookid = session()->get('ebookid');
-        $ebookpages=[];
-        $ebookchapters=[];
-        $ebookcharacters=[];
-        $totalebookpages = 0;
-        $totalebookchapters = 0;
-
-        $ebooks = User::with('ebooks')->get();
-        $ebookdata = Ebook::where('id', $ebookid)->first();
-        $ebooksdata = Ebook::ebooksData();
-
-        if(session()->exists('ebookid')){
-            $ebookpages = $ebooksdata[0];
-            $ebookchapters = $ebooksdata[1];
-            $ebookcharacters = $ebooksdata[2];
-            $totalebookpages = $ebookpages->count();
-            $totalebookchapters = $ebookchapters->count();
-            $totalebookcharacters = $ebookcharacters->count();
-        }
-
-        $actscount = 0;
-        $acts = null;
-        if(session()->exists('movieid')){
-            $movieid = session()->get('movieid');
-            $acts = Act::where('movie_id', $movieid)->get();
-            $actscount = $acts->count();
-        }
-
-        return view('webapp.questions', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
-    }
 
     public function formula(){
         $ebookid = session()->get('ebookid');
@@ -85,8 +55,11 @@ class MovieController extends Controller
                 $actscount = $actdata->count();
             }
 
+            $messagescount =0;
+            $messages = Message::where('receiver', Auth::user()->id)->get();
+            $messagescount = $messages->count();
 
-            return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'actscount'=>$actscount, 'actdata'=>$actdata, 'moviedata'=>$moviedata, 'actscount'=>$actscount, 'acts'=>$acts]);
+            return view('webapp.formula', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'actscount'=>$actscount, 'actdata'=>$actdata, 'moviedata'=>$moviedata, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
         }
         else
         {

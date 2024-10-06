@@ -11,12 +11,11 @@ use App\Models\Act;
 use App\Models\ActingLines;
 use App\Models\Archetype;
 use App\Models\Character;
+use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 
 class ActController extends Controller
 {
-    public function overview(){
-        return view('webapp.acts', ['test'=>'test']);
-    }
     public function read(Request $request){
         $ebookid = session()->get('ebookid');
         $ebookpages=[];
@@ -52,7 +51,11 @@ class ActController extends Controller
 
         $archetypedata = Archetype::where('act_id', $actid)->first();
         
-        return view('webapp.act', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata, 'plotsdata'=>$plotsdata]);
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
+
+        return view('webapp.act', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata, 'plotsdata'=>$plotsdata, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
 
 
@@ -91,8 +94,11 @@ class ActController extends Controller
         $plotsdata = Plot::with('plotroles')->with('actinglines')->where('act_id', $actid)->get();
         $archetypedata = Archetype::where('act_id', $actid)->first();
         
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
         
-        return view('webapp.actor-script', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata, 'plotsdata'=>$plotsdata, 'maincharacterdata'=>$maincharacterdata]);
+        return view('webapp.actor-script', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'actdata'=>$actdata, 'archetypedata'=>$archetypedata, 'plotsdata'=>$plotsdata, 'maincharacterdata'=>$maincharacterdata, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
 
 

@@ -68,12 +68,14 @@
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Extract content from word or pdf">
                     <a class="btn btn-success text-white btnopenextract" ><i class="mdi mdi-book"></i></a>
                   </li>
+                  @if($ebookscount>1)
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete e-book">
                   <form method="post" class="delform" action="{{ route('delete.ebook') }}">@csrf
                     <input type="hidden" name="ebook_id" value="{{ $ebookdata->id }}">
                     <button class="btn btn-danger text-white" type="submit"><i class="mdi mdi-trash-can"></i></button>
                   </form>
                   </li>
+                  @endif
                 </ul>
               </nav>
             </div>
@@ -90,12 +92,14 @@
               </div>
               <div class="col-lg-4 col-md-12 col-sm-12 grid-margin stretch-card">
                 <div class="card">
+                <form method="post" action="{{ route('ebook.update') }}">@csrf
                   <div class="card-body">
                     <h4 class="card-title">
                       <table class="table">
                         <tr>
                           <td>Pages <span class="badge badge-primary">{{$totalebookpages}}</span></td>
                           <td>Chapters <span class="badge badge-danger">{{$totalebookchapters}}</span></td>
+                          <td><button type="submit" class="btn btn-default btn-sm" data-bs-toggle="tooltip" title="Save changes"><i class="fa fa-save"></i></button></td>
                         </tr>
                       </table>
                     </h4>
@@ -103,16 +107,20 @@
                       <table class="table table-striped">
                           <tbody>
                             <tr>
+                              <td>Title</td>
+                              <td><input type="text" name="name" value="{{ $ebookdata->name }}" class="form form-control" style="background:transparent; border:none;" required></td>
+                            </tr>
+                            <tr>
                               <td>Author</td>
-                              <td>{{ $ebookdata->author }}</td>
+                              <td><input type="text" name="author" value="{{ $ebookdata->author }}" class="form form-control" style="background:transparent; border:none;" required></td>
                             </tr>
                             <tr>
                               <td>Publisher</td>
-                              <td>{{ $ebookdata->publisher }}</td>
+                              <td><input type="text" name="publisher" value="{{ $ebookdata->publisher }}" class="form form-control" style="background:transparent; border:none;" required></td>
                             </tr>
                             <tr>
                               <td>Publish date</td>
-                              <td></td>
+                              <td><input type="date" name="publish_date" value="{{ $ebookdata->publish_date }}" class="form form-control" style="background:transparent; border:none;" required></td>
                             </tr>
                           </tbody>
                       </table>
@@ -122,6 +130,7 @@
                       <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $conversionprogress }}%" aria-valuenow="{{ $conversionprogress }}" aria-valuemin="0" aria-valuemax="100" bis_skin_checked="1"></div>
                     </div>
                   </div>
+                  </form>
                 </div>
               </div>
             </div>

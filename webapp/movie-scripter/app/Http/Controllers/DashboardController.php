@@ -10,6 +10,8 @@ use App\Models\Archetype;
 use App\Models\ActingLines;
 use App\Models\Ebook;
 use App\Http\Traits\InitialTrait;
+use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -112,7 +114,10 @@ class DashboardController extends Controller
             $chaptercheck = 0;
         }
 
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
 
-        return view('webapp.dashboard', ['ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'actscount'=>$actscount, 'acts'=>$acts, 'completionprogress'=>$completionprogress, 'archetypescount'=>$archetypescount, 'plotscount'=>$plotscount, 'linescounts'=>$linescounts, 'chaptercheck'=>$chaptercheck, 'ebookid'=>$ebookid]);
+        return view('webapp.dashboard', ['ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'actscount'=>$actscount, 'acts'=>$acts, 'completionprogress'=>$completionprogress, 'archetypescount'=>$archetypescount, 'plotscount'=>$plotscount, 'linescounts'=>$linescounts, 'chaptercheck'=>$chaptercheck, 'ebookid'=>$ebookid, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
 }

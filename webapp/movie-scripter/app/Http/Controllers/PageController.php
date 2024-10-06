@@ -7,7 +7,9 @@ use App\Models\Page;
 use App\Models\Act;
 use App\Models\Chapter;
 use App\Models\Ebook;
+use App\Models\Message;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -58,7 +60,11 @@ class PageController extends Controller
             $actscount = $acts->count();
         }
 
-        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata, 'previouspage'=>$previouspage, 'nextpage'=>$nextpage, 'nxtpg'=>$nxtpg, 'newpage'=>$newpage, 'chapterdata'=>$chapterdata, 'countchapters'=>$countchapters, 'actscount'=>$actscount, 'acts'=>$acts]);
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
+
+        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata, 'previouspage'=>$previouspage, 'nextpage'=>$nextpage, 'nxtpg'=>$nxtpg, 'newpage'=>$newpage, 'chapterdata'=>$chapterdata, 'countchapters'=>$countchapters, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
     
     public function write(Request $request){

@@ -13,7 +13,9 @@ use App\Models\ActingLines;
 use App\Models\PlotRole;
 use App\Models\Chapter;
 use App\Models\Character;
+use App\Models\Message;
 use App\Models\Movie;
+use Illuminate\Support\Facades\Auth;
 
 class ArchetypeController extends Controller
 {
@@ -60,8 +62,12 @@ class ArchetypeController extends Controller
                 $acts = Act::where('movie_id', $movieid)->get();
                 $actscount = $acts->count();
             }
+            
+            $messagescount =0;
+            $messages = Message::where('receiver', Auth::user()->id)->get();
+            $messagescount = $messages->count();
 
-            return view('webapp.archetypes', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'countarchetypes'=>$countarchetypes, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts]);
+            return view('webapp.archetypes', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'countarchetypes'=>$countarchetypes, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
         }
         else
         {
@@ -116,7 +122,13 @@ class ArchetypeController extends Controller
                 $acts = Act::where('movie_id', $movieid)->get();
                 $actscount = $acts->count();
             }
-            return view('webapp.archetype', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts, 'actchapters'=>$actchapters, 'actchapterstotal'=>$actchapterstotal]);
+
+            
+            $messagescount =0;
+            $messages = Message::where('receiver', Auth::user()->id)->get();
+            $messagescount = $messages->count();
+
+            return view('webapp.archetype', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts, 'actchapters'=>$actchapters, 'actchapterstotal'=>$actchapterstotal, 'messagescount'=>$messagescount, 'messages'=>$messages]);
         }
         else
         {
