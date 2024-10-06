@@ -56,8 +56,7 @@ class EbookController extends Controller
         session()->put('ebookid', $ebookid);
 
         $ebooks = User::with('ebooks')->get();
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
 
         if(session()->exists('ebookid')){
@@ -74,8 +73,7 @@ class EbookController extends Controller
         $acts = null;
         if(session()->exists('movieid')){
             $movieid = session()->get('movieid');
-            $acts = Act::query();
-            $acts = $acts->where('movie_id', $movieid)->get();
+            $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
         }
 

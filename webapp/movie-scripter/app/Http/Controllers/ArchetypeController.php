@@ -23,8 +23,7 @@ class ArchetypeController extends Controller
         $totalebookchapters = 0;
 
         $ebooks = User::with('ebooks')->get();
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
 
         if(session()->exists('ebookid')){
@@ -41,8 +40,7 @@ class ArchetypeController extends Controller
             foreach($movieloop as $movie){ $countmovies++; }
             if($countmovies > 0)
             {
-                $movieloop = Movie::query();
-                $moviedata = $movieloop->where('ebook_id', $ebookid)->first();
+                $moviedata = Movie::where('ebook_id', $ebookid)->first();
                 session()->put('movieid', $moviedata->id);
             }
 
@@ -55,8 +53,7 @@ class ArchetypeController extends Controller
             $acts = null;
             if(session()->exists('movieid')){
                 $movieid = session()->get('movieid');
-                $acts = Act::query();
-                $acts = $acts->where('movie_id', $movieid)->get();
+                $acts = Act::where('movie_id', $movieid)->get();
                 $actscount = $acts->count();
             }
 
@@ -94,13 +91,11 @@ class ArchetypeController extends Controller
             $totalebookcharacters = $ebookcharacters->count();
 
             $countmovies = 0;
-            $movieloop = Movie::query();
-            $movieloop = $movieloop->where('ebook_id', $ebookid)->get()->toArray();
+            $movieloop = Movie::where('ebook_id', $ebookid)->get()->toArray();
             foreach($movieloop as $movie){ $countmovies++; }
             if($countmovies > 0)
             {
-                $movieloop = Movie::query();
-                $moviedata = $movieloop->where('ebook_id', $ebookid)->first();
+                $moviedata = Movie::where('ebook_id', $ebookid)->first();
                 session()->put('movieid', $moviedata->id);
             }
 
@@ -111,8 +106,7 @@ class ArchetypeController extends Controller
             $acts = null;
             if(session()->exists('movieid')){
                 $movieid = session()->get('movieid');
-                $acts = Act::query();
-                $acts = $acts->where('movie_id', $movieid)->get();
+                $acts = Act::where('movie_id', $movieid)->get();
                 $actscount = $acts->count();
             }
             return view('webapp.archetype', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'countmovies'=>$countmovies, 'archetypesdata'=>$archetypesdata, 'actscount'=>$actscount, 'acts'=>$acts]);
@@ -127,10 +121,8 @@ class ArchetypeController extends Controller
     public function write(Request $request){
         $movieid = session()->get('movieid');
         $ebookid = session()->get('ebookid');
-        $maincharacterdata = Character::query();
-        $maincharacterdata = $maincharacterdata->where('ebook_id', $ebookid)->where('main_character', 1)->first();
-
-        
+        $maincharacterdata = Character::where('ebook_id', $ebookid)->where('main_character', 1)->first();
+   
 
         $act = New Act();
         $act->act_number = $request->act_number;

@@ -19,8 +19,7 @@ class ChapterController extends Controller
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
 
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
 
         $ebooksdata = Ebook::ebooksData();
         if(session()->exists('ebookid'))
@@ -32,16 +31,14 @@ class ChapterController extends Controller
 
         $chapterid = $request->id;        
         session()->put('chapterid', $chapterid);
-        $chapterdata = Chapter::query();
-        $chapterdata = $chapterdata->where('id', $chapterid)->first();
+        $chapterdata = Chapter::where('id', $chapterid)->first();
         $previouschapter = $chapterdata->chapter_number - 1;
         $nextchapter = $chapterdata->chapter_number + 1;
 
 
         $nxtchp = 0;
-        $chapterdatachk = Chapter::query();
-        $chaptercheck = $chapterdatachk->where('ebook_id', $ebookid)->latest('id')->first();
-        $lastchapter = $chaptercheck->chapter_number;
+        $chapterdatachk = Chapter::where('ebook_id', $ebookid)->latest('id')->first();
+        $lastchapter = $chapterdatachk->chapter_number;
         $newchapter = $lastchapter + 1;
         if($nextchapter<=$lastchapter)
         {
@@ -53,13 +50,11 @@ class ChapterController extends Controller
         $acts = null;
         if(session()->exists('movieid')){
             $movieid = session()->get('movieid');
-            $acts = Act::query();
-            $acts = $acts->where('movie_id', $movieid)->get();
+            $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
         }
 
-        $chapterpages = Page::query();
-        $chapterpages = $chapterpages->where('chapter_id', $chapterid)->get();
+        $chapterpages = Page::where('chapter_id', $chapterid)->get();
 
         return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'nxtchp'=>$nxtchp, 'newchapter'=>$newchapter, 'chapterpages'=>$chapterpages, 'actscount'=>$actscount, 'acts'=>$acts]);
     }
@@ -137,8 +132,7 @@ class ChapterController extends Controller
 
     public function metadata(Request $request){
         $chapterid = session()->get('chapterid');
-        $responses = Chapter::query();
-        $responses = $responses->where('id', $chapterid)->first();
+        $responses = Chapter::where('id', $chapterid)->first();
         $title = $responses->title;
         $chapter_number = $responses->chapter_number;
         return response()->json([

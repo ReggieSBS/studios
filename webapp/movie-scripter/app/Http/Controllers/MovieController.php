@@ -20,8 +20,7 @@ class MovieController extends Controller
         $totalebookchapters = 0;
 
         $ebooks = User::with('ebooks')->get();
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
 
         if(session()->exists('ebookid')){
@@ -37,8 +36,7 @@ class MovieController extends Controller
         $acts = null;
         if(session()->exists('movieid')){
             $movieid = session()->get('movieid');
-            $acts = Act::query();
-            $acts = $acts->where('movie_id', $movieid)->get();
+            $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
         }
 
@@ -55,8 +53,7 @@ class MovieController extends Controller
         $moviedata = null;
 
         $ebooks = User::with('ebooks')->get();
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
 
         if(session()->exists('ebookid')){
@@ -77,12 +74,10 @@ class MovieController extends Controller
             $acts = null;
             if($countmovies > 0)
             {
-                $movieloop = Movie::query();
-                $moviedata = $movieloop->where('ebook_id', $ebookid)->first();
+                $moviedata = Movie::where('ebook_id', $ebookid)->first();
                 session()->put('movieid', $moviedata->id);
 
-                $acts = Act::query();
-                $acts = $acts->where('movie_id', $moviedata->id)->get();
+                $acts = Act::where('movie_id', $moviedata->id)->get();
                 $actscount = $acts->count();
 
                 $actdata = Act::select('acts.id', 'acts.movie_id', 'acts.act_number', 'acts.title', 'acts.description', 'archetypes.act_id', 'archetypes.archetype_name', 'archetypes.id as archetypeid')->where('acts.movie_id', $moviedata->id)->leftJoin('archetypes', 'archetypes.act_id', '=', 'acts.id')->get();

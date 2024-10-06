@@ -30,7 +30,7 @@
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Add Plot">
-                    <button class="btn btn-secondary text-white btnopenextract" type="button" data-bs-toggle="modal" data-bs-target="#plotModal"><i class="mdi mdi-plus"></i></button>
+                    <button class="btn btn-secondary text-white" type="button" data-bs-toggle="modal" data-bs-target="#plotModal"><i class="mdi mdi-plus"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete act">
                     <button class="btn btn-danger text-white" type="button"><i class="mdi mdi-trash-can"></i></button>
@@ -41,17 +41,31 @@
                 </ul>
               </nav>
             </div>
-            <div class="row">
+
+
+            @foreach($plotsdata as $plot)
+            <div class="row mb-5">
               <div class="col-lg-4">
+              <form method="post" action="{{ route('plot.update') }}" enctype="multipart/form-data">
+              @csrf
                   <div class="card" style="height:250px;">
+                  <input type="hidden" name="act_id" value="{{ $actdata->id }}">
+                  <input type="hidden" name="plot_id" value="{{ $plot->id }}">
                     <div class="card-body">
-                      <h4 style="width:100%;">PLOT 1 <a class="btn btn-sm btn-secondary" style="width:50px !important; float:right; margin-top:-5px;"><i class="fa fa-save"></i></a></h4>
+                      <h4 style="width:100%;">PLOT <input type="number" name="plot_number" value="{{ $plot->plot_number }}" style="background:transparent; border:none; width:75px !important;" required>  <button type="submit" class="btn btn-sm btn-secondary" style="width:50px !important; float:right; margin-top:-5px;"><i class="fa fa-save"></i></button></h4>
                       <hr>
+                      <input type="text" class="form form-control" name="title" style="background:transparent; border:none; font-size:20px; font-weight:bold;" value="{{ $plot->title }}" required><br/>
+                      <textarea class="form form-control" name="plot_desc" required>{{ $plot->description }}</textarea>
                     </div>
                   </div>
+              </form>
               </div>
               <div class="col-lg-8">
+              <form method="post" action="{{ route('plotrole.write') }}" enctype="multipart/form-data">
+                @csrf
                   <div class="card" style="position:relative;height:250px;">
+                  <input type="hidden" name="plot_id" value="{{ $plot->id }}">
+                  <input type="hidden" name="act_id" value="{{ $actdata->id }}">
                     <span class="fa fa-caret-left text-white" style="font-size:190px; position:absolute; top:15%; left:-60px;"></span>
                     <div class="card-body">
                       <table class="table table-striped">
@@ -60,11 +74,26 @@
                             <td>
                               <select class="form form-control" name="character_id" required>
                                 <option value="" disabled selected>Choose Characater...</option>
+                                @foreach($ebookcharacters as $character)
+                                  <option value="{{ $character->id }}">{{ $character->name }}</option>
+                                @endforeach
                               </select>
                             </td>
                             <td>
-                              <select class="form form-control" name="character_id" required>
+                              <select class="form form-control" name="archetype" required>
                                 <option value="" disabled selected>Choose Archetype...</option>
+                                  <option>hero</option>
+                                  <option>outlaw</option>
+                                  <option>sage</option>
+                                  <option>caregiver</option>
+                                  <option>creator</option>
+                                  <option>explorer</option>
+                                  <option>innocent</option>
+                                  <option>jetser</option>
+                                  <option>lover</option>
+                                  <option>magician</option>
+                                  <option>ruler</option>
+                                  <option value="regular_person">regular person</option>
                               </select>
                             </td>
                             <td>
@@ -86,12 +115,58 @@
                       </table>
                     </div>
                   </div>
+              </form>
               </div>
             </div>
+            @endforeach
+
+
+
+
+
+
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           @include('webapp.footer')
+          
+
+          <div class="modal" id="plotModal">
+            <div class="modal-dialog">
+              <form method="post" action="{{ route('plot.write') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                  <input type="hidden" name="act_id" value="{{ $actdata->id }}">
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">Create Plot</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-4">
+                        <h6 class="small-text mt-2">Plot Number</h6>
+                        <input type="text" name="plot_number" class="form form-control" placeholder="1" required>
+                      </div>
+                      <div class="col-8">
+                        <h6 class="small-text mt-2">Title</h6>
+                        <input type="text" name="title" class="form form-control" placeholder="John goes camping" required>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="small-text mt-2" style="width:100%;">What happens in this plot?</h6>
+                        <textarea class="form form-control" name="plot_desc" required></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Create Plot</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
           <!-- partial -->
         </div>
         <!-- main-panel ends -->

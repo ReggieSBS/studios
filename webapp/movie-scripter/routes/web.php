@@ -88,5 +88,8 @@ Route::get('/acts', [ActController::class, 'overview'])->middleware('auth')->nam
 Route::get('/act/{id}', [ActController::class, 'read'])->middleware('auth')->name('movie.act');
 
 // PLOTS
+Route::post('/plot/write', [ActController::class, 'write'])->middleware('auth')->name('plot.write');
+Route::post('/plot/update', [ActController::class, 'update'])->middleware('auth')->name('plot.update');
+Route::post('/plotrole/write', [ActController::class, 'writerole'])->middleware('auth')->name('plotrole.write');
 
 // ROLES

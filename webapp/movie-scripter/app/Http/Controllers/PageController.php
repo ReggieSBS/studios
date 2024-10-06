@@ -18,8 +18,7 @@ class PageController extends Controller
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
 
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
 
         $ebooksdata = Ebook::ebooksData();
         if(session()->exists('ebookid'))
@@ -31,15 +30,13 @@ class PageController extends Controller
 
         $pageid = $request->id;        
         session()->put('pageid', $pageid);
-        $pagedata = Page::query();
-        $pagedata = $pagedata->where('id', $pageid)->first();
+        $pagedata = Page::where('id', $pageid)->first();
         $previouspage = $pagedata->page_number - 1;
         $nextpage = $pagedata->page_number + 1;
 
 
         $nxtpg = 0;
-        $pagechk = Page::query();
-        $pagechk = $pagechk->where('ebook_id', $ebookid)->latest('id')->first();
+        $pagechk = Page::where('ebook_id', $ebookid)->latest('id')->first();
         $lastpage = $pagechk->page_number;
         $newpage = $lastpage + 1;
         if($lastpage<$nextpage)
@@ -57,8 +54,7 @@ class PageController extends Controller
         $acts = null;
         if(session()->exists('movieid')){
             $movieid = session()->get('movieid');
-            $acts = Act::query();
-            $acts = $acts->where('movie_id', $movieid)->get();
+            $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
         }
 
@@ -106,8 +102,7 @@ class PageController extends Controller
     
     public function content(Request $request){
         $pageid = session()->get('pageid');
-        $responses = Page::query();
-        $responses = $responses->where('id', $pageid)->first();
+        $responses = Page::where('id', $pageid)->first();
         $value = $responses->content;
         return response()->json([
             'responses' => $value

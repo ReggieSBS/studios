@@ -19,8 +19,7 @@ class CharacterController extends Controller
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
 
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
 
         $ebooksdata = Ebook::ebooksData();
         if(session()->exists('ebookid'))
@@ -49,8 +48,7 @@ class CharacterController extends Controller
         $acts = null;
         if(session()->exists('movieid')){
             $movieid = session()->get('movieid');
-            $acts = Act::query();
-            $acts = $acts->where('movie_id', $movieid)->get();
+            $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
         }
 
@@ -68,8 +66,7 @@ class CharacterController extends Controller
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
 
-        $ebookdata = Ebook::query();
-        $ebookdata = $ebookdata->where('id', $ebookid)->first();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
 
         $ebooksdata = Ebook::ebooksData();
         if(session()->exists('ebookid'))
@@ -87,8 +84,7 @@ class CharacterController extends Controller
         $acts = null;
         if(session()->exists('movieid')){
             $movieid = session()->get('movieid');
-            $acts = Act::query();
-            $acts = $acts->where('movie_id', $movieid)->get();
+            $acts = Act::where('movie_id', $movieid)->get();
             $actscount = $acts->count();
         }
 

@@ -198,6 +198,7 @@
             </div>
             <div class="col-12 text-center">
             <h6 class="small-text mt-2">Current archetype of the leading actor</h6>
+            
               <table class="table">
                   <tr>
                     <Td>
@@ -216,7 +217,7 @@
                   <tr>
                     <Td>
                       <img src="{{asset('/images/archetypes/caregiver.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Care Giver">
-                      <input type="radio" name="caregiver" value="sage" style="zoom:1.5; position:absolute;">
+                      <input type="radio" name="archetype" value="caregiver" style="zoom:1.5; position:absolute;">
                     </Td>
                     <Td>
                       <img src="{{asset('/images/archetypes/creator.png')}}" style="height:60px; width:60px;" data-bs-toggle="tooltip" title="Creator / Artist">
@@ -257,6 +258,9 @@
                   </tr>
               </table>
             </div>
+
+            
+
             <div class="col-12 mt-2">
               <h6 class="small-text mt-2" style="width:100%;">Why choose this archetype with this act?</h6>
               <textarea name="why" class="form form-control" required></textarea>
@@ -288,6 +292,12 @@
     </form>
   </div>
 </div>
+
+
+
+
+
+
 
 
 
