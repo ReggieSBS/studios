@@ -51,12 +51,12 @@
                   <div class="card-body">
                     <h4>Act {{ $archetypesdata->act_number }}</h4>
                     <p>During Act {{ $archetypesdata->act_number }}: {{ $archetypesdata->title }}, {{ $archetypesdata->name}} takes on the role of the archetype: {{$archetypesdata->archetype_name }}.</p>
-                    <p>The act bring reggie duisterhof @if($archetypesdata->closer_to_goal == 1)more @else less @endif close to his/her goal because {{ $archetypesdata->answer }}.</p>
-                    <a class="btn btn-default btn-sm" style="width:100px !important;"><i class="fa fa-edit"></i> change</a>
+                    <p>The act bring {{ $archetypesdata->name}} @if($archetypesdata->closer_to_goal == 1)more @else less @endif close to his/her goal because {{ $archetypesdata->answer }}.</p>
+                    <a class="btn btn-default btn-sm" style="width:100px !important;" data-bs-toggle="modal" data-bs-target="#archetypeUpdateModal"><i class="fa fa-edit"></i> change</a>
                     <a class="btn btn-secondary btn-sm" style="width:125px !important; float:right;" href="/act/{{ $archetypesdata->act_id }}">Visit act <i class="mdi mdi-arrow-right"></i></a>
                   </div>
                 </div>
-
+                
                 <div class="card mt-2">
                   <div class="card-header">
                     <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#archetypeChapterModal"><span class="fa fa-plus-circle"></span></a>
@@ -88,6 +88,63 @@
     <!-- container-scroller -->
     @include('webapp.modals')
 
+
+    
+    
+    <div class="modal" id="archetypeUpdateModal">
+      <div class="modal-dialog">
+        <form method="post" action="{{ route('archetype.update') }}" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-content">
+            <input type="hidden" name="archetype_id" value="{{ $archetypesdata->id }}">
+            <input type="hidden" name="act_id" value="{{ $archetypesdata->act_id }}">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Change Act</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-4">
+                  <h4>Act number</h4>
+                  <input type="number" class="form form-control" name="act_number" value="{{$archetypesdata->act_number}}" required>
+                </div>
+                <div class="col-lg-8">
+                  <h4>Title</h4>
+                  <input type="number" class="form form-control" name="title" value="{{$archetypesdata->title}}" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                    <table>
+                      <tr>
+                        <td style="padding-right:15px;">
+                            <input type="checkbox" name="closer_to_goal" value="1" @if($archetypesdata->closer_to_goal == 1) checked @endif>
+                        </td>
+                        <td>
+                          This act brings the lead actor closer to it's goal.
+                        </td>
+                      </tr>
+                    </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h4>Why brings this act the lead actor closer the it's goal, or not?</h4>
+                  <textarea name="answer" class="form form-control" required>{{$archetypesdata->answer}}</textarea>
+                </div>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Save changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
     
     <div class="modal" id="archetypeChapterModal">
       <div class="modal-dialog">
@@ -117,7 +174,7 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success">Connect pages</button>
+              <button type="submit" class="btn btn-success">Connect chapter</button>
             </div>
           </div>
         </form>

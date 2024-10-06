@@ -83,6 +83,7 @@ Route::get('/archetypes', [ArchetypeController::class, 'overview'])->middleware(
 Route::post('/archetype/create', [ArchetypeController::class, 'write'])->middleware('auth')->name('archetype.write');
 Route::get('/archetype/{id}', [ArchetypeController::class, 'read'])->middleware('auth')->name('archetype.read');
 Route::post('/archetype/chapter', [ArchetypeController::class, 'chapter'])->middleware('auth')->name('archetype.chapter');
+Route::post('/archetype/update', [ArchetypeController::class, 'update'])->middleware('auth')->name('archetype.update');
 
 // ACTS
 Route::get('/acts', [ActController::class, 'overview'])->middleware('auth')->name('movie.acts');

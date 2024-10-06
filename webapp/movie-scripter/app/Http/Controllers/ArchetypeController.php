@@ -166,4 +166,40 @@ class ArchetypeController extends Controller
         return redirect('/archetype/'.$archetype_id);
     }
 
+
+
+    
+    public function update(Request $request){
+        $movieid = session()->get('movieid');
+        $ebookid = session()->get('ebookid');
+        $maincharacterdata = Character::where('ebook_id', $ebookid)->where('main_character', 1)->first();
+   
+        $act_id = $request->act_id;
+        $archetype_id = $request->archetype_id;
+
+        if($request->closer_to_goal)
+        {
+            $closer_to_goal = 1;
+        }
+        else
+        {
+            $closer_to_goal = 0;
+        }
+
+        $act = Act::find($act_id);
+        $act->act_number = $request->act_number;
+        if($act->save())
+        {
+            $archetype = Archetype::find($archetype_id);
+            $archetype->archetype_name = $request->archetype;
+            $archetype->closer_to_goal = $closer_to_goal;
+            $archetype->answer = $request->answer;
+            if($archetype->save())
+            {
+                return redirect(route('movie.archetypes'))->with("success","Archetype and act created");
+            }
+        }
+        
+    }
+
 }
