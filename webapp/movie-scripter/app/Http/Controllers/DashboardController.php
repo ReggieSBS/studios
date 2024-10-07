@@ -14,6 +14,7 @@ use App\Models\Chapter;
 use App\Models\Character;
 use App\Models\Message;
 use App\Models\Page;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -190,6 +191,9 @@ class DashboardController extends Controller
         $totalebookchapters = 0;
         $totalebookcharacters = 0;
         $ebooks = User::with('ebooks')->get();
+        $subscription = Subscription::select('user_subscriptions.licence_id','licences.title', 'licences.license_nr', 'licences.price', 'licences.created_at')->where('user_id', Auth::user()->id)->leftJoin('licences', 'licences.id', '=', 'user_subscriptions.licence_id')->first();
+
+
         $ebookscount = Ebook::where('user_id', Auth::user()->id)->get()->count();
         $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
@@ -217,7 +221,7 @@ class DashboardController extends Controller
         $messages = Message::where('receiver', Auth::user()->id)->get();
         $messagescount = $messages->count();
 
-        return view('webapp.subscription', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+        return view('webapp.subscription', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages, 'subscription'=>$subscription]);
     }
 
 

@@ -21,9 +21,7 @@ return new class extends Migration
             $table->integer('high_risk')->nullable(false)->default(0);
             $table->integer('disabled')->nullable(false)->default(0);
             $table->date('disable_date')->nullable(true);
-            $table->string('file_name')->nullable(false);
-            $table->string('file')->nullable(false);
-            $table->string('file_extension')->nullable(false);
+            $table->date('accepted')->nullable(true)->default(1);
             $table->timestamps();
         });
     }

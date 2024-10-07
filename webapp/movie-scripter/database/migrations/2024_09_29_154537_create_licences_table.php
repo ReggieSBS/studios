@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('licences', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable(false);
-            $table->string('description')->nullable(false);
+            $table->string('license_nr')->nullable(false);
             $table->double('price')->nullable(false)->default(0);
             $table->timestamps();
         });
