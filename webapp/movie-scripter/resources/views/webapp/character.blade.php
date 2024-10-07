@@ -56,6 +56,7 @@
                     <div class="clearfix">
                       <h4 class="card-title float-start" style="width:100%;">Images <button class="btn btn-sm btn-default" type="submit" style="width:40px !important; float:right; margin-top:-5px;" data-bs-toggle="tooltip" title="Upload images"><span class="fa fa-upload" style="float:right;"></span></button></h4>
                     </div>
+                    <img src="{{ $characterdata->profile_image }}" class="img-fluid">
                   </div>
                 </div>
 
@@ -134,7 +135,7 @@
                           <Tr>
                             <Td>
                               <div class="nav-profile-img" bis_skin_checked="1">
-                              <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
+                              <img src="{{ $characterdata->profile_image }}" width="40" style="border-radius:50%;" alt="profile">
                               <span class="availability-status online"></span>
                               </div>
                             </Td>
