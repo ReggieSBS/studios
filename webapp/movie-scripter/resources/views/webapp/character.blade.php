@@ -37,7 +37,7 @@
                     <a class="btn btn-secondary text-white" href="/ebook/{{ $ebookdata->id }}"><i class="mdi mdi-book"></i></a>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Analyze character">
-                    <button class="btn btn-success text-white" type="button"><i class="mdi mdi-robot"></i></button>
+                    <button class="btn btn-success text-white" type="button" data-bs-toggle="modal" data-bs-target="#characterAI"><i class="mdi mdi-robot"></i></button>
                   </li>
                   <li class="actionbar_item" aria-current="page" data-bs-toggle="tooltip" title="Delete character">
                   <form method="post" class="delform" action="{{ route('delete.character') }}">@csrf

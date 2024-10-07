@@ -52,30 +52,6 @@
 
 
 
-<!-- The Modal -->
-<div class="modal" id="askAI">
-  <div class="modal-dialog">
-    <form>
-      @csrf
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title"><i class="mdi mdi-18px mdi-robot"></i> Mosci AI</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div id="ai-request"></div>
-
-      </div>
-    </form>
-  </div>
-</div>
-
-
-
-
-
 <div class="modal" id="pageModal">
   <div class="modal-dialog">
     <form method="post" action="{{ route('page.write') }}" enctype="multipart/form-data">
@@ -316,14 +292,6 @@
 
 
 
-
-
-
-
-
-
-
-
 @if($ebookdata)
 <div class="ui-modal draggable" id="extractmodal">
   <div class="resizable">
@@ -342,3 +310,97 @@
   </div>
 </div>
 @endif
+
+
+
+
+
+
+
+<!-- ALL AI MODALS -->
+
+<div class="modal" id="askAI">
+  <div class="modal-dialog">
+    <form>
+      @csrf
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><i class="mdi mdi-18px mdi-robot"></i> Mosci AI</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div id="ai-request"></div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="modal" id="chapterAI">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><i class="mdi mdi-18px mdi-robot"></i> Mosci Helps</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <a><div class="thought">Can you make a summary of this chapter?</div></a>
+        <a><div class="thought" style="float:right;">Can you define all characters in this chapter for me?</div></a>
+        <a><div class="thought" style="transform: rotate(-13deg);">Can you create images of the environment this chapter is mentioning?</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal" id="pageAI">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><i class="mdi mdi-18px mdi-robot"></i> Mosci Helps</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <a><div class="thought">Can you make a summary of this page?</div></a>
+        <a><div class="thought" style="float:right;">Can you define all characters in this page for me?</div></a>
+        <a><div class="thought" style="transform: rotate(-13deg);">Can you create images of the environment this page is mentioning?</div></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="modal" id="characterAI">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><i class="mdi mdi-18px mdi-robot"></i> Mosci Helps</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <a><div class="thought">Can you relate this character to all pages?</div></a>
+        <a><div class="thought" style="float:right;">Can you relate this character to all chapters?</div></a>
+        <a><div class="thought" style="transform: rotate(-13deg);">Can you analyze the book and define how this characters appears to look like?</div></a>
+
+        
+        <a><div class="thought">What is the personality of this character?</div></a>
+        <a><div class="thought" style="float:right;">What tries the character to accomplish?</div></a>
+        <a><div class="thought" style="transform: rotate(-5deg);">What happens when this character fails?</div></a>
+        <a><div class="thought" style="float:right;">Who's trying to stop this character to accomplish it's goals?</div></a>
+      </div>
+    </div>
+  </div>
+</div>
