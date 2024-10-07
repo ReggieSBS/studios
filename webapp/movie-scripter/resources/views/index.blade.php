@@ -217,7 +217,14 @@
     </div>
     <!-- // end .section -->
 
-
+    <div class="section bg-gradient">
+        <div class="container">
+            <div class="call-to-action">
+                <h2>MOVIE SCRIPTING REVOLUTIONIZED</h2>
+                <p style="color:#FFF;">Turning e-books into movies made easy and 100% faster</p>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -376,7 +383,6 @@
                 <p class="text-primary"><small><i>*Works For Everyone! </i></small></p>
             </div>
         </div>
-
     </div>
     <!-- // end .section -->
 

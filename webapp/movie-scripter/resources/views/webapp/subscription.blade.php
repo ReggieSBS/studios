@@ -34,7 +34,8 @@
             </div>
             
             <div class="row">
-              <div class="col-md-12 col-lg-5 col-sm-12 grid-margin stretch-card">
+              <div class="col-md-12 col-lg-5 col-sm-12">
+
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title" style="width:100%;">Subscription plan
@@ -72,7 +73,6 @@
 
                 <div class="card mt-2">
                   <div class="card-body">
-                    
                     <h4 class="card-title" style="width:100%;">Included
                     </h4>
                     <hr>
@@ -189,13 +189,16 @@
                         </tbody>
                       </table>
                       @endif
+
                     </div>
                   </div>
                 </div>
 
-
-
+                
               </div>
+
+
+              
               <div class="col-md-12 col-lg-7 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">

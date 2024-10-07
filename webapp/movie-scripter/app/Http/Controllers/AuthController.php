@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\RegisterEmailJob;
 use App\Mail\WelcomeEmail;
-use App\Models\License;
+use App\Models\Licenses;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,12 +51,12 @@ class AuthController extends Controller
         // RegisterEmailJob::dispatch($request->email, $request->name);
 
         $userid = $user->id;
-        $license = md5(microtime());
+        $licensenr = str()->random(10);
 
-        $license = New License();
+        $license = New Licenses();
         $license->title = $request->license_type;
-        $license->license_nr = $license;
-        $license->development = 0;
+        $license->license_nr = $licensenr;
+        $license->price = 0;
         $license->save();
         $license_id = $license->id;
         

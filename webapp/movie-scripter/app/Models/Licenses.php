@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class License extends Model
+class Licenses extends Model
 {
     use HasFactory;
-    protected $table = "user_subscriptions";
+    protected $table = "licences";
     
     public function license(){
         return $this->belongsToOne(License::class,'id','licence_id');
