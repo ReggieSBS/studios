@@ -33,8 +33,23 @@
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    <span>History</span> <i class="mdi mdi-clock-alert-outline icon-sm text-primary align-middle" style="text-shadow: 0px 0px 0px !important;"></i>  
                   </li>
+                  @if($last_character_seen)
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Visited: <a href="/character/{{ $last_character_seen->id }}" class="text-danger"><span>{{ $last_character_seen->name }}</span></a>
+                  </li>
+                  @endif
+                  @if($last_chapter_seen)
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Read Chapter: <a href="/chapter/{{ $last_chapter_seen->id }}" class="text-danger">nr. {{ $last_chapter_seen->chapter_number }} - <span>{{ $last_chapter_seen->title }}</span></a>
+                  </li>
+                  @endif
+                  @if($last_page_seen)
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Read Page: <a href="/page/{{ $last_page_seen->id }}" class="text-danger"><span>nr. {{ $last_page_seen->page_number }}</span></a>
+                  </li>
+                  @endif
                 </ul>
               </nav>
             </div>
@@ -48,7 +63,7 @@
                     <div style="position:relative; z-index:9">
                       <h4 class="font-weight-normal mb-3"> <i class="mdi mdi-plus float-end" style="position:absolute; font-size:120px; right:-35px; top:-50px;"></i>
                       </h4>
-                      <h2 class="mb-5 text-avatar" style="text-shadow: 0px -2px 3px #000;">New <br/><br/>project</h2>
+                      <h2 class="mb-5 text-avatar" style="text-shadow: 0px -2px 3px #000;">NEW <br/>project</h2>
                       <h6 class="card-text text-small" style="text-shadow: 0px 0px 5px #000;">Upload an e-book</h6>
                     </div>
                   </div>
@@ -130,7 +145,7 @@
                         <li>
                           <div class="form-check">
                             <label class="form-check-label">
-                              <input class="checkbox" type="checkbox" @if($ebookid != "") checked @endif> Upload an e-book </label>
+                              <input class="checkbox" type="checkbox" @if($ebookid != "") checked @endif> Upload or choose an e-book </label>
                           </div>
                           @if($ebookid != "")
                           <i class="text-success fa fa fa-check-circle" style="float: right; font-size: 20px; right: 15px; position: absolute;"></i>

@@ -10,7 +10,10 @@ use App\Models\Archetype;
 use App\Models\ActingLines;
 use App\Models\Ebook;
 use App\Http\Traits\InitialTrait;
+use App\Models\Chapter;
+use App\Models\Character;
 use App\Models\Message;
+use App\Models\Page;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -21,6 +24,14 @@ class DashboardController extends Controller
         // $ebooks = json_decode($ebooks);
 
         $completionprogress = 0;
+        $ebookid = session()->get('ebookid');
+        $movieid = session()->get('movieid');
+        $pageid = session()->get('pageid');
+        $chapterid = session()->get('chapterid');
+        $characterid = session()->get('characterid');
+        $last_page_seen = Page::where('id', $pageid)->first();
+        $last_chapter_seen = Chapter::where('id', $chapterid)->first();
+        $last_character_seen = Character::where('id', $characterid)->first();
 
 
         $movies = User::with('movies')->get();
@@ -31,8 +42,6 @@ class DashboardController extends Controller
         $ebookcharacters=[];
         $ebooksdata = "";
 
-        $ebookid = session()->get('ebookid');
-        $movieid = session()->get('movieid');
         $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
         
@@ -118,7 +127,7 @@ class DashboardController extends Controller
         $messages = Message::where('receiver', Auth::user()->id)->get();
         $messagescount = $messages->count();
 
-        return view('webapp.dashboard', ['ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'actscount'=>$actscount, 'acts'=>$acts, 'completionprogress'=>$completionprogress, 'archetypescount'=>$archetypescount, 'plotscount'=>$plotscount, 'linescounts'=>$linescounts, 'chaptercheck'=>$chaptercheck, 'ebookid'=>$ebookid, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+        return view('webapp.dashboard', ['ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'actscount'=>$actscount, 'acts'=>$acts, 'completionprogress'=>$completionprogress, 'archetypescount'=>$archetypescount, 'plotscount'=>$plotscount, 'linescounts'=>$linescounts, 'chaptercheck'=>$chaptercheck, 'ebookid'=>$ebookid, 'messagescount'=>$messagescount, 'messages'=>$messages, 'last_page_seen'=>$last_page_seen, 'last_chapter_seen'=>$last_chapter_seen, 'last_character_seen'=>$last_character_seen]);
     }
 
     
@@ -131,37 +140,26 @@ class DashboardController extends Controller
        
         $ebookid = session()->get('ebookid');
         $movieid = session()->get('movieid');
-        $conversionprogress = 0;
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
         $totalebookpages = 0;
         $totalebookchapters = 0;
+        $totalebookcharacters = 0;
 
         $ebooks = User::with('ebooks')->get();
         $ebookscount = Ebook::where('user_id', Auth::user()->id)->get()->count();
         $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
-        $ebookpages = $ebooksdata[0];
-        $ebookchapters = $ebooksdata[1];
-        $ebookcharacters = $ebooksdata[2];
-        $totalebookpages = $ebookpages->count();
-        $totalebookchapters = $ebookchapters->count();
-        $totalebookcharacters = $ebookcharacters->count();
-
-        if(count($ebookpages)>0)
+        if(session()->exists('ebookid'))
         {
-            $conversionprogress = $conversionprogress + 33;
+            $ebookpages = $ebooksdata[0];
+            $ebookchapters = $ebooksdata[1];
+            $ebookcharacters = $ebooksdata[2];
+            $totalebookpages = $ebookpages->count();
+            $totalebookchapters = $ebookchapters->count();
+            $totalebookcharacters = $ebookcharacters->count();
         }
-        if(count($ebookchapters)>0)
-        {
-            $conversionprogress = $conversionprogress + 33;
-        }
-        if(count($ebookcharacters)>0)
-        {
-            $conversionprogress = $conversionprogress + 33;
-        }
-
         $actscount = 0;
         $acts = null;
         if(session()->exists('movieid')){
@@ -175,7 +173,7 @@ class DashboardController extends Controller
         $messages = Message::where('receiver', Auth::user()->id)->get();
         $messagescount = $messages->count();
 
-        return view('webapp.account', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'conversionprogress'=>$conversionprogress, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+        return view('webapp.account', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
 
 
@@ -185,35 +183,25 @@ class DashboardController extends Controller
        
         $ebookid = session()->get('ebookid');
         $movieid = session()->get('movieid');
-        $conversionprogress = 0;
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
         $totalebookpages = 0;
         $totalebookchapters = 0;
-
+        $totalebookcharacters = 0;
         $ebooks = User::with('ebooks')->get();
         $ebookscount = Ebook::where('user_id', Auth::user()->id)->get()->count();
         $ebookdata = Ebook::where('id', $ebookid)->first();
         $ebooksdata = Ebook::ebooksData();
-        $ebookpages = $ebooksdata[0];
-        $ebookchapters = $ebooksdata[1];
-        $ebookcharacters = $ebooksdata[2];
-        $totalebookpages = $ebookpages->count();
-        $totalebookchapters = $ebookchapters->count();
-        $totalebookcharacters = $ebookcharacters->count();
 
-        if(count($ebookpages)>0)
+        if(session()->exists('ebookid'))
         {
-            $conversionprogress = $conversionprogress + 33;
-        }
-        if(count($ebookchapters)>0)
-        {
-            $conversionprogress = $conversionprogress + 33;
-        }
-        if(count($ebookcharacters)>0)
-        {
-            $conversionprogress = $conversionprogress + 33;
+            $ebookpages = $ebooksdata[0];
+            $ebookchapters = $ebooksdata[1];
+            $ebookcharacters = $ebooksdata[2];
+            $totalebookpages = $ebookpages->count();
+            $totalebookchapters = $ebookchapters->count();
+            $totalebookcharacters = $ebookcharacters->count();
         }
 
         $actscount = 0;
@@ -229,7 +217,7 @@ class DashboardController extends Controller
         $messages = Message::where('receiver', Auth::user()->id)->get();
         $messagescount = $messages->count();
 
-        return view('webapp.subscription', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'conversionprogress'=>$conversionprogress, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+        return view('webapp.subscription', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
     }
 
 

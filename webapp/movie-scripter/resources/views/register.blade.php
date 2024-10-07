@@ -24,7 +24,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                <img src="{{ asset('/images/logo.png')}}" height="50">
+                <a href="/"><img src="{{ asset('/images/logo.png')}}" height="90" style="width:auto !important;"></a>
                 </div>
                 <div class="mt-5">
                 @if($errors->any())
@@ -48,7 +48,7 @@
                 @endif
                 </div>
                 <h4>New here?</h4>
-                <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+                <h6 class="font-weight-light">Signing up is easy...</h6>
                 <form class="pt-3" method="post" action="{{ route('register.attempt') }}">
                   @csrf
                   <div class="form-group">

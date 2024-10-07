@@ -1,5 +1,10 @@
 <?php
 
+// PROJECT STARTDATE 29-09-2024
+
+// AUTHOR: R. DUISTERHOF
+// LICENSE: MIT
+
 use App\Http\Controllers\AiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChapterController;

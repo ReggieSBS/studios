@@ -267,7 +267,7 @@
                         <span class="price">FREE<sub></sub></span>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <div class="list-group-item">1 Projects p/month</div>
+                        <div class="list-group-item">1 Projects</div>
                         <div class="list-group-item">2 Chapters p/project</div>
                         <div class="list-group-item">10 Pages p/chapter</div>
                         <div class="list-group-item">12 Archetypes</div>
@@ -286,12 +286,12 @@
                         <span class="price">€17,95<sub>/month</sub></span>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <div class="list-group-item">2 Projects p/year</div>
+                        <div class="list-group-item">2 Projects</div>
                         <div class="list-group-item">Unlimited Chapters p/project</div>
                         <div class="list-group-item">Unlimited Pages p/chapter</div>
-                        <div class="list-group-item">Unlimited Archetypes</div>
-                        <div class="list-group-item">Unlimited Acts</div>
-                        <div class="list-group-item">Unlimited Plots</div>
+                        <div class="list-group-item">12 Archetypes</div>
+                        <div class="list-group-item">8 Acts</div>
+                        <div class="list-group-item">7 Plots p/act</div>
                         <div class="list-group-item">Unlimited Acting Roles</div>
                         <div class="list-group-item">Unlimited Actor Lines</div>
                     </ul>
@@ -305,10 +305,10 @@
                         <span class="price">€99,95<sub>/month</sub></span>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <div class="list-group-item">Unlimited Projects</div>
+                        <div class="list-group-item">4 Projects p/year</div>
                         <div class="list-group-item">Unlimited Chapters p/p</div>
                         <div class="list-group-item">Unlimited Pages p/c</div>
-                        <div class="list-group-item">Unlimited Archetypes</div>
+                        <div class="list-group-item">12 Archetypes</div>
                         <div class="list-group-item">Unlimited Acts</div>
                         <div class="list-group-item">Unlimited Plots</div>
                         <div class="list-group-item">Unlimited Acting Roles</div>

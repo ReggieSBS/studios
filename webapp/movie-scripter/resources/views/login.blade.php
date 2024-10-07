@@ -25,9 +25,9 @@
                 <div class="brand-logo">
                   <a href="/"><img src="{{ asset('/images/logo.png')}}" height="75" style="width:auto !important;"></a>
                 </div>
-                <h4>Hello! let's get started</h4>
-                <h6 class="font-weight-light">Sign in to continue.</h6>
-                <div class="mt-5">
+                <h4>Ready? Set... Action!</h4>
+                <h6 class="font-weight-light">Login here..</h6>
+                <div class="mt-2">
                 @if($errors->any())
                     <div class="col-12">
                       @foreach($errors->all() as $error )

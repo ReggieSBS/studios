@@ -54,14 +54,25 @@
                         <input type="file" class="form form-control" name="profile_image" required>
                       </div>
                     </div>
-                    <div class="row mt-5">
-                      <div class="col-lg-6">
+                    <div class="row mt-2">
+                      <div class="col-lg-12">
                         <h4>Your emailaddress</h4>
                         <input type="email" class="form form-control" name="email" required>
                       </div>
+                    </div>
+                    <br/>
+                    <hr>
+                    <div class="row mt-5">
                       <div class="col-lg-6">
-                        <h4>Your password</h4>
+                        <h4>New password</h4>
                         <input type="password" class="form form-control" name="password" required>
+                      </div>
+                      <div class="col-lg-6">
+                        <h4>Confirm new password</h4>
+                        <input type="password" class="form form-control" name="password" required>
+                      </div>
+                      <div class="col-lg-12 mt-2 text-right">
+                        <button class="btn btn-secondary" style="">Reset password</button>
                       </div>
                     </div>
                   </div>
