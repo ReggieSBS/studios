@@ -232,8 +232,8 @@
     <div class="section" id="gallery">
         <div class="container">
             <div class="section-title">
-                <small>We provide a complete solution for every scenario</small>
-                <h3>ARCHETYPE ACTING ROLES</h3>
+                <p>We provide a complete solution for every scenario</p>
+                <h3>ARCHETYPES & ACTING ROLES</h3>
             </div>
 
             <div class="img-gallery owl-carousel owl-theme">
@@ -264,7 +264,7 @@
         <div class="container">
             <div class="section-title">
                 <small>PRICING</small>
-                <h3>Upgrade to Pro</h3>
+                <h3>Everyone = Welcome</h3>
             </div>
 
             <div class="card-deck">
