@@ -150,7 +150,7 @@
                                 <h5>Upload an e-book</h5>
                                 <p>1. Extract the e-book content to the platform</p>
                                 <p>2. Divide the content into pages, chapters and characters</p>
-                                <p><i class="ti ti-info"></i> Ask Mosci to define and summerize everything</p>
+                                <small style="color:#000"><i class="ti ti-info-alt"></i> Ask Mosci to define and summerize everything</small>
                             </div>
                         </li>
                         <li class="media">
@@ -160,13 +160,13 @@
                                 <p>1. Create a movie timeline of acts</p>
                                 <p>2. Define archetypes during all the acts</p>
                                 <p>3. Link act to chapters</p>
-                                <p><i class="ti ti-info"></i> Ask Mosci to summerize the acts, define plots, relate the plots to Acting Roles and Create actor scripts</p>
+                                <small style="color:#000"><i class="ti ti-info-alt"></i> Ask Mosci to summerize the acts, define plots, <br/>relate the plots to Acting Roles and Create actor scripts</small>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <img src="{{ asset('/images_landingspage/iphonex.png')}}" alt="iphone" class="img-fluid">
+                    <img src="{{ asset('/images_landingspage/iphonex.png')}}" alt="iphone" style="position:absolute; height:100%; left:-200px;">
                 </div>
             </div>
         </div>
@@ -296,13 +296,13 @@
                         <div class="list-group-item">Unlimited Actor Lines</div>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+                        <a href="/pay/hobby" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
                     </div>
                 </div>
                 <div class="card pricing">
                     <div class="card-head">
                         <small class="text-primary">FOR PRODUCTION COMPANIES</small>
-                        <span class="price">€139,95<sub>/month</sub></span>
+                        <span class="price">€99,95<sub>/month</sub></span>
                     </div>
                     <ul class="list-group list-group-flush">
                         <div class="list-group-item">Unlimited Projects</div>
@@ -315,13 +315,11 @@
                         <div class="list-group-item">Unlimited Actor Lines</div>
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+                        <a href="/pay/business" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
                     </div>
                 </div>
             </div>
             <!-- // end .pricing -->
-
-
         </div>
 
     </div>

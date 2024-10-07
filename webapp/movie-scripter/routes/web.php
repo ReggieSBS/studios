@@ -10,14 +10,14 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ArchetypeController;
 use App\Http\Controllers\ActController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Middleware\Authenticate;
 use App\Models\Character;
 use App\Models\Ebook;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', function () { return view('index'); });
+Route::get('/pay/{type}', [SubscriptionController::class, 'pay'])->name('pay');
 
 // USER AND DASHBOARD
 Route::get('/account', [DashboardController::class, 'account'])->middleware('auth')->name('account');
