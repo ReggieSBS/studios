@@ -26,7 +26,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                <img src="{{ asset('images_webapp/faces/face1.jpg')}}" alt="profile" />
+                <img src="@if(Auth::user()->profile_image != NULL) {{ asset('Auth::user()->profile_image')}} @else {{ asset('/images/profile_image_mockup.png')}} @endif" alt="profile" />
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
