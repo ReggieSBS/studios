@@ -173,6 +173,47 @@
     </div>
     <!-- // end .section -->
 
+    <div class="section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <p>We provide a complete solution for every scenario</p>
+                <h3>ARCHETYPES & ACTING ROLES</h3>
+            </div>
+
+            <div class="img-gallery owl-carousel owl-theme">
+                <img src="{{ asset('/images/archetypes/hero.png')}}" alt="image" data-bs-toggle="tooltip" title="Hero">
+                <img src="{{ asset('/images/archetypes/outlaw.png')}}" alt="image" data-bs-toggle="tooltip" title="Outlaw">
+                <img src="{{ asset('/images/archetypes/caregiver.png')}}" alt="image" data-bs-toggle="tooltip" title="Care giver">
+                <img src="{{ asset('/images/archetypes/creator.png')}}" alt="image" data-bs-toggle="tooltip" title="Creator">
+                <img src="{{ asset('/images/archetypes/explorer.png')}}" alt="image" data-bs-toggle="tooltip" title="Explorer">
+                <img src="{{ asset('/images/archetypes/innocent.png')}}" alt="image" data-bs-toggle="tooltip" title="Innocent">
+                <img src="{{ asset('/images/archetypes/jetser.png')}}" alt="image" data-bs-toggle="tooltip" title="Jetser">
+                <img src="{{ asset('/images/archetypes/lover.png')}}" alt="image" data-bs-toggle="tooltip" title="Lover">
+                <img src="{{ asset('/images/archetypes/magician.png')}}" alt="image" data-bs-toggle="tooltip" title="Magician">
+                <img src="{{ asset('/images/archetypes/regular_person.png')}}" alt="image" data-bs-toggle="tooltip" title="Regular Person">
+                <img src="{{ asset('/images/archetypes/ruler.png')}}" alt="image" data-bs-toggle="tooltip" title="Ruler">
+                <img src="{{ asset('/images/archetypes/sage.png')}}" alt="image" data-bs-toggle="tooltip" title="Sage">
+            </div>
+
+        </div>
+
+    </div>
+    <!-- // end .section -->
+
+    <div class="section bg-gradient">
+        <div class="container">
+            <div class="call-to-action">
+                <h2>MOVIE SCRIPTING REVOLUTIONIZED</h2>
+                <p style="color:#FFF;">Turning e-books into movies made easy and 100% faster</p>
+                
+                <iframe src="https://www.youtube.com/embed/s3Rv7NKSE2s?si=InTlSNDeVpITHm7y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" class="movieiframe" style="margin-left:auto; margin-right:auto; margin-top:35px; border-style:solid; border-color:#FFF; border-width:5px; border-radius:3px; box-shadow:0px 2px 15px #000; width:760px; height:420px !important;" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <div class="section light-bg">
         <div class="container">
             <div class="section-title">
@@ -217,47 +258,46 @@
     </div>
     <!-- // end .section -->
 
-    <div class="section bg-gradient">
-        <div class="container">
-            <div class="call-to-action">
-                <h2>MOVIE SCRIPTING REVOLUTIONIZED</h2>
-                <p style="color:#FFF;">Turning e-books into movies made easy and 100% faster</p>
-            </div>
-        </div>
-    </div>
 
 
 
 
-    <div class="section" id="gallery">
+
+
+
+
+    <div class="section">
         <div class="container">
             <div class="section-title">
-                <p>We provide a complete solution for every scenario</p>
-                <h3>ARCHETYPES & ACTING ROLES</h3>
+                <small>TESTIMONIALS</small>
+                <h3>What our Customers Says</h3>
             </div>
 
-            <div class="img-gallery owl-carousel owl-theme">
-                <img src="{{ asset('/images/archetypes/hero.png')}}" alt="image" data-bs-toggle="tooltip" title="Hero">
-                <img src="{{ asset('/images/archetypes/outlaw.png')}}" alt="image" data-bs-toggle="tooltip" title="Outlaw">
-                <img src="{{ asset('/images/archetypes/caregiver.png')}}" alt="image" data-bs-toggle="tooltip" title="Care giver">
-                <img src="{{ asset('/images/archetypes/creator.png')}}" alt="image" data-bs-toggle="tooltip" title="Creator">
-                <img src="{{ asset('/images/archetypes/explorer.png')}}" alt="image" data-bs-toggle="tooltip" title="Explorer">
-                <img src="{{ asset('/images/archetypes/innocent.png')}}" alt="image" data-bs-toggle="tooltip" title="Innocent">
-                <img src="{{ asset('/images/archetypes/jetser.png')}}" alt="image" data-bs-toggle="tooltip" title="Jetser">
-                <img src="{{ asset('/images/archetypes/lover.png')}}" alt="image" data-bs-toggle="tooltip" title="Lover">
-                <img src="{{ asset('/images/archetypes/magician.png')}}" alt="image" data-bs-toggle="tooltip" title="Magician">
-                <img src="{{ asset('/images/archetypes/regular_person.png')}}" alt="image" data-bs-toggle="tooltip" title="Regular Person">
-                <img src="{{ asset('/images/archetypes/ruler.png')}}" alt="image" data-bs-toggle="tooltip" title="Ruler">
-                <img src="{{ asset('/images/archetypes/sage.png')}}" alt="image" data-bs-toggle="tooltip" title="Sage">
+            <div class="testimonials owl-carousel">
+                <div class="testimonials-single">
+                    <img src="{{ asset('/images_landingspage/client.png')}}" alt="client" class="client-img">
+                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
+                    <h5 class="mt-4 mb-2">Crystal Gordon</h5>
+                    <p class="text-primary">United States</p>
+                </div>
+                <div class="testimonials-single">
+                    <img src="{{ asset('/images_landingspage/client.png')}}" alt="client" class="client-img">
+                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
+                    <h5 class="mt-4 mb-2">Crystal Gordon</h5>
+                    <p class="text-primary">United States</p>
+                </div>
+                <div class="testimonials-single">
+                    <img src="{{ asset('/images_landingspage/client.png')}}" alt="client" class="client-img">
+                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
+                    <h5 class="mt-4 mb-2">Crystal Gordon</h5>
+                    <p class="text-primary">United States</p>
+                </div>
             </div>
 
         </div>
 
     </div>
     <!-- // end .section -->
-
-
-
 
 
     <div class="section light-bg" id="pricing">
@@ -331,43 +371,6 @@
 
     </div>
     <!-- // end .section -->
-
-
-
-
-    <div class="section">
-        <div class="container">
-            <div class="section-title">
-                <small>TESTIMONIALS</small>
-                <h3>What our Customers Says</h3>
-            </div>
-
-            <div class="testimonials owl-carousel">
-                <div class="testimonials-single">
-                    <img src="{{ asset('/images_landingspage/client.png')}}" alt="client" class="client-img">
-                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
-                    <h5 class="mt-4 mb-2">Crystal Gordon</h5>
-                    <p class="text-primary">United States</p>
-                </div>
-                <div class="testimonials-single">
-                    <img src="{{ asset('/images_landingspage/client.png')}}" alt="client" class="client-img">
-                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
-                    <h5 class="mt-4 mb-2">Crystal Gordon</h5>
-                    <p class="text-primary">United States</p>
-                </div>
-                <div class="testimonials-single">
-                    <img src="{{ asset('/images_landingspage/client.png')}}" alt="client" class="client-img">
-                    <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
-                    <h5 class="mt-4 mb-2">Crystal Gordon</h5>
-                    <p class="text-primary">United States</p>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-    <!-- // end .section -->
-
 
     <div class="section bg-gradient">
         <div class="container">

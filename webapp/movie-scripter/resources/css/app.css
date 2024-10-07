@@ -191,9 +191,12 @@ a{
     transition:all 0.2s ease-in;
     
 }
-@media screen and (max-width: 500px) {
 
+.movieiframe{
+    width: 1260px;
+    height:auto;
 }
+
 
 
 

@@ -47,7 +47,7 @@
                     </div>
                     <div class="row">
                       <div class="col-lg-6 text-center">
-                        <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:75%; border-radius:50%;">
+                        <img src="@if(Auth::user()->profile_image != NULL) {{ asset('Auth::user()->profile_image')}} @else {{ asset('/images/profile_image_mockup.png')}} @endif" alt="profile" style="width:75%; border-radius:50%;">
                       </div>
                       <div class="col-lg-6">
                         <h4>Your name</h4>
