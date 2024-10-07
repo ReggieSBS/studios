@@ -34,7 +34,7 @@
                 <ul class="breadcrumb">
                   @if($totalebookpages > 0)
                   <li class="actionbar_item" aria-current="page">
-                    <a class="btn btn-primary text-white" href="/page/1"><i class="mdi mdi-book-edit"></i> Pages</a>
+                    <a class="btn btn-primary text-white" href="/page/{{ $ebookpages->first()->id }}"><i class="mdi mdi-book-edit"></i> Pages</a>
                   </li>
                   @else
                   <li class="actionbar_item" aria-current="page">
@@ -44,7 +44,7 @@
 
                   @if($totalebookchapters>0)
                   <li class="actionbar_item" aria-current="page">
-                    <a class="btn btn-primary text-white" href="/chapter/1"><i class="mdi mdi-book-edit"></i> Chapters</a>
+                    <a class="btn btn-primary text-white" href="/chapter/{{ $ebookchapters->first()->id }}"><i class="mdi mdi-book-edit"></i> Chapters</a>
                   </li>
                   @else
                   <li class="actionbar_item" aria-current="page">
