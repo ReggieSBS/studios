@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Jobs\RegisterEmailJob;
 use App\Mail\WelcomeEmail;
+use App\Models\License;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -47,6 +49,22 @@ class AuthController extends Controller
 
         Mail::to($request->email)->send(new WelcomeEmail($request->name));
         // RegisterEmailJob::dispatch($request->email, $request->name);
+
+        $userid = $user->id;
+        $license = md5(microtime());
+
+        $license = New License();
+        $license->title = $request->license_type;
+        $license->license_nr = $license;
+        $license->development = 0;
+        $license->save();
+        $license_id = $license->id;
+        
+        $subscription = New Subscription();
+        $subscription->user_id = $userid;
+        $subscription->licence_id = $license_id;
+        $subscription->accepted = date('Y-m-d');
+        $subscription->save();
 
         if(!$user)
         {

@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->references("id")
             ->on("user_subscriptions");
-            $table->foreignId('licence_id')->constrained('licences');
+            $table->integer('licence_id')->nullable(false)->default(0);
             $table->integer('high_risk')->nullable(false)->default(0);
             $table->integer('disabled')->nullable(false)->default(0);
             $table->date('disable_date')->nullable(true);
-            $table->date('accepted')->nullable(true)->default(1);
+            $table->date('accepted');
             $table->timestamps();
         });
     }

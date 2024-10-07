@@ -51,6 +51,7 @@
                 <h6 class="font-weight-light">Signing up is easy...</h6>
                 <form class="pt-3" method="post" action="{{ route('register.attempt') }}">
                   @csrf
+                  <input type="hidden" name="license_type" value="free">
                   <div class="form-group">
                     <input type="text" name="name" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Your first and lastname" required>
                   </div>
