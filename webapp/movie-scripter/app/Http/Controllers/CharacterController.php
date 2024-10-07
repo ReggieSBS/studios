@@ -119,10 +119,10 @@ class CharacterController extends Controller
 
         if($request->file('profileimage'))
         {
-            $file = $request->file('profileimage');
-            $profileimage  = $file->getClientOriginalName();
-            $file->storeAs('/app/public/images/covers/', $profileimage, 'public');
-            $profileimage = $file;
+            $profileimage = $request->file('profileimage');
+            $namefile  = $profileimage->getClientOriginalName();
+            $profileimage->storeAs('/app/public/images/characters/', $namefile, 'public');
+            $file = '/images/characters/'. $namefile;
         }
 
         $character = New Character();
@@ -131,7 +131,7 @@ class CharacterController extends Controller
         $character->name = $request->name;
         $character->gender = $request->gender;
         $character->age = $request->age;
-        $character->profile_image = $profileimage;
+        $character->profile_image = $file;
         $character->save();
 
         $characterid = $character->id;

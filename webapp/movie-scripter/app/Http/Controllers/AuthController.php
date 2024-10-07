@@ -81,7 +81,7 @@ class AuthController extends Controller
 
         $profile_image = $request->file('profile_image');
         $namefile  = $profile_image->getClientOriginalName();
-        $profile_image->storeAs('/app/public/images/', $namefile, 'public');
+        $profile_image->storeAs('/app/public/images/profiles/', $namefile, 'public');
         $file = '/images/'. $namefile;
 
         $user = User::find(Auth::user()->id);

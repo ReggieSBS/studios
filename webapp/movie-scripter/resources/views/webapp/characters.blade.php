@@ -50,7 +50,7 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-4">
-                          <a href="/character/{{ $maincharacterdata->id }}"><img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;"></a>
+                          <a href="/character/{{ $maincharacterdata->id }}"><img src="{{ $maincharacterdata->profile_image }}" alt="profile" style="width:100%; border-radius:50%;"></a>
                       </div>
                       <div class="col-lg-8">
                         <h1>{{ $maincharacterdata->name }}</h1>
@@ -71,7 +71,7 @@
                     <div class="row">
                       @if($seccharacteravailable == 1)
                       <div class="col-lg-4">
-                          <a href="/character/{{ $maincharacterdata->id }}"><img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" alt="profile" style="width:100%; border-radius:50%;"></a>
+                          <a href="/character/{{ $maincharacterdata->id }}"><img src="{{ $secondarycharacterdata->profile_image }}" alt="profile" style="width:100%; border-radius:50%;"></a>
                       </div>
                       <div class="col-lg-8">
                         <h2>{{ $secondarycharacterdata->name }}</h2>
@@ -101,7 +101,7 @@
                 <a href="/character/{{$character->id}}" style="text-decoration:none;">
                 <div class="card bg-gradient-danger card-img-holder text-white">
                   <div class="card-body">
-                    <img src="{{ asset('/images_webapp/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <img src="{{ $character->profile_image }}" class="card-img-absolute" alt="circle-image" />
                     <div style="position:relative; z-index:9">
                       <h2 class="mb-5">{{$character->name}}</h2>
                       <h6 class="card-text">Gender: {{$character->gender}}</h6>
