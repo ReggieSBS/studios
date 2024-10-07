@@ -8,6 +8,7 @@ use App\Models\Act;
 use App\Models\Chapter;
 use App\Models\Ebook;
 use App\Models\Message;
+use App\Models\pageCharacters;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -110,6 +111,24 @@ class PageController extends Controller
 
         return redirect('/page/'.$pageid);
     }
+
+
+
+    public function relation(Request $request){
+        $pageid = session()->get('pageid');
+
+        foreach($request->characters as $character)
+        {
+            $relation = New pageCharacters();
+            $relation->character_id = $character;
+            $relation->page_id = $pageid;
+            $relation->save();
+        }
+
+        return redirect('/page/'.$pageid);
+    }
+
+
     
     public function content(Request $request){
         $pageid = session()->get('pageid');

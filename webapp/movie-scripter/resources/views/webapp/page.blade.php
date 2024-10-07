@@ -136,7 +136,7 @@
 
     <div class="modal" id="pageCharacterModal">
       <div class="modal-dialog">
-        <form method="post" action="{{ route('chapter.pages') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('page.character') }}" enctype="multipart/form-data">
           @csrf
           <div class="modal-content">
             <!-- Modal Header -->

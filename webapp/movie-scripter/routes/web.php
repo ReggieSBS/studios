@@ -43,6 +43,7 @@ Route::get('/ebook-content/extract', [EbookController::class, 'extract'])->middl
 // PAGES
 Route::get('/page/{id}', [PageController::class, 'read'])->middleware('auth')->name('page.read');
 Route::post('/page/write', [PageController::class, 'write'])->middleware('auth')->name('page.write');
+Route::post('/page/characters', [PageController::class, 'relation'])->middleware('auth')->name('page.character');
 Route::get('/page-content', [PageController::class, 'content'])->middleware('auth')->name('page-content');
 Route::post('/page-content/update', [PageController::class, 'contentupdate'])->middleware('auth')->name('page-content.update');
 Route::post('/page/write/summery', [PageController::class, 'writesummery'])->middleware('auth')->name('page.summery');
@@ -51,6 +52,7 @@ Route::post('/page/new', [PageController::class, 'new'])->middleware('auth')->na
 // CHAPTERS
 Route::get('/chapter/{id}', [ChapterController::class, 'read'])->middleware('auth')->name('chapter.read');
 Route::post('/chapter/write', [ChapterController::class, 'write'])->middleware('auth')->name('chapter.write');
+Route::post('/chapter/characters', [ChapterController::class, 'relation'])->middleware('auth')->name('chapter.character');
 Route::post('/chapter/new', [ChapterController::class, 'new'])->middleware('auth')->name('chapter.new');
 Route::post('/chapter/pages', [ChapterController::class, 'pages'])->middleware('auth')->name('chapter.pages');
 Route::post('/chapter/write/summery', [ChapterController::class, 'writesummery'])->middleware('auth')->name('chapter.summery');

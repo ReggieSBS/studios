@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chapter;
 use App\Models\Ebook;
 use App\Models\Act;
+use App\Models\chapterCharacters;
 use App\Models\Message;
 use App\Models\Page;
 use App\Models\User;
@@ -36,6 +37,8 @@ class ChapterController extends Controller
         $chapterdata = Chapter::where('id', $chapterid)->with('characters')->first();
         $previouschapter = $chapterdata->chapter_number - 1;
         $nextchapter = $chapterdata->chapter_number + 1;
+
+        
 
 
         $nxtchp = 0;
@@ -98,6 +101,17 @@ class ChapterController extends Controller
         return redirect('/chapter/'.$chapterid);
     }
 
+    public function relation(Request $request){
+        $chapterid = session()->get('chapterid');
+        foreach($request->characters as $character)
+        {
+            $relation = New chapterCharacters();
+            $relation->character_id = $character;
+            $relation->chapter_id = $chapterid;
+            $relation->save();
+        }
+        return redirect('/chapter/'.$chapterid);
+    }
 
     public function pages(Request $request){
 

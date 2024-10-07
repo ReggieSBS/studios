@@ -75,8 +75,9 @@
                 <div class="mb-5">
                   <table style="width:100%; float:left;">
                     <tr>
+                    
                         <td style="text-align: left;">
-                            <span class="fa fa-plus-circle" style="font-size:35px;"></span>
+                          <a href="#" style="color:#3b3b3b; text-shadow:1px 1px 1px #FFF;" data-bs-toggle="modal" data-bs-target="#chapterCharacterModal"><span class="fa fa-plus-circle" style="font-size:35px;" data-bs-toggle="tooltip" title="Relate characters" data-bs-placement="left"></span></a>
                         </td>
                         <td style="text-align: left;">
                             <div class="nav-profile-img" bis_skin_checked="1">
@@ -182,6 +183,41 @@
       </div>
     </div>
 
+    <div class="modal" id="chapterCharacterModal">
+      <div class="modal-dialog">
+        <form method="post" action="{{ route('chapter.character') }}" enctype="multipart/form-data">
+          @csrf
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Relate Characters</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row">
+                <table class="table table-striped">
+                  <tbody>
+                  @if($totalebookcharacters>0)
+                  @foreach($ebookcharacters as $ebookcharacter)
+                    <tr>
+                      <td style="text-align:center;"><input type="checkbox" name="characters[]" value="{{ $ebookcharacter->id }}" style="zoom:1.5"></td>
+                      <td style="vertical-align:middle; text-align:left;">{{ $ebookcharacter->name }}</td>
+                    </tr>
+                  @endforeach
+                  @endif
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Connect characters</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
 
     <div class="modal" id="chapterPagesModal">
