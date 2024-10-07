@@ -123,6 +123,116 @@ class DashboardController extends Controller
 
     
 
+
+
+
+    
+    public function account(){
+       
+        $ebookid = session()->get('ebookid');
+        $movieid = session()->get('movieid');
+        $conversionprogress = 0;
+        $ebookpages=[];
+        $ebookchapters=[];
+        $ebookcharacters=[];
+        $totalebookpages = 0;
+        $totalebookchapters = 0;
+
+        $ebooks = User::with('ebooks')->get();
+        $ebookscount = Ebook::where('user_id', Auth::user()->id)->get()->count();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
+        $ebooksdata = Ebook::ebooksData();
+        $ebookpages = $ebooksdata[0];
+        $ebookchapters = $ebooksdata[1];
+        $ebookcharacters = $ebooksdata[2];
+        $totalebookpages = $ebookpages->count();
+        $totalebookchapters = $ebookchapters->count();
+        $totalebookcharacters = $ebookcharacters->count();
+
+        if(count($ebookpages)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+        if(count($ebookchapters)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+        if(count($ebookcharacters)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+
+        $actscount = 0;
+        $acts = null;
+        if(session()->exists('movieid')){
+            $movieid = session()->get('movieid');
+            $acts = Act::where('movie_id', $movieid)->get();
+            $actscount = $acts->count();
+            $conversionprogress = 100;
+        }
+
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
+
+        return view('webapp.account', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'conversionprogress'=>$conversionprogress, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+    }
+
+
+
+    
+    public function subscription(){
+       
+        $ebookid = session()->get('ebookid');
+        $movieid = session()->get('movieid');
+        $conversionprogress = 0;
+        $ebookpages=[];
+        $ebookchapters=[];
+        $ebookcharacters=[];
+        $totalebookpages = 0;
+        $totalebookchapters = 0;
+
+        $ebooks = User::with('ebooks')->get();
+        $ebookscount = Ebook::where('user_id', Auth::user()->id)->get()->count();
+        $ebookdata = Ebook::where('id', $ebookid)->first();
+        $ebooksdata = Ebook::ebooksData();
+        $ebookpages = $ebooksdata[0];
+        $ebookchapters = $ebooksdata[1];
+        $ebookcharacters = $ebooksdata[2];
+        $totalebookpages = $ebookpages->count();
+        $totalebookchapters = $ebookchapters->count();
+        $totalebookcharacters = $ebookcharacters->count();
+
+        if(count($ebookpages)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+        if(count($ebookchapters)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+        if(count($ebookcharacters)>0)
+        {
+            $conversionprogress = $conversionprogress + 33;
+        }
+
+        $actscount = 0;
+        $acts = null;
+        if(session()->exists('movieid')){
+            $movieid = session()->get('movieid');
+            $acts = Act::where('movie_id', $movieid)->get();
+            $actscount = $acts->count();
+            $conversionprogress = 100;
+        }
+
+        $messagescount =0;
+        $messages = Message::where('receiver', Auth::user()->id)->get();
+        $messagescount = $messages->count();
+
+        return view('webapp.subscription', ['ebookdata' => $ebookdata, 'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'actscount'=>$actscount, 'acts'=>$acts, 'conversionprogress'=>$conversionprogress, 'ebookscount'=>$ebookscount, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+    }
+
+
     public function deletemsg(Request $request){
 
         Message::where('receiver',Auth::user()->id)->delete();

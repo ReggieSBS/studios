@@ -34,9 +34,9 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#"><i class="mdi mdi-account me-2 text-success" style="text-shadow: 0px 0px 0px !important;"></i> Account </a>
+                <a class="dropdown-item" href="/account"><i class="mdi mdi-account me-2 text-success" style="text-shadow: 0px 0px 0px !important;"></i> Account </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="mdi mdi-piggy-bank me-2 text-danger" style="text-shadow: 0px 0px 0px !important;"></i> Billing & Subscription </a>
+                <a class="dropdown-item" href="/subscription"><i class="mdi mdi-piggy-bank me-2 text-danger" style="text-shadow: 0px 0px 0px !important;"></i> Billing & Subscription </a>
               </div>
             </li>
             <li class="nav-item dropdown">

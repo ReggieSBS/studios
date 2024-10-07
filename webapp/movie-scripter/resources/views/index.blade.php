@@ -34,14 +34,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="/index"><img src="{{ asset('/images/logo_white.png')}}" height="75" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                        <a class="navbar-brand" href="/"><img src="{{ asset('/images/logo-v2-white.png')}}" height="90" style="position:absolute; top:0px;" alt="logo"></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
                         <div class="collapse navbar-collapse" id="navbar">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#features">FEATURES</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#gallery">GALLERY</a> </li>
                                 <li class="nav-item"> <a class="nav-link" href="#pricing">PRICING</a> </li>
-                                <li class="nav-item"> <a class="nav-link" href="#contact">CONTACT</a> </li>
+                                <li class="nav-item"><a href="/register" class="btn btn-light btn-sm my-3 my-sm-0 ml-lg-3">Try for free</a></li>
                                 <li class="nav-item"><a href="/login" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Login</a></li>
                             </ul>
                         </div>
@@ -53,22 +53,35 @@
 
 
     <header class="bg-gradient" id="home">
-        <div class="container mt-5" style="position:absolute;">
-            <h1>CONVERT E-BOOKS TO MOVIES</h1>
-            <p class="tagline">With moviescript.io everyone can be the next Steven Spiegelberg</p>
+        <div class="container mt-5">
+            <h1 style="font-weight: bold;">CONVERT E-BOOKS INTO MOVIES</h1>
+            <p class="tagline mb-20">With moviescript.io everyone can be the next Steven Spiegelberg</p><br/><br/>
         </div>
-        <div class="img-holder mt-3"><img src="{{ asset('/images_landingspage/iphonex.png') }}" alt="phone" class="img-fluid"></div>
     </header>
 
-    <div class="client-logos my-5">
-        <div class="container text-center">
-            <img src="{{ asset('/images_landingspage/client-logos.png')}}" alt="client logos" class="img-fluid">
-        </div>
-    </div>
 
+    <div class="section" style="padding-bottom:0px; padding-top:120px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-6">
+
+                    <h2><br/>Discover Moviescript.io</h2>
+                    <h4 class="mb-4">Are you a writer or filmproducer?</h4>
+                    <p>Elevate your creative mind with the help of Artificial Intelligence.</p>
+                    <p>With moviescript.io you can convert e-books into movie production scripts. Our AI will help you define which character in the movie says what at what moment, inspire you with produced images of personalities and environmental conditions and will be able to create trailers of chapters and e-book pages.</p>
+                    <a href="/register" class="btn btn-primary">Try it for free</a>
+                </div>
+            </div>
+            <div class="perspective-phone">
+                <img src="{{ asset('/images_landingspage/perspective.png')}}" alt="perspective phone" class="img-fluid">
+            </div>
+        </div>
+
+    </div>
     <div class="section light-bg" id="features">
         <div class="container">
             <div class="section-title">
+                <img src="{{ asset('/images_landingspage/highlights.png')}}" style="height:120px;"><br/>
                 <small>HIGHLIGHTS</small>
                 <h3>Features you love</h3>
             </div>
@@ -117,33 +130,50 @@
         </div>
     </div>
     <!-- // end .section -->
-    <div class="section">
 
+    <!-- // end .section -->
+    <div class="section light-bg">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 offset-lg-6">
-                    <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>
-                    <h2>Discover Moviescript.io</h2>
-                    <p class="mb-4">Are you a writer or filmproducer?</p>
-                    <p>Elevate your creative mind with the help of Artificial Intelligence.</p>
-                    <p>With moviescript.io you can convert e-books into movie production scripts. Our AI will help you define which character in the movie says what at what moment, inspire you with produced images of personalities and environmental conditions and will be able to create trailers of chapters and e-book pages.</p>
-                    <a href="/register" class="btn btn-primary">Try it for free</a>
+                <div class="col-md-8 d-flex align-items-center">
+                    <ul class="list-unstyled ui-steps">
+                        <li class="media">
+                            <div class="circle-icon mr-4">1</div>
+                            <div class="media-body">
+                                <h5>Create an Account</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                            </div>
+                        </li>
+                        <li class="media my-4">
+                            <div class="circle-icon mr-4">2</div>
+                            <div class="media-body">
+                                <h5>Upload an e-book</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-4">3</div>
+                            <div class="media-body">
+                                <h5>Manage your movie script</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ asset('/images_landingspage/iphonex.png')}}" alt="iphone" class="img-fluid">
                 </div>
             </div>
-            <div class="perspective-phone">
-                <img src="{{ asset('/images_landingspage/perspective.png')}}" alt="perspective phone" class="img-fluid">
-            </div>
         </div>
-
     </div>
     <!-- // end .section -->
-
 
     <div class="section light-bg">
         <div class="container">
             <div class="section-title">
-                <small>FEATURES</small>
-                <h3>Do more with our platform</h3>
+                <img src="{{ asset('/images/mascot.gif')}}" style="height:120px;"><br/>
+                <h3>MEET MOSCI</h3>
+                <small>ARTIFICIAL INTELLIGENCE INTEGRATED TECHNOLOGY</small>
             </div>
 
             <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -229,20 +259,23 @@
     </div>
     <!-- // end .section -->
 
-    <div class="section">
 
+
+
+
+
+    <div class="section light-bg" id="gallery">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="{{ asset('/images_landingspage/dualphone.png')}}" alt="dual phone" class="img-fluid">
-                </div>
-                <div class="col-md-6 d-flex align-items-center">
-                    <div>
-                        <div class="box-icon"><span class="ti-rocket gradient-fill ti-3x"></span></div>
-                        <h2>Launch your film production career</h2>
-                        <p class="mb-4">Are you ready to elevate your writer skills to the next level?</p>
-                        <a href="/register" class="btn btn-primary">Sign up</a></div>
-                </div>
+            <div class="section-title">
+                <small>GALLERY</small>
+                <h3>App Screenshots</h3>
+            </div>
+
+            <div class="img-gallery owl-carousel owl-theme">
+                <img src="{{ asset('/images_landingspage/screen1.jpg')}}" alt="image">
+                <img src="{{ asset('/images_landingspage/screen2.jpg')}}" alt="image">
+                <img src="{{ asset('/images_landingspage/screen3.jpg')}}" alt="image">
+                <img src="{{ asset('/images_landingspage/screen1.jpg')}}" alt="image">
             </div>
 
         </div>
@@ -251,45 +284,84 @@
     <!-- // end .section -->
 
 
-    <div class="section light-bg">
 
+
+
+    <div class="section" id="pricing">
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 d-flex align-items-center">
-                    <ul class="list-unstyled ui-steps">
-                        <li class="media">
-                            <div class="circle-icon mr-4">1</div>
-                            <div class="media-body">
-                                <h5>Create an Account</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
-                            </div>
-                        </li>
-                        <li class="media my-4">
-                            <div class="circle-icon mr-4">2</div>
-                            <div class="media-body">
-                                <h5>Upload an e-book</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="circle-icon mr-4">3</div>
-                            <div class="media-body">
-                                <h5>Manage your movie script</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
-                            </div>
-                        </li>
+            <div class="section-title">
+                <small>PRICING</small>
+                <h3>Upgrade to Pro</h3>
+            </div>
+
+            <div class="card-deck">
+                <div class="card pricing">
+                    <div class="card-head">
+                        <small class="text-primary">TRY-OUT</small>
+                        <span class="price">FREE<sub></sub></span>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <div class="list-group-item">1 Projects p/month</div>
+                        <div class="list-group-item">2 Chapters p/project</div>
+                        <div class="list-group-item">10 Pages p/chapter</div>
+                        <div class="list-group-item">12 Archetypes</div>
+                        <div class="list-group-item">Unlimited Acts</div>
+                        <div class="list-group-item">Unlimited Plots</div>
+                        <div class="list-group-item">Unlimited Acting Roles</div>
+                        <div class="list-group-item">Unlimited Actor Lines</div>
                     </ul>
+                    <div class="card-body">
+                        <a href="/register" class="btn btn-primary btn-lg btn-block">Sign up</a>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="{{ asset('/images_landingspage/iphonex.png')}}" alt="iphone" class="img-fluid">
+                <div class="card pricing popular">
+                    <div class="card-head">
+                        <small class="text-primary">FOR HOBBY</small>
+                        <span class="price">€17,95<sub>/month</sub></span>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <div class="list-group-item">2 Projects p/year</div>
+                        <div class="list-group-item">Unlimited Chapters p/project</div>
+                        <div class="list-group-item">Unlimited Pages p/chapter</div>
+                        <div class="list-group-item">Unlimited Archetypes</div>
+                        <div class="list-group-item">Unlimited Acts</div>
+                        <div class="list-group-item">Unlimited Plots</div>
+                        <div class="list-group-item">Unlimited Acting Roles</div>
+                        <div class="list-group-item">Unlimited Actor Lines</div>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+                    </div>
                 </div>
-
+                <div class="card pricing">
+                    <div class="card-head">
+                        <small class="text-primary">FOR PRODUCTION COMPANIES</small>
+                        <span class="price">€139,95<sub>/month</sub></span>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <div class="list-group-item">Unlimited Projects</div>
+                        <div class="list-group-item">Unlimited Chapters p/p</div>
+                        <div class="list-group-item">Unlimited Pages p/c</div>
+                        <div class="list-group-item">Unlimited Archetypes</div>
+                        <div class="list-group-item">Unlimited Acts</div>
+                        <div class="list-group-item">Unlimited Plots</div>
+                        <div class="list-group-item">Unlimited Acting Roles</div>
+                        <div class="list-group-item">Unlimited Actor Lines</div>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+                    </div>
+                </div>
             </div>
+            <!-- // end .pricing -->
+
 
         </div>
 
     </div>
     <!-- // end .section -->
+
+
 
 
     <div class="section">
@@ -326,138 +398,18 @@
     <!-- // end .section -->
 
 
-    <div class="section light-bg" id="gallery">
-        <div class="container">
-            <div class="section-title">
-                <small>GALLERY</small>
-                <h3>App Screenshots</h3>
-            </div>
-
-            <div class="img-gallery owl-carousel owl-theme">
-                <img src="{{ asset('/images_landingspage/screen1.jpg')}}" alt="image">
-                <img src="{{ asset('/images_landingspage/screen2.jpg')}}" alt="image">
-                <img src="{{ asset('/images_landingspage/screen3.jpg')}}" alt="image">
-                <img src="{{ asset('/images_landingspage/screen1.jpg')}}" alt="image">
-            </div>
-
-        </div>
-
-    </div>
-    <!-- // end .section -->
-
-
-
-
-
-    <div class="section" id="pricing">
-        <div class="container">
-            <div class="section-title">
-                <small>PRICING</small>
-                <h3>Upgrade to Pro</h3>
-            </div>
-
-            <div class="card-deck">
-                <div class="card pricing">
-                    <div class="card-head">
-                        <small class="text-primary">PERSONAL</small>
-                        <span class="price">$14<sub>/m</sub></span>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <div class="list-group-item">10 Projects</div>
-                        <div class="list-group-item">5 GB Storage</div>
-                        <div class="list-group-item">Basic Support</div>
-                        <div class="list-group-item"><del>Collaboration</del></div>
-                        <div class="list-group-item"><del>Reports and analytics</del></div>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
-                    </div>
-                </div>
-                <div class="card pricing popular">
-                    <div class="card-head">
-                        <small class="text-primary">FOR TEAMS</small>
-                        <span class="price">$29<sub>/m</sub></span>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <div class="list-group-item">Unlimited Projects</div>
-                        <div class="list-group-item">100 GB Storage</div>
-                        <div class="list-group-item">Priority Support</div>
-                        <div class="list-group-item">Collaboration</div>
-                        <div class="list-group-item">Reports and analytics</div>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
-                    </div>
-                </div>
-                <div class="card pricing">
-                    <div class="card-head">
-                        <small class="text-primary">ENTERPRISE</small>
-                        <span class="price">$249<sub>/m</sub></span>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <div class="list-group-item">Unlimited Projects</div>
-                        <div class="list-group-item">Unlimited Storage</div>
-                        <div class="list-group-item">Collaboration</div>
-                        <div class="list-group-item">Reports and analytics</div>
-                        <div class="list-group-item">Web hooks</div>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
-                    </div>
-                </div>
-            </div>
-            <!-- // end .pricing -->
-
-
-        </div>
-
-    </div>
-    <!-- // end .section -->
-
-
-    <div class="section pt-0">
-        <div class="container">
-            <div class="section-title">
-                <small>FAQ</small>
-                <h3>Frequently Asked Questions</h3>
-            </div>
-
-            <div class="row pt-4">
-                <div class="col-md-6">
-                    <h4 class="mb-3">Can I try before I buy?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-                    <h4 class="mb-3">What payment methods do you accept?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-
-                </div>
-                <div class="col-md-6">
-                    <h4 class="mb-3">Can I change my plan later?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-                    <h4 class="mb-3">Do you have a contract?</h4>
-                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <!-- // end .section -->
-
-
-
     <div class="section bg-gradient">
         <div class="container">
             <div class="call-to-action">
 
-                <div class="box-icon"><span class="ti-mobile gradient-fill ti-3x"></span></div>
-                <h2>Download Anywhere</h2>
-                <p class="tagline">Available for all major mobile and desktop platforms. Rapidiously visualize optimal ROI rather than enterprise-wide methods of empowerment. </p>
+                <div class="box-icon"><span class="ti ti-control-play gradient-fill ti-3x"></span></div>
+                <h2>START YOUR MOVIE PRODUCTION CAREER</h2>
+                <p class="tagline">Using moviescript.io isn't only the most efficient tool to use for big movie production organisations. But it will also elevate those whom want to be a professional movie producer by utitilizing the power of AI.</p>
                 <div class="my-4">
 
-                    <a href="/register" class="btn btn-light"><img src="{{ asset('/images_landingspage/appleicon.png')}}" alt="icon"> App Store</a>
-                    <a href="/register" class="btn btn-light"><img src="{{ asset('/images_landingspage/playicon.png')}}" alt="icon"> Google play</a>
+                    <a href="/register" class="btn btn-light">Try it now!</a>
                 </div>
-                <p class="text-primary"><small><i>*Works on iOS 10.0.5+, Android Kitkat and above. </i></small></p>
+                <p class="text-primary"><small><i>*Works For Everyone! </i></small></p>
             </div>
         </div>
 

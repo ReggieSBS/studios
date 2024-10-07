@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+// USER AND DASHBOARD
+Route::get('/account', [DashboardController::class, 'account'])->middleware('auth')->name('account');
+Route::get('/subscription', [DashboardController::class, 'subscription'])->middleware('auth')->name('subscription');
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
 // AUTHENTICATION
