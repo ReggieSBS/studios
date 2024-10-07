@@ -26,11 +26,15 @@ $(function() {
     menuscroll();
     $(window).on('scroll', function() {
         menuscroll();
+        
+    });
+
+    $( document ).ready(function() {
+        AOS.init();
     });
     /*-----------------------------------
      * NAVBAR CLOSE ON CLICK
      *-----------------------------------*/
-
     $('.navbar-nav > li:not(.dropdown) > a').on('click', function() {
         $('.navbar-collapse').collapse('hide');
     });
@@ -108,5 +112,7 @@ $(function() {
             }
         });
     }
+
+    
 
 }); /* End Fn */

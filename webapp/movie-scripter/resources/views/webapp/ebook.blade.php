@@ -86,7 +86,14 @@
                   <h2 data-bs-toggle="tooltip" title="Mostly located on the back cover of the book" style=" margin:15px; width:auto !important; color:#d6d6d6;"><i class="mdi mdi-24 mdi-info" style="text-shadow: 0px 0px 0px !important;"></i> Overview</h2>
                   <em style="font-size:11px; float:right; right:15px; position:absolute; top:15px;">* automatically saved</em>
                   
-                  <div class="card-body" id="ebook-init">
+                  <div class="card-body" id="ebook-init"></div>
+                  <div class="card-footer">
+                    <h5 class="mt-5" style="width:100%;">Conversion Progress
+                      <a href="/dashboard" class="btn btn-default btn-sm" style="width:150px !important; float:right;"><i class="mdi mdi-list-status"></i> Check To Do's</a>
+                    </h5><br/>
+                    <div class="progress" bis_skin_checked="1">
+                      <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $conversionprogress }}%" aria-valuenow="{{ $conversionprogress }}" aria-valuemin="0" aria-valuemax="100" bis_skin_checked="1"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -94,6 +101,7 @@
                 <div class="card">
                 <form method="post" action="{{ route('ebook.update') }}">@csrf
                   <div class="card-body">
+                    <img src="{{ $ebookdata->image }}" style="width:100%; margin-left:auto; margin-right:auto;">
                     <h4 class="card-title">
                       <table class="table">
                         <tr>
@@ -124,10 +132,6 @@
                             </tr>
                           </tbody>
                       </table>
-                    </div>
-                    <h5 class="mt-5">Conversion Progress</h5>
-                    <div class="progress" bis_skin_checked="1">
-                      <div class="progress-bar bg-gradient-success" role="progressbar" style="width: {{ $conversionprogress }}%" aria-valuenow="{{ $conversionprogress }}" aria-valuemin="0" aria-valuemax="100" bis_skin_checked="1"></div>
                     </div>
                   </div>
                   </form>

@@ -71,7 +71,7 @@
                       @if($actchapterstotal > 0)
                         @foreach($actchapters as $chapter)
                           <tr>
-                            <td style="padding-right:10px;"><a><span class="fa fa-times-circle text-danger"></span></a></td>
+                            <td style="padding-right:10px;"><a><span class="mdi mdi-merge text-secondary"></span></a></td>
                             <td>Chapter {{ $chapter->chapter_number}}</td>
                             <td>{{ $chapter->title}}</td>
                           </tr>
