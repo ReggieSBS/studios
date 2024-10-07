@@ -141,21 +141,26 @@
                             <div class="circle-icon mr-4">1</div>
                             <div class="media-body">
                                 <h5>Create an Account</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                <p>If you want you can try it out first</p>
                             </div>
                         </li>
                         <li class="media my-4">
                             <div class="circle-icon mr-4">2</div>
                             <div class="media-body">
                                 <h5>Upload an e-book</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
+                                <p>1. Extract the e-book content to the platform</p>
+                                <p>2. Divide the content into pages, chapters and characters</p>
+                                <p><i class="ti ti-info"></i> Ask Mosci to define and summerize everything</p>
                             </div>
                         </li>
                         <li class="media">
                             <div class="circle-icon mr-4">3</div>
                             <div class="media-body">
                                 <h5>Manage your movie script</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                <p>1. Create a movie timeline of acts</p>
+                                <p>2. Define archetypes during all the acts</p>
+                                <p>3. Link act to chapters</p>
+                                <p><i class="ti ti-info"></i> Ask Mosci to summerize the acts, define plots, relate the plots to Acting Roles and Create actor scripts</p>
                             </div>
                         </li>
                     </ul>
@@ -187,7 +192,7 @@
                     <a class="nav-link" data-toggle="tab" href="#messages">Trailer Production</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#livechat">AI Production Assitant</a>
+                    <a class="nav-link" data-toggle="tab" href="#livechat">AI Production Assistant</a>
                 </li>
             </ul>
             <div class="tab-content">
@@ -196,62 +201,15 @@
                         <img src="{{ asset('/images_landingspage/graphic.png')}}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                         <div>
 
-                            <h2>Communicate with ease</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
+                            <h2>E-book Movies</h2>
+                            <p class="lead">Moviescript.io realizes the opportunity for production enterprises, producers and writers to be 100% more efficient.</p>
+                            <p>
+                                By leveraging the power of AI and utilizing it, using it for the movie production industry, we have managed to build a platform which simplifies the conversion of e-books and make them movie production ready.
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="schedule">
-                    <div class="d-flex flex-column flex-lg-row">
-                        <div>
-                            <h2>Scheduling when you want</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
-                        </div>
-                        <img src="{{ asset('/images_landingspage/graphic.png')}}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="messages">
-                    <div class="d-flex flex-column flex-lg-row">
-                        <img src="{{ asset('/images_landingspage/graphic.png')}}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
-                        <div>
-                            <h2>Realtime Messaging service</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="livechat">
-                    <div class="d-flex flex-column flex-lg-row">
-                        <div>
-                            <h2>Live chat when you needed</h2>
-                            <p class="lead">Uniquely underwhelm premium outsourcing with proactive leadership skills. </p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. Ut placerat dui eu nulla
-                                congue tincidunt ac a nibh. Mauris accumsan pulvinar lorem placerat volutpat. Praesent quis facilisis elit. Sed condimentum neque quis ex porttitor,
-                            </p>
-                            <p> malesuada faucibus augue aliquet. Sed elit est, eleifend sed dapibus a, semper a eros. Vestibulum blandit vulputate pharetra. Phasellus lobortis leo a nisl euismod, eu faucibus justo sollicitudin. Mauris consectetur, tortor
-                                sed tempor malesuada, sem nunc porta augue, in dictum arcu tortor id turpis. Proin aliquet vulputate aliquam.
-                            </p>
-                        </div>
-                        <img src="{{ asset('/images_landingspage/graphic.png')}}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
-                    </div>
-                </div>
+                
             </div>
 
 
@@ -264,18 +222,26 @@
 
 
 
-    <div class="section light-bg" id="gallery">
+    <div class="section" id="gallery">
         <div class="container">
             <div class="section-title">
-                <small>GALLERY</small>
-                <h3>App Screenshots</h3>
+                <small>We provide a complete solution for every scenario</small>
+                <h3>ARCHETYPE ACTING ROLES</h3>
             </div>
 
             <div class="img-gallery owl-carousel owl-theme">
-                <img src="{{ asset('/images_landingspage/screen1.jpg')}}" alt="image">
-                <img src="{{ asset('/images_landingspage/screen2.jpg')}}" alt="image">
-                <img src="{{ asset('/images_landingspage/screen3.jpg')}}" alt="image">
-                <img src="{{ asset('/images_landingspage/screen1.jpg')}}" alt="image">
+                <img src="{{ asset('/images/archetypes/hero.png')}}" alt="image" data-bs-toggle="tooltip" title="Hero">
+                <img src="{{ asset('/images/archetypes/outlaw.png')}}" alt="image" data-bs-toggle="tooltip" title="Outlaw">
+                <img src="{{ asset('/images/archetypes/caregiver.png')}}" alt="image" data-bs-toggle="tooltip" title="Care giver">
+                <img src="{{ asset('/images/archetypes/creator.png')}}" alt="image" data-bs-toggle="tooltip" title="Creator">
+                <img src="{{ asset('/images/archetypes/explorer.png')}}" alt="image" data-bs-toggle="tooltip" title="Explorer">
+                <img src="{{ asset('/images/archetypes/innocent.png')}}" alt="image" data-bs-toggle="tooltip" title="Innocent">
+                <img src="{{ asset('/images/archetypes/jetser.png')}}" alt="image" data-bs-toggle="tooltip" title="Jetser">
+                <img src="{{ asset('/images/archetypes/lover.png')}}" alt="image" data-bs-toggle="tooltip" title="Lover">
+                <img src="{{ asset('/images/archetypes/magician.png')}}" alt="image" data-bs-toggle="tooltip" title="Magician">
+                <img src="{{ asset('/images/archetypes/regular_person.png')}}" alt="image" data-bs-toggle="tooltip" title="Regular Person">
+                <img src="{{ asset('/images/archetypes/ruler.png')}}" alt="image" data-bs-toggle="tooltip" title="Ruler">
+                <img src="{{ asset('/images/archetypes/sage.png')}}" alt="image" data-bs-toggle="tooltip" title="Sage">
             </div>
 
         </div>
@@ -287,7 +253,7 @@
 
 
 
-    <div class="section" id="pricing">
+    <div class="section light-bg" id="pricing">
         <div class="container">
             <div class="section-title">
                 <small>PRICING</small>
