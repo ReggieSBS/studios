@@ -6,6 +6,7 @@ use App\Models\Chapter;
 use App\Models\Ebook;
 use App\Models\Act;
 use App\Models\chapterCharacters;
+use App\Models\Character;
 use App\Models\Message;
 use App\Models\Page;
 use App\Models\User;
@@ -19,6 +20,9 @@ class ChapterController extends Controller
         $ebookpages=[];
         $ebookchapters=[];
         $ebookcharacters=[];
+        $totalebookpages = 0;
+        $totalebookchapters = 0;
+        $totalebookcharacters = 0;
         $ebookid = session()->get('ebookid');
         $ebooks = User::with('ebooks')->get();
 
@@ -30,6 +34,9 @@ class ChapterController extends Controller
             $ebookpages = $ebooksdata[0];
             $ebookchapters = $ebooksdata[1];
             $ebookcharacters = $ebooksdata[2];
+            $totalebookpages = $ebookpages->count();
+            $totalebookchapters = $ebookchapters->count();
+            $totalebookcharacters = $ebookcharacters->count();
         }
 
         $chapterid = $request->id;        
@@ -39,6 +46,16 @@ class ChapterController extends Controller
         $nextchapter = $chapterdata->chapter_number + 1;
 
         
+        $chaptercharacters = array();
+        if($chapterdata->characters()->exists()){
+            $chapters = $chapterdata->characters()->get();
+            foreach($chapters as $chapter)
+            {
+                $character = Character::where('id', $chapter->character_id)->get()->toArray();
+                array_push($chaptercharacters, $character);
+            }
+        }
+        // dd($chaptercharacters);
 
 
         $nxtchp = 0;
@@ -66,7 +83,7 @@ class ChapterController extends Controller
 
         $chapterpages = Page::where('chapter_id', $chapterid)->get();
 
-        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'nxtchp'=>$nxtchp, 'newchapter'=>$newchapter, 'chapterpages'=>$chapterpages, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages]);
+        return view('webapp.chapter', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'chapterdata'=>$chapterdata, 'previouschapter'=>$previouschapter, 'nextchapter'=>$nextchapter, 'nxtchp'=>$nxtchp, 'newchapter'=>$newchapter, 'chapterpages'=>$chapterpages, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages, 'chaptercharacters'=>$chaptercharacters, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
     }
     
     public function write(Request $request){

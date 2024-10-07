@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Models\Act;
 use App\Models\Chapter;
+use App\Models\Character;
 use App\Models\Ebook;
 use App\Models\Message;
 use App\Models\pageCharacters;
@@ -43,6 +44,18 @@ class PageController extends Controller
         $previouspage = $pagedata->page_number - 1;
         $nextpage = $pagedata->page_number + 1;
 
+        $pagecharacters = array();
+        if($pagedata->characters()->exists()){
+            $pages = $pagedata->characters()->get();
+            foreach($pages as $page)
+            {
+                $character = Character::where('id', $page->character_id)->get()->toArray();
+                array_push($pagecharacters, $character);
+            }
+        }
+        // dd($pagecharacters);
+
+
 
         $nxtpg = 0;
         $pagechk = Page::where('ebook_id', $ebookid)->latest('id')->first();
@@ -71,7 +84,7 @@ class PageController extends Controller
         $messages = Message::where('receiver', Auth::user()->id)->get();
         $messagescount = $messages->count();
 
-        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata, 'previouspage'=>$previouspage, 'nextpage'=>$nextpage, 'nxtpg'=>$nxtpg, 'newpage'=>$newpage, 'chapterdata'=>$chapterdata, 'countchapters'=>$countchapters, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters]);
+        return view('webapp.page', ['ebooksdata'=>$ebooksdata,'ebookpages' => $ebookpages, 'ebookchapters' => $ebookchapters, 'ebookcharacters' => $ebookcharacters, 'ebooks' => $ebooks, 'ebookdata'=>$ebookdata, 'pagedata'=>$pagedata, 'previouspage'=>$previouspage, 'nextpage'=>$nextpage, 'nxtpg'=>$nxtpg, 'newpage'=>$newpage, 'chapterdata'=>$chapterdata, 'countchapters'=>$countchapters, 'actscount'=>$actscount, 'acts'=>$acts, 'messagescount'=>$messagescount, 'messages'=>$messages, 'totalebookpages'=>$totalebookpages, 'totalebookchapters'=>$totalebookchapters, 'totalebookcharacters'=>$totalebookcharacters, 'pagecharacters'=>$pagecharacters]);
     }
     
     public function write(Request $request){

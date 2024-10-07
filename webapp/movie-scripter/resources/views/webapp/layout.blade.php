@@ -23,7 +23,6 @@
         'resources/js/ebook.js',  
         'resources/js/chapter.js',  
         'resources/js/page.js',
-        'resources/js/left-menu.js', 
         'resources/js/ai.js']) 
 
 

@@ -81,12 +81,18 @@
                         <td style="text-align: left;">
                           <a href="#" style="color:#3b3b3b; text-shadow:1px 1px 1px #FFF;" data-bs-toggle="modal" data-bs-target="#pageCharacterModal"><span class="fa fa-plus-circle" style="font-size:35px;" data-bs-toggle="tooltip" title="Relate characters" data-bs-placement="left"></span></a>
                         </td>
-                        <td style="text-align: left;">
-                          <div class="nav-profile-img" bis_skin_checked="1">
-                          <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="profile">
-                          <span class="availability-status online"></span>
-                          </div>
-                        </td>
+                        @if(count($pagecharacters) > 0)
+                          @foreach($pagecharacters as $pagecharacter)
+                          <td style="text-align: left;">
+                            <div class="nav-profile-img">
+                            <a href="/character/{{ $pagecharacter[0]['id'] }}">
+                              <img src="http://127.0.0.1:8000/images_webapp/faces/face1.jpg" width="40" style="border-radius:50%;" alt="{{ $pagecharacter[0]['name'] }}" bis_skin_checked="1" data-bs-toggle="tooltip" title="{{ $pagecharacter[0]['name'] }}">
+                              <span class="availability-status online"></span>
+                            </a>
+                            </div>
+                          </td>
+                          @endforeach
+                        @endif                        
                     </tr>
                   </table>
                 </div>
