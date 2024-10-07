@@ -38,7 +38,7 @@ class PageController extends Controller
 
         $pageid = $request->id;        
         session()->put('pageid', $pageid);
-        $pagedata = Page::where('id', $pageid)->first();
+        $pagedata = Page::where('id', $pageid)->with('characters')->first();
         $previouspage = $pagedata->page_number - 1;
         $nextpage = $pagedata->page_number + 1;
 

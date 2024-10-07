@@ -33,7 +33,7 @@ class ChapterController extends Controller
 
         $chapterid = $request->id;        
         session()->put('chapterid', $chapterid);
-        $chapterdata = Chapter::where('id', $chapterid)->first();
+        $chapterdata = Chapter::where('id', $chapterid)->with('characters')->first();
         $previouschapter = $chapterdata->chapter_number - 1;
         $nextchapter = $chapterdata->chapter_number + 1;
 
