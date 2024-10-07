@@ -206,7 +206,7 @@
                 <h2>MOVIE SCRIPTING REVOLUTIONIZED</h2>
                 <p style="color:#FFF;">Turning e-books into movies made easy and 100% faster</p>
                 
-                <iframe src="https://www.youtube.com/embed/s3Rv7NKSE2s?si=InTlSNDeVpITHm7y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" class="movieiframe" style="margin-left:auto; margin-right:auto; margin-top:35px; border-style:solid; border-color:#FFF; border-width:5px; border-radius:3px; box-shadow:0px 2px 15px #000; width:760px; height:420px !important;" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/s3Rv7NKSE2s?si=InTlSNDeVpITHm7y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" class="movievid" allowfullscreen></iframe>
             </div>
         </div>
     </div>
