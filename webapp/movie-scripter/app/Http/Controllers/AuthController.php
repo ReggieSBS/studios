@@ -54,6 +54,45 @@ class AuthController extends Controller
         }
         return redirect(route('login'))->with("success","Registration succesfull please login");
     }
+    public function update(Request $request){
+        
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users'
+        ]);
+
+        $profile_image = $request->file('profile_image');
+        $namefile  = $profile_image->getClientOriginalName();
+        $profile_image->storeAs('/app/public/images/', $namefile, 'public');
+        $file = '/images/'. $namefile;
+
+        $user = User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->profile_image = $file;
+        $user->save();
+    }
+
+    
+    public function updatepassword(Request $request){
+        
+        if($request->password == $request->confirm_password)
+        {
+            $pass = Hash::make($request->confirm_password);
+            $user = User::find(Auth::user()->id);
+            $user->password = $pass;
+            $user->save();
+            
+            Session::flush();
+            Auth::logout();
+            return redirect(route('login'));
+        }
+        else
+        {
+            return redirect('/account');
+        }
+        
+    }
 
     public function logout(){
         Session::flush();

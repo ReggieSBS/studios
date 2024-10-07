@@ -162,7 +162,7 @@
             </div>
             <div class="col-12">
               <h6 class="small-text mt-2" style="width:100%;">Profile image <em style="font-size:11px; float:right;"> *optional</em> </h6>
-              <input type="file" name="profileimage" class="form form-control">
+              <input type="file" name="profileimage" class="form form-control" accept=".jpeg,.jpg,.png,.gif">
             </div>
             <div class="col-12">
               <h6 class="small-text mt-2">Gender</h6>

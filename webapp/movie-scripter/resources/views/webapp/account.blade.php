@@ -37,6 +37,8 @@
               <div class="col-md-12 col-lg-7 col-sm-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+                    <form action="route('account.update')" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="clearfix">
                       <h4 class="card-title float-start" style="width:100%">Personal Information
                         <button type="submit" class="btn btn-default" style="width:50px !important; float:right;padding-left:0px; padding-right:0px;"><i class="fa fa-save"></i></button>
@@ -49,32 +51,36 @@
                       </div>
                       <div class="col-lg-6">
                         <h4>Your name</h4>
-                        <input type="text" class="form form-control" name="username" required>
+                        <input type="text" class="form form-control" name="name" value="{{Auth::user()->name}}" required>
                         <h6 class="mt-5">Choose a new profile image</h6>
-                        <input type="file" class="form form-control" name="profile_image" required>
+                        <input type="file" class="form form-control" name="profile_image" accept=".jpeg,.jpg,.png,.gif" required>
                       </div>
                     </div>
                     <div class="row mt-2">
                       <div class="col-lg-12">
                         <h4>Your emailaddress</h4>
-                        <input type="email" class="form form-control" name="email" required>
+                        <input type="email" class="form form-control" name="email" value="{{ Auth::user()->email }}" required>
                       </div>
                     </div>
+                    </form>
                     <br/>
                     <hr>
+                    <form action="route('account.passwordupdate')" method="post">
+                    @csrf
                     <div class="row mt-5">
                       <div class="col-lg-6">
                         <h4>New password</h4>
-                        <input type="password" class="form form-control" name="password" required>
+                        <input type="password" class="form form-control" name="password" value="" required>
                       </div>
                       <div class="col-lg-6">
                         <h4>Confirm new password</h4>
-                        <input type="password" class="form form-control" name="password" required>
+                        <input type="password" class="form form-control" name="confirm_password" value="" required>
                       </div>
                       <div class="col-lg-12 mt-2 text-right">
-                        <button class="btn btn-secondary" style="">Reset password</button>
+                        <button class="btn btn-secondary" type="submit">Reset password</button>
                       </div>
                     </div>
+                    </form>
                   </div>
                 </div>
               </div>

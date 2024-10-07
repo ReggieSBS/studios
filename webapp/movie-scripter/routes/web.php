@@ -28,6 +28,8 @@ Route::get('/pay/{type}', [SubscriptionController::class, 'pay'])->name('pay');
 Route::get('/account', [DashboardController::class, 'account'])->middleware('auth')->name('account');
 Route::get('/subscription', [DashboardController::class, 'subscription'])->middleware('auth')->name('subscription');
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+Route::get('/account/update', [AuthController::class, 'update'])->middleware('auth')->name('account.update');
+Route::get('/account/password-update', [AuthController::class, 'updatepassword'])->middleware('auth')->name('account.passwordupdate');
 
 // AUTHENTICATION
 Route::get('/login', [AuthController::class, 'login'])->name('login');
