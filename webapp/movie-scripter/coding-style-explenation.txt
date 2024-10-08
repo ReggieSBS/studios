@@ -1,0 +1,25 @@
+After a year or 2 not using laravel the coding style is mainly based on dynamic tracking
+I wanted to explore how dynamic laravel, or not, laravel has become after a 
+few upgrades. this is why you see 
+
+Backend
+1. data loading combining arrays and objects.
+2. Backend using relationships -> trying join in queries combined with eloquent one to one, one to many etc...
+3. exploring traits in models 
+
+Frontend
+1. Using jQuery Library in combination with Vue3
+2. Using vue3 export in combination with script setup
+3. Vue 3 is used for data transfer axios method
+4. jQuery is mainly based on UX FX on Design
+
+To Do
+1. Waiting for some 3rd party handlings to make request to openAI
+2. Descision making on Frontend or Backend handling (For now it's backend using guzzle) 
+OpenAI Laravel package uses PHP 8.1. this is incombitable with APP version php 8.0
+3. Frontend npm package is combitable with Vue3 only axios calls and wait for sync methods
+in vue will slow down user experience.
+
+* Optional is to handle the request using job commands in laravel but because the context
+of the aspects of the app (E-book and Movie) are so compartimentalized that content reading
+doesn't effect user experience in request handling.
