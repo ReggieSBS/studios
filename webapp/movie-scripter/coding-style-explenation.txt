@@ -1,6 +1,15 @@
-After a year or 2 not using laravel the coding style is mainly based on dynamic tracking
-I wanted to explore how dynamic laravel, or not, laravel has become after a 
-few upgrades. this is why you see 
+** Author: R. Duisterhof
+** Date start Development 29-09-204
+** App is made in roughly a week time
+** Made for demonstration purposes
+** MIT licensed (Please respect author rights)
+
+
+Argument:
+
+After a year or 2 not using laravel, the coding style is mainly based on exploring the dynamics within the framework.
+I wanted to explore how dynamic, or not, laravel has become after a few upgrades. 
+This is why you read 
 
 Backend
 1. data loading combining arrays and objects.
