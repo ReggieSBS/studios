@@ -7,11 +7,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\hasMany;
+use App\Models\Ebook;
+
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function ebooks(): HasMany
+    {
+        return $this->hasMany(Ebook::class);
+    }
+
+    public function movies(): HasMany{
+        return $this->hasMany(Movie::class);
+    }
+    
+    public function subscription(): HasOne{
+        return $this->hasOne(Subscription::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -5,10 +5,27 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@vitejs/plugin-vue": "^4.6.2",
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.7.2",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
-        "vite": "^4.0.0"
+        "vite": "^4.0.0",
+        "vite-plugin-vue-devtools": "^7.4.6",
+        "vue": "^3.5.10",
+        "vue-loader": "^17.4.2",
+        "vue-router": "^4.4.5"
+    },
+    "dependencies": {
+        "@inertiajs/vue3": "^1.2.0",
+        "@tiptap/core": "^2.8.0",
+        "@tiptap/extension-font-family": "^2.8.0",
+        "@tiptap/extension-image": "^2.8.0",
+        "@tiptap/extension-text-style": "^2.8.0",
+        "@tiptap/extension-underline": "^2.8.0",
+        "@tiptap/pm": "^2.8.0",
+        "@tiptap/starter-kit": "^2.8.0",
+        "@tiptap/vue-3": "^2.8.0",
+        "v-reset-input": "^1.1.2"
     }
 }
