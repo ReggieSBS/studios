@@ -28,32 +28,34 @@ class AiController extends Controller
         $ai_request->user_id = Auth::user()->id;
         $ai_request->save();
 
-        $client = new Client();
+        // AI RESPONSE GPT 4 
+
+        // $client = new Client();
  
-        $message = ["role"=> "user", "content"=> "Say this is a test!"];
+        // $message = ["role"=> "user", "content"=> "Say this is a test!"];
 
-        $response = $client->post($this->openAIEndpoint, [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $this->openAIKey,
-            ],
-            'json' => [
-                'model' => 'gpt-4o-mini',
-                'prompt' => $message,
-                'max_tokens' => 150,
-                'temperature' => 0.7,
-                'stop' => ['\n']
-            ],
-        ]);
+        // $response = $client->post($this->openAIEndpoint, [
+        //     'headers' => [
+        //         'Content-Type' => 'application/json',
+        //         'Authorization' => 'Bearer ' . $this->openAIKey,
+        //     ],
+        //     'json' => [
+        //         'model' => 'gpt-4o-mini',
+        //         'prompt' => $message,
+        //         'max_tokens' => 150,
+        //         'temperature' => 0.7,
+        //         'stop' => ['\n']
+        //     ],
+        // ]);
  
-        $ai_response = $response->getBody()->getContents();
+        // $ai_response = $response->getBody()->getContents();
 
 
-        $ai_request = New Ai();
-        $ai_request->message = $ai_response;
-        $ai_request->response = 1;
-        $ai_request->user_id = Auth::user()->id;
-        $ai_request->save();
+        // $ai_response = New Ai();
+        // $ai_response->message = $ai_response;
+        // $ai_response->response = 1;
+        // $ai_response->user_id = Auth::user()->id;
+        // $ai_response->save();
     }
 
 
