@@ -15,7 +15,7 @@ class AiController extends Controller
     public function __construct()
     {
         $this->openAIKey = env('OPENAI_API_KEY');
-        $this->openAIEndpoint = 'https://api.openai.com/v1/completions';
+        $this->openAIEndpoint = 'https://api.openai.com/v1/chat/completions';
     }
 
     public function write(Request $request)
@@ -30,13 +30,15 @@ class AiController extends Controller
 
         $client = new Client();
  
+        $message = ["role"=> "user", "content"=> "Say this is a test!"];
+
         $response = $client->post($this->openAIEndpoint, [
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . $this->openAIKey,
             ],
             'json' => [
-                'model' => 'text-davinci-003',
+                'model' => 'gpt-4o-mini',
                 'prompt' => $message,
                 'max_tokens' => 150,
                 'temperature' => 0.7,
@@ -45,6 +47,8 @@ class AiController extends Controller
         ]);
  
         $ai_response = $response->getBody()->getContents();
+
+
         $ai_request = New Ai();
         $ai_request->message = $ai_response;
         $ai_request->response = 1;
@@ -61,5 +65,32 @@ class AiController extends Controller
         return response()->json([
             'responses' => $responses
         ],200);
+    }
+
+
+    public function test(Request $request)
+    {
+        $client = new Client();
+
+        $message = $request->msg;
+        $message = ["role"=> "user", "content"=> $message];
+
+        $response = $client->post($this->openAIEndpoint, [
+            'headers' => [
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Bearer ',
+            ],
+            'json' => [
+                'model' => 'gpt-4o-mini',
+                'prompt' => $message,
+                'max_tokens' => 150,
+                'temperature' => 0.7,
+                'stop' => ['\n']
+            ],
+        ]);
+ 
+        $ai_response = $response->getBody()->getContents();
+
+        dd($ai_response);
     }
 }

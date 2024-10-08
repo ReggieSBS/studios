@@ -41,6 +41,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // AI CHAT
 Route::post('/ai-request', [AiController::class, 'write'])->middleware('auth')->name('ai-request');
 Route::get('/ai-response', [AiController::class, 'read'])->middleware('auth')->name('ai-response');
+Route::get('/ai-test/{msg}', [AiController::class, 'test'])->middleware('auth')->name('ai-test');
 
 
 // EBOOK
