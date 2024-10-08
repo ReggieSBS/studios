@@ -85,7 +85,7 @@
                           <td style="text-align: left;">
                             <div class="nav-profile-img">
                             <a href="/character/{{ $chaptercharacter[0]['id'] }}">
-                              <img src="{{ $pagecharacter[0]['profile_image'] }}" width="30" style="border-radius:50%;" alt="{{ $chaptercharacter[0]['name'] }}" bis_skin_checked="1" data-bs-toggle="tooltip" title="{{ $chaptercharacter[0]['name'] }}">
+                              <img src="{{ $chaptercharacter[0]['profile_image'] }}" width="30" style="border-radius:50%;" alt="{{ $chaptercharacter[0]['name'] }}" bis_skin_checked="1" data-bs-toggle="tooltip" title="{{ $chaptercharacter[0]['name'] }}">
                               <span class="availability-status online"></span>
                             </a>
                             </div>

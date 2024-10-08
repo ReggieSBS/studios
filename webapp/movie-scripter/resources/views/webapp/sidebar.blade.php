@@ -5,7 +5,7 @@
             <li class="nav-item nav-profile">
               <a href="/ebook/{{ $ebookdata->id }}" class="nav-link">
                 <div class="nav-profile-image">
-                  <span class="mdi mdi-36px mdi-read text-danger"></span>
+                  <img src="{{ $ebookdata->image }}" style="height:60px; border-radius:0px !important;">
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
